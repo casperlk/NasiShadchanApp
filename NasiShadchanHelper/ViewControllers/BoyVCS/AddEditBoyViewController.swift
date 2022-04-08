@@ -23,6 +23,7 @@ class AddEditBoyViewController: UITableViewController {
     
     var selectedNasiBoy: NasiBoy!
     var selectedImage: UIImage!
+    var boyProfileImageString: String!
     
     //var selectedImage: UIImage? {
     //    didSet {
@@ -37,12 +38,14 @@ class AddEditBoyViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         if selectedNasiBoy != nil {
             self.boyProfileImageURLString = selectedNasiBoy.boyProfileImageURLString
             isEditingBoy = true
             populateFields()
-            populateBoyProfileImageView()
-         }
+            fetchImageOfBoyAndSetImageView()
+        }
+        tableView.reloadData()
     }
     
     func  populateFields() {
@@ -53,13 +56,17 @@ class AddEditBoyViewController: UITableViewController {
         sendResumeCellTextField.text = selectedNasiBoy.sendResumeText
         sendResumeEmailTextField.text = selectedNasiBoy.sendResumeEmail
         
-    }
+      }
     
-    func populateBoyProfileImageView() {
-        if selectedNasiBoy.boyProfileImageURLString != ""{
-            boyProfileImageImageView.loadImageUsingCacheWithUrlString(self.selectedNasiBoy.boyProfileImageURLString)
+    func fetchImageOfBoyAndSetImageView() {
+        
+        self.boyProfileImageURLString =   selectedNasiBoy.boyProfileImageURLString
+        
+        boyProfileImageImageView.loadImageFromUrl(strUrl: self.boyProfileImageURLString, imgPlaceHolder: "")
+        
         }
-    }
+    
+   
     
     @IBAction func doneButtonPressed(_ sender: Any) {
         saveBoyToFirebase()
@@ -142,6 +149,7 @@ class AddEditBoyViewController: UITableViewController {
     tableView.deselectRow(at: indexPath, animated: true)
     if indexPath.section == 3 && indexPath.row == 0 {
         pickPhoto()
+        
     } else if indexPath.section == 3 && indexPath.row == 0 {
         tableView.deselectRow(at: indexPath, animated: true)
       }
@@ -195,7 +203,8 @@ UIImagePickerControllerDelegate,
     }
     
     func pickPhoto() {
-      if UIImagePickerController.isSourceTypeAvailable(.camera) {
+        
+    if UIImagePickerController.isSourceTypeAvailable(.camera) {
         showPhotoMenu()
       } else {
         choosePhotoFromLibrary()
@@ -203,27 +212,37 @@ UIImagePickerControllerDelegate,
     }
     
     func showPhotoMenu() {
-      let alert = UIAlertController(
+        
+        let alert = UIAlertController(
         title: nil,
         message: nil,
         preferredStyle: .actionSheet)
-      let actCancel = UIAlertAction(
+        
+        let actCancel = UIAlertAction(
         title: "Cancel",
         style: .cancel,
         handler: nil)
-      alert.addAction(actCancel)
-      let actPhoto = UIAlertAction(
-        title: "Take Photo",
-        style: .default,
-        handler: nil)
+        alert.addAction(actCancel)
+        
+    let actPhoto = UIAlertAction(
+          title: "Take Photo",
+          style: .default)
+        { _ in
+            self.takePhotoWithCamera()
+        }
       alert.addAction(actPhoto)
-      let actLibrary = UIAlertAction(
-        title: "Choose From Library",
-        style: .default,
-            handler: nil)
-          alert.addAction(actLibrary)
-          present(alert, animated: true, completion: nil)
+        
+        let actLibrary = UIAlertAction(
+          title: "Choose From Library",
+          style: .default)
+        { _ in
+           self.choosePhotoFromLibrary()
+          }
+        alert.addAction(actLibrary)
+        
+        present(alert, animated: true, completion: nil)
     }
+
     
     func show(image: UIImage) {
         boyProfileImageImageView.image = image

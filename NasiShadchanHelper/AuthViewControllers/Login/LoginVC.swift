@@ -31,9 +31,9 @@ class LoginVC: UIViewController {
         self.tfPassword.addLeftPadding()
         
         if AppDelegate.instance().window?.frame.size.height ?? 0.0 < 600.0 {
-            self.heightImageView.constant = 220
+           // self.heightImageView.constant = 220
         } else {
-            self.heightImageView.constant = (AppDelegate.instance().window?.frame.size.height)! - (Utility.hasTopNotch ? 550 : 410)
+           // self.heightImageView.constant = (AppDelegate.instance().window?.frame.size.height)! - (Utility.hasTopNotch ? 550 : 410)
         }
         
         for view: UIView in self.viewForm.subviews {
@@ -54,9 +54,13 @@ class LoginVC: UIViewController {
     }
     
     //MARK: Validaitons
+    //MARK: Validaitons
     func validateFormFields() -> Bool {
-        self.tfEmail.validate(); self.tfPassword.validate()
-        if self.tfEmail.validate() && self.tfPassword.validate() {
+        self.tfEmail.validate()
+        //;
+       // self.tfPassword.validate(); self.tfRePassword.validate()
+        if self.tfEmail.validate() {
+            //&& self.tfPassword.validate() && self.tfRePassword.validate() {
             return true
         }
         return false

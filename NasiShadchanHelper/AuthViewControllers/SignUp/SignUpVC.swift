@@ -64,8 +64,11 @@ class SignUpVC: UIViewController {
     
     //MARK: Validaitons
     func validateFormFields() -> Bool {
-        self.tfEmail.validate(); self.tfPassword.validate(); self.tfRePassword.validate()
-        if self.tfEmail.validate() && self.tfPassword.validate() && self.tfRePassword.validate() {
+        self.tfEmail.validate()
+        //;
+       // self.tfPassword.validate(); self.tfRePassword.validate()
+        if self.tfEmail.validate() {
+            //&& self.tfPassword.validate() && self.tfRePassword.validate() {
             return true
         }
         return false

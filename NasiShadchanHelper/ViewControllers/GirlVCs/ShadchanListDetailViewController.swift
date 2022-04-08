@@ -30,7 +30,7 @@ class ShadchanListDetailViewController: UITableViewController, UICollectionViewD
     override func viewDidLoad() {
          super.viewDidLoad()
         self.navigationItem.title =
-         selectedNasiGirl.firstNameOfGirl + " " + selectedNasiGirl.lastNameOfGirl
+         selectedNasiGirl.nameSheIsCalledOrKnownBy + " " + selectedNasiGirl.lastNameOfGirl
         
         populateBioTextField()
         

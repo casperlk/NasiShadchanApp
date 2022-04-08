@@ -17,9 +17,10 @@ class ResumeViewController: UITableViewController {
     @IBOutlet weak var girlProfileImageView: UIImageView!
     
     @IBOutlet weak var pdfView: PDFView!
-    
-    
     var selectedNasiGirl: NasiGirl!
+    
+    var documentController : UIDocumentInteractionController!
+    
 
     // set up url session for download
     // so we get delegate call backs
@@ -40,14 +41,43 @@ class ResumeViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.isUserInteractionEnabled = false
+        view.showLoadingIndicator()
+        
         self.navigationItem.title =
-         selectedNasiGirl.firstNameOfGirl + " " + selectedNasiGirl.lastNameOfGirl
-        
-        print("the state of selected Nasi Girl is \(self.selectedNasiGirl.lastNameOfGirl)")
-        
+         selectedNasiGirl.nameSheIsCalledOrKnownBy + " " + selectedNasiGirl.lastNameOfGirl
         downloadDocument()
-        girlProfileImageView.loadImageUsingCacheWithUrlString(self.selectedNasiGirl.imageDownloadURLString)
+        downloadProfileImage()
     }
+    
+    
+    @IBAction func sendPhotoWhatsAppTapped(sender: UIButton) {
+        
+        print("the state of localImageURL is \(self.localImageURL)")
+        
+        documentController = UIDocumentInteractionController(url:self.localImageURL)
+        
+        
+        
+        
+        documentController.presentOptionsMenu(from: sender.frame, in: self.view, animated: true)
+        
+    }
+    
+    
+    
+    
+    @IBAction func sendResumeWhatsAppTapped (sender: UIButton)  {
+       
+        
+        documentController = UIDocumentInteractionController(url:self.localURL)
+        
+       
+        documentController.presentOptionsMenu(from: sender.frame, in: self.view, animated: true)
+        
+    }
+    
     
     @IBAction func emailJustResumeTapped(_ sender: Any) {
         let documentAsImage = drawPDFfromURL(url: localURL)
@@ -128,8 +158,8 @@ class ResumeViewController: UITableViewController {
         composeVC.messageComposeDelegate = self
          
         // Configure the fields of the interface.
-        composeVC.recipients = ["3109235682"]
-        composeVC.body = "HelloXXXXXXXXXX"
+        //composeVC.recipients = ["3109235682"]
+        //composeVC.body = "HelloXXXXXXXXXX"
         
         composeVC.addAttachmentData(docAsData!, typeIdentifier: "public.data", filename: "image.jpeg")
          
@@ -149,8 +179,8 @@ class ResumeViewController: UITableViewController {
         composeVC.messageComposeDelegate = self
          
         // Configure the fields of the interface.
-        composeVC.recipients = ["3109235682"]
-        composeVC.body = "Hello XXXXXXXXXXXX"
+       // composeVC.recipients = ["3109235682"]
+       // composeVC.body = "Hello XXXXXXXXXXXX"
 
         composeVC.addAttachmentData(imageData!, typeIdentifier: "public.data", filename: "image.jpeg")
         // Present the view controller modally.
@@ -171,8 +201,8 @@ class ResumeViewController: UITableViewController {
         composeVC.messageComposeDelegate = self
          
         // Configure the fields of the interface.
-        composeVC.recipients = ["3109235682"]
-        composeVC.body = "Hello XXXXXXXXXXXX"
+       // composeVC.recipients = ["3109235682"]
+       // composeVC.body = "Hello XXXXXXXXXXXX"
         composeVC.addAttachmentData(docAsData!, typeIdentifier: "public.data", filename: "image.jpeg")
         
         composeVC.addAttachmentData(imageData!, typeIdentifier: "public.data", filename: "image.jpeg")
@@ -266,10 +296,14 @@ extension ResumeViewController: URLSessionDownloadDelegate {
     }
     
      
-        if localURL != nil {
+        if localURL != nil && localImageURL != nil {
     DispatchQueue.main.async {
         //self.waitingForDataLabel.isHidden = true
         self.setUpPDFView()
+        self.setupProfileImageFromLocalURL()
+        self.view.isUserInteractionEnabled = true
+        self.view.hideLoadingIndicator()
+        
         
             }
      }
@@ -304,7 +338,7 @@ extension ResumeViewController: URLSessionDownloadDelegate {
            let imageData = try! Data(contentsOf: localImageURL!)
            
            let imageFromURl = UIImage(data: imageData)
-           //imgVwUserDP.image = imageFromURl
+            self.girlProfileImageView.image = imageFromURl
            }
        }
     

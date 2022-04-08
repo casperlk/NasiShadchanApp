@@ -74,7 +74,7 @@ class ContactsViewController: UITableViewController {
     
     func populateGirlTextField() {
         
-        let girlNameString = selectedNasiGirl.firstNameOfGirl + " " + selectedNasiGirl.lastNameOfGirl
+        let girlNameString = selectedNasiGirl.nameSheIsCalledOrKnownBy + " " + selectedNasiGirl.lastNameOfGirl
         let girlTelString = selectedNasiGirl.girlsCellNumber
         let girlEmailstring = selectedNasiGirl.girlsEmailAddress
         
@@ -107,7 +107,7 @@ class ContactsViewController: UITableViewController {
          
         // Configure the fields of the interface.
         composeVC.recipients = [toDiscussTelString]
-        composeVC.body = "HelloXXXXXXXXXX"
+        //composeVC.body = "HelloXXXXXXXXXX"
         // Present the view controller modally.
         self.present(composeVC, animated: true, completion: nil)
     }
@@ -115,16 +115,15 @@ class ContactsViewController: UITableViewController {
     @IBAction func emailContactToDiscuss(_ sender: Any) {
         if MFMailComposeViewController.canSendMail() {
             
+    let subjectString = "Regarding" + " " + "\(selectedNasiGirl.nameSheIsCalledOrKnownBy)" + " "  + "\(selectedNasiGirl.lastNameOfGirl)"
             
             let toDiscussEmailstring = selectedNasiGirl.emailOfContactWhoKnowsGirl
             let composeVC = MFMailComposeViewController()
             
             composeVC.mailComposeDelegate = self
-            
-            
             // Configure the fields of the interface.
             composeVC.setToRecipients([toDiscussEmailstring])
-           // composeVC.setSubject(subject)
+            composeVC.setSubject(subjectString)
             //composeVC.setMessageBody("XXXXXX", isHTML: false)
           
             self.present(composeVC, animated: true, completion: nil)
@@ -141,9 +140,7 @@ class ContactsViewController: UITableViewController {
             print("SMS services are not available")
         }
         
-        
         let toReddTelString = selectedNasiGirl.cellNumberOfContactToReddShidduch
-        
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = self
          
@@ -166,11 +163,95 @@ class ContactsViewController: UITableViewController {
             
             // Configure the fields of the interface.
             composeVC.setToRecipients([toDiscussEmailstring])
-           // composeVC.setSubject(subject)
+            
+ let subject = "Regarding " + "\(selectedNasiGirl.nameSheIsCalledOrKnownBy)" + " " +  "\(selectedNasiGirl.lastNameOfGirl)"
+            
+            composeVC.setSubject(subject)
             //composeVC.setMessageBody("XXXXXX", isHTML: false)
           
             self.present(composeVC, animated: true, completion: nil)
               }
+    }
+    
+    
+    @IBAction func toDiscussWAppTapped(_ sender: Any) {
+        whatsAppTheToDisccuss()
+    }
+    
+    
+    @IBAction func toReddTapped(_ sender: Any) {
+        whatsAppTheToRedd()
+    }
+    
+    
+    
+    @IBAction func girlWappTapped(_ sender: Any) {
+        whatsAppTheGirl()
+    }
+    
+    func whatsAppTheToDisccuss(){
+        // 1
+        let url = "https://wa.me/1"
+        let number = selectedNasiGirl.cellNumberOfContactWhoKNowsGirl
+        let urlWhatsAppNumb = url + number
+        // 2
+        if let urlWhatsAppNumbString = urlWhatsAppNumb.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
+          // 3
+          if let whatsappURL = NSURL(string: urlWhatsAppNumbString) {
+            // 4
+            if UIApplication.shared.canOpenURL(whatsappURL as URL) {
+              // 5
+              UIApplication.shared.open(whatsappURL as URL, options: [:], completionHandler: nil)
+            } else {
+              // 6
+              print("Cannot Open Whatsapp")
+            }
+          }
+        }
+        
+    }
+    
+    func whatsAppTheToRedd(){
+        // 1
+        let url = "https://wa.me/1"//0195559422"
+        let number = selectedNasiGirl.cellNumberOfContactToReddShidduch
+        let urlWhats = url + number
+        // 2
+        if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
+          // 3
+          if let whatsappURL = NSURL(string: urlString) {
+            // 4
+            if UIApplication.shared.canOpenURL(whatsappURL as URL) {
+              // 5
+              UIApplication.shared.open(whatsappURL as URL, options: [:], completionHandler: nil)
+            } else {
+              // 6
+              print("Cannot Open Whatsapp")
+            }
+          }
+        }
+        
+    }
+    
+    func whatsAppTheGirl() {
+        // 1
+        let url = "https://wa.me/1"//0195559422"
+        let number = selectedNasiGirl.girlsCellNumber
+        let urlWhats = url + number
+        // 2
+        if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
+          // 3
+          if let whatsappURL = NSURL(string: urlString) {
+            // 4
+            if UIApplication.shared.canOpenURL(whatsappURL as URL) {
+              // 5
+              UIApplication.shared.open(whatsappURL as URL, options: [:], completionHandler: nil)
+            } else {
+              // 6
+              print("Cannot Open Whatsapp")
+            }
+          }
+        }
     }
     
     
@@ -199,19 +280,16 @@ class ContactsViewController: UITableViewController {
     @IBAction func emailTheGirl(_ sender: Any) {
         if MFMailComposeViewController.canSendMail() {
             
-            
             let girlsEmailString = selectedNasiGirl.girlsEmailAddress
             let composeVC = MFMailComposeViewController()
             
             composeVC.mailComposeDelegate = self
             
-            
             // Configure the fields of the interface.
             composeVC.setToRecipients([girlsEmailString])
            // composeVC.setSubject(subject)
             //composeVC.setMessageBody("XXXXXX", isHTML: false)
-          
-            self.present(composeVC, animated: true, completion: nil)
+          self.present(composeVC, animated: true, completion: nil)
               }
 
     }
@@ -230,15 +308,12 @@ extension ContactsViewController: MFMailComposeViewControllerDelegate, MFMessage
         if result.rawValue == 0 {
           // it was cancelled
         }
-        
         if result.rawValue == 1 {
             
         }
-        
         if result.rawValue == 2 {
            // "It was sent"
             hudView.text = "Sent"
-            
         }
         if result.rawValue == 3 {
             // it failed
@@ -250,10 +325,8 @@ extension ContactsViewController: MFMailComposeViewControllerDelegate, MFMessage
         let delayInSeconds = 1.6
         DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds)
         {
-        
-        hudView.hide()
-       
-      }
+         hudView.hide()
+       }
     }
     
     func messageComposeViewController(_ controller: MFMessageComposeViewController,

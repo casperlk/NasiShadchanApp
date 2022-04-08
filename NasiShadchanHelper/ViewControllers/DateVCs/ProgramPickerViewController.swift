@@ -10,10 +10,10 @@ import UIKit
 
 class ProgramPickerViewController: UITableViewController {
 
-    var selectedProgramName = "Sefardim"
+    var selectedProgramName = "N/A"
      let programs = [
        "N/A",
-       "Nasi",
+       "Nasi List",
        "AY",
        "Sefardim"]
     

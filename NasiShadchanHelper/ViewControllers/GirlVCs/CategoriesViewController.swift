@@ -22,31 +22,28 @@ class CategoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+    
       fetchAndCreateNasiGirlsArray()
     }
     
-    
-    
-    //
     func fetchAndCreateNasiGirlsArray() {
       self.view.showLoadingIndicator()
       
     //  get the node
       let allNasiGirlsRef = Database.database().reference().child("NasiGirlsList")
         
-    //
      allNasiGirlsRef.observe(.value, with: { snapshot in
         
-         
-        var nasiGirlsArray: [NasiGirl] = []
+         var nasiGirlsArray: [NasiGirl] = []
     
-         
-          for child in snapshot.children {
+         for child in snapshot.children {
               
             let snapshot = child as? DataSnapshot
-            
-            //print("the state of snapshot is \(snapshot?.description)")
-            
             let nasiGirl = NasiGirl(snapshot: snapshot!)
             
             nasiGirlsArray.append(nasiGirl)
@@ -253,6 +250,7 @@ extension CategoriesViewController {
             // make the authVC the rootVC
             AppDelegate.instance().makingRootFlow(Constant.AppRootFlow.kAuthVc)
         }))
+        
         alertControler.addAction(UIAlertAction.init(title:"No", style:.destructive, handler: { (action) in
         }))
         self.present(alertControler,animated:true, completion:nil)

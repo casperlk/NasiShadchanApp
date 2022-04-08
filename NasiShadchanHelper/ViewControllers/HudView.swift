@@ -36,7 +36,10 @@ class HudView: UIView {
         roundedRect.fill()
         // Draw checkmark
         if let image = UIImage(named: "Checkmark") {
-            let imagePoint = CGPoint(x: center.x - round(image.size.width / 2), y: center.y - round(image.size.height / 2) - boxHeight / 8)
+            //let imagePoint = CGPoint(x: center.x - round(image.size.width / 2), y: center.y - round(image.size.height / 2) - boxHeight / 8)
+            
+            let centerY = bounds.height / 2
+            let imagePoint = CGPoint(x: center.x - round(image.size.width / 2), y: centerY - round(image.size.height / 2) )
             image.draw(at: imagePoint)
         }
         // Draw the text
@@ -44,7 +47,8 @@ class HudView: UIView {
         
         let textSize = text.size(withAttributes: attribs)
         
-        let textPoint = CGPoint(x: center.x - round(textSize.width / 2), y: center.y - round(textSize.height / 2) + boxHeight / 4)
+        let centerY = bounds.height / 2
+        let textPoint = CGPoint(x: center.x - round(textSize.width / 2), y: centerY - round(textSize.height / 2) + boxHeight / 8)
         text.draw(at: textPoint, withAttributes: attribs)
     }
     

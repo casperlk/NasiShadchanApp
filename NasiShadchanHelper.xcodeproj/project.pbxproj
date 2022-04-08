@@ -54,6 +54,7 @@
 		5228CB2327B1876300EDF103 /* DescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228CB2227B1876300EDF103 /* DescriptionCollectionViewCell.swift */; };
 		5228CB2527B4122B00EDF103 /* ShadchanGirlNotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228CB2427B4122B00EDF103 /* ShadchanGirlNotesVC.swift */; };
 		5228CB2727B4163300EDF103 /* ShadchanGirlNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228CB2627B4163300EDF103 /* ShadchanGirlNote.swift */; };
+		529A47A127F64EB00026A67E /* ErekaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529A47A027F64EB00026A67E /* ErekaVC.swift */; };
 		52A41BC4277F34AB00FE7C7A /* AllBoysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A41BC3277F34AB00FE7C7A /* AllBoysViewController.swift */; };
 		52A41BC6277F3BF700FE7C7A /* NasiBoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A41BC5277F3BF700FE7C7A /* NasiBoy.swift */; };
 		52A41BC8279353D500FE7C7A /* BoyDetailsVCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A41BC7279353D500FE7C7A /* BoyDetailsVCTableViewController.swift */; };
@@ -146,6 +147,8 @@
 		5228CB2227B1876300EDF103 /* DescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		5228CB2427B4122B00EDF103 /* ShadchanGirlNotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadchanGirlNotesVC.swift; sourceTree = "<group>"; };
 		5228CB2627B4163300EDF103 /* ShadchanGirlNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadchanGirlNote.swift; sourceTree = "<group>"; };
+		529A47A027F64EB00026A67E /* ErekaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErekaVC.swift; sourceTree = "<group>"; };
+		529A47A327F7452A0026A67E /* EurekaPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = EurekaPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		52A41BC3277F34AB00FE7C7A /* AllBoysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBoysViewController.swift; sourceTree = "<group>"; };
 		52A41BC5277F3BF700FE7C7A /* NasiBoy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasiBoy.swift; sourceTree = "<group>"; };
 		52A41BC7279353D500FE7C7A /* BoyDetailsVCTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoyDetailsVCTableViewController.swift; sourceTree = "<group>"; };
@@ -427,7 +430,9 @@
 				CEC468DD245B37950071EC85 /* FullTimeCollegeWorkingViewController.swift */,
 				CEC468DF245C60120071EC85 /* YeshivaAndCollegeWorkingViewController.swift */,
 				3D9DA71F25AE0DEA0056F656 /* AllNasiGirlsViewController.swift */,
+				CE428D53248142B500C34EAB /* ShadchanListDetailViewController.swift */,
 				5228CB2427B4122B00EDF103 /* ShadchanGirlNotesVC.swift */,
+				5228CB2027AF015100EDF103 /* ContactsViewController.swift */,
 			);
 			path = GirlVCs;
 			sourceTree = "<group>";
@@ -444,6 +449,7 @@
 		CE3AC06724536729006B9FEA = {
 			isa = PBXGroup;
 			children = (
+				529A47A327F7452A0026A67E /* EurekaPlayground.playground */,
 				CE3AC07224536729006B9FEA /* NasiShadchanHelper */,
 				CE3AC08924536765006B9FEA /* NasiShadchanHelperTests */,
 				CE3AC09424536765006B9FEA /* NasiShadchanHelperUITests */,
@@ -515,11 +521,10 @@
 				3DC18494258809A100B529F0 /* ResearchViewController.swift */,
 				3DC1849A258BBBF600B529F0 /* SentViewController.swift */,
 				CEC468DA245A217F0071EC85 /* ResumeViewController.swift */,
-				CE428D53248142B500C34EAB /* ShadchanListDetailViewController.swift */,
 				CE525A6F2461B55200CBEC41 /* UIImage+Resize.swift */,
 				CEF80D1D245F7014009FE684 /* HudView.swift */,
 				3D9DA71D25ACCEB10056F656 /* ViewResumeVCViewController.swift */,
-				5228CB2027AF015100EDF103 /* ContactsViewController.swift */,
+				529A47A027F64EB00026A67E /* ErekaVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -732,6 +737,7 @@
 				3DC184A125936A7700B529F0 /* SentTableViewCell.swift in Sources */,
 				18E5DD152525CBCE005DD1DE /* NasiGirlsList.swift in Sources */,
 				52A41BC6277F3BF700FE7C7A /* NasiBoy.swift in Sources */,
+				529A47A127F64EB00026A67E /* ErekaVC.swift in Sources */,
 				3DC18495258809A100B529F0 /* ResearchViewController.swift in Sources */,
 				3DC1849D258BBE6A00B529F0 /* GirlSentCell.swift in Sources */,
 				CEC468DB245A217F0071EC85 /* ResumeViewController.swift in Sources */,
@@ -959,7 +965,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NasiShadchanHelper/NasiShadchanHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30.1;
+				CURRENT_PROJECT_VERSION = 31.8;
 				DEVELOPMENT_TEAM = P77A2352BM;
 				INFOPLIST_FILE = NasiShadchanHelper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -967,7 +973,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 30.1;
+				MARKETING_VERSION = 31.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AviPogrow.NasiShadchanHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -982,7 +988,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NasiShadchanHelper/NasiShadchanHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30.1;
+				CURRENT_PROJECT_VERSION = 31.8;
 				DEVELOPMENT_TEAM = P77A2352BM;
 				INFOPLIST_FILE = NasiShadchanHelper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -990,7 +996,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 30.1;
+				MARKETING_VERSION = 31.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AviPogrow.NasiShadchanHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

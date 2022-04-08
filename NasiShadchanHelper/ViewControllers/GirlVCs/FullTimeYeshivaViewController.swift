@@ -56,7 +56,7 @@ class FullTimeYeshivaViewController: UIViewController, UITableViewDataSource,UIT
         navigationItem.title = "Full Time Yeshiva"
         
         
-        arrGirlsList = self.arrGirlsList.sorted(by: { Int($0.age ) < Int($1.age ) })
+     
         
         arrGirlsList = self.arrGirlsList.filter { (girlList) -> Bool in
             return girlList.category == Constant.CategoryTypeName.kPredicateString1  || girlList.category == Constant.CategoryTypeName.kPredicateString2 || girlList.category == Constant.CategoryTypeName.kPredicateString3
@@ -110,8 +110,21 @@ class FullTimeYeshivaViewController: UIViewController, UITableViewDataSource,UIT
             singleGirl.yearsOfLearning == "5-7:7+" ||
             singleGirl.yearsOfLearning == "3:3-5:5:5-7:7+" ||
             singleGirl.yearsOfLearning == "3-5:5:5-7:7+"
-            
         }
+        
+        //arrOnetoThreeSingleGirls
+        arrOnetoThreeSingleGirls = self.arrOnetoThreeSingleGirls.sorted(by: { Double($0.age ) < Double($1.age ) })
+        
+        arrThreeToFiveSingleGirls = self.arrThreeToFiveSingleGirls.sorted(by: { Double($0.age ) < Double($1.age ) })
+        
+        arrFiveYearsSingleGirls = self.arrFiveYearsSingleGirls.sorted(by: { Double($0.age ) < Double($1.age ) })
+        
+        fiveToSevenSingleGirls = self.fiveToSevenSingleGirls.sorted(by: { Double($0.age ) < Double($1.age ) })
+        
+        
+        sevenPlusSingleGirls = self.sevenPlusSingleGirls.sorted(by: { Double($0.age ) < Double($1.age ) })
+        
+        
         //      aryFirstSegmentFilter = [fiveToSevenSingleGirls,sevenPlusSingleGirls]
         self.segmentCntrlTapped(segmentCntrl!)
         

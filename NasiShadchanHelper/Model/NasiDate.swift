@@ -20,48 +20,51 @@ class NasiDate: NSObject {
     var  girlFullName: String  = ""
     var  girlAge: String = ""
     var  shadchanNotes: String = ""
-    var  creationDate: String = ""
-    var  updateTimeStamp: String  = ""
+    var  dateCreated: String = ""
+    var  dateLastUpdate: Int   = 0
     var  nasiProgram: String = "" // N/A - Nasi - AY - Sefardim
     
+    
+    // initialize from a firebase snapshot coming down into app
     init(snapshot: DataSnapshot) {
     //let value = snapshot.value as! [String: AnyObject]
-    guard  let value = snapshot.value! as? [String: String] else { return }
+    guard  let value = snapshot.value! as? [String: AnyObject] else { return }
         
         // FB snapshot has a ref and key property
         self.ref = snapshot.ref
         self.key = snapshot.key
         
-        let boyFullName = value["boyFullName"] ?? ""
-        let girlFullName = value["girlFullName"] ?? ""
-        let boysAge = value["boysAge"] ?? ""
-        let girlAge = value["girlAge"] ?? ""
-        let dateNumber = value["dateNumber"] ?? ""
-        let datingStatus = value["datingStatus"] ?? ""
-        let shadchanNotes = value["shadchanNotes"] ?? ""
-        let nasiProgram = value["nasiProgram"] ?? ""
-        let creationDate = value["creationDate"] ?? ""
-        let updateTimeStamp = value["updateTimeStamp"] ?? ""
+        let boyFullName = value["boyFullName"]  as? String
+        let girlFullName = value["girlFullName"]  as? String
+        let boysAge = value["boysAge"]  as? String
+        let girlAge = value["girlAge"]  as? String
+        let dateNumber = value["dateNumber"]  as? String
+        let datingStatus = value["datingStatus"]  as? String
+        let shadchanNotes = value["shadchanNotes"]  as? String
+        let nasiProgram = value["nasiProgram"]  as? String
+        let dateCreated = value["dateCreated"]  as? String
+        let dateLastUpdate = value["dateLastUpdate"]  as? Int
         
-        self.boyFullName = boyFullName
-        self.girlFullName = girlFullName
-        self.boysAge = boysAge
-        self.girlAge = girlAge
+        self.boyFullName = boyFullName ?? ""
+        self.girlFullName = girlFullName ?? ""
+        self.boysAge = boysAge ?? ""
+        self.girlAge = girlAge ?? ""
         
-        self.dateNumber = dateNumber
-        self.datingStatus = datingStatus
+        self.dateNumber = dateNumber ?? ""
+        self.datingStatus = datingStatus ?? ""
         
-        self.shadchanNotes = shadchanNotes
-        self.nasiProgram = nasiProgram
+        self.shadchanNotes = shadchanNotes ?? ""
+        self.nasiProgram = nasiProgram ?? ""
         
-        self.creationDate = creationDate
-        self.updateTimeStamp = updateTimeStamp
+        self.dateCreated = dateCreated ?? ""
+        self.dateLastUpdate = dateLastUpdate ?? 0
         
         
     }
 
-    // MARK: Initialize with Raw Data
-    init(boyFullName: String, boysAge: String, dateNumber: String, datingStatus: String, girlFullName: String, girlAge: String, shadchanNotes: String, creationDate: String, updateTimeStamp: String, nasiProgram: String, key: String = "") {
+    // MARK: Initialize with user input data to send up
+    // to firebase
+    init(boyFullName: String, boysAge: String, dateNumber: String, datingStatus: String, girlFullName: String, girlAge: String, shadchanNotes: String, dateCreated: String, dateLastUpdate: Int, nasiProgram: String, key: String = "") {
         
         
       self.ref = nil
@@ -73,8 +76,8 @@ class NasiDate: NSObject {
       self.girlFullName = girlFullName
       self.girlAge = girlAge
       self.shadchanNotes = shadchanNotes
-      self.creationDate = creationDate
-      self.updateTimeStamp = updateTimeStamp
+      self.dateCreated = dateCreated
+      self.dateLastUpdate = dateLastUpdate
       self.nasiProgram = nasiProgram
         
     }
@@ -89,8 +92,8 @@ class NasiDate: NSObject {
         "girlFullName" : girlFullName,
         "girlAge": girlAge,
         "shadchanNotes": shadchanNotes,
-        "creationDate": creationDate,
-        "updateTimeStamp": updateTimeStamp,
+        "dateCreated": dateCreated,
+        "dateLastUpdate": dateLastUpdate,
         "nasiProgram": nasiProgram
       ]
     }
@@ -104,10 +107,10 @@ class NasiDate: NSObject {
         let girlAge = "22"
         let shadChanNotes = "Cute Couple"
         let nasiProgram = "Sefardim"
-        let creationDate = "\(Date())"
-        let updateTimeStamp = "\(Date())"
+        let dateCreated = "\(Date())"
+        let dateLastUpdate: Int = 0
         
-        let newDate = NasiDate(boyFullName: boyName, boysAge: boyAge, dateNumber: dateNumber, datingStatus: datingStatus, girlFullName: girlName, girlAge: girlAge, shadchanNotes: shadchanNotes, creationDate: creationDate, updateTimeStamp: updateTimeStamp, nasiProgram: nasiProgram)
+        let newDate = NasiDate(boyFullName: boyName, boysAge: boyAge, dateNumber: dateNumber, datingStatus: datingStatus, girlFullName: girlName, girlAge: girlAge, shadchanNotes: shadchanNotes, dateCreated: dateCreated, dateLastUpdate: dateLastUpdate, nasiProgram: nasiProgram)
         
         let dateNodeRef = Database.database().reference(withPath: "NasiDatesList")
 

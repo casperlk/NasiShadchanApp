@@ -52,13 +52,28 @@ class AddEditDatesViewController: UITableViewController {
     }
     
     func saveDateToFirebase() {
+        
+        guard let mainView = navigationController?.parent?.view
+            else { return }
+          
+        let hudView = HudView.hud(inView: view, animated: true)
+         hudView.text = "Saved"
+       
         if isEditingDate == true {
             updateDateInFireBase()
             
         } else {
           createNewDateInFirebase()
         }
-     }
+        
+        
+        let delayInSeconds = 1.9
+        DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds)
+        {
+         hudView.hide()
+        self.navigationController?.popViewController(animated: true)
+       }
+    }
     
     func updateDateInFireBase() {
         let boyName = boysFullNameTextField.text ?? ""
@@ -70,15 +85,17 @@ class AddEditDatesViewController: UITableViewController {
         let shadchanNotes = shadchanNotesTextField.text ?? ""
         let nasiProgram = nasiProgramLabel.text ?? ""
         
-        let updateTimeStamp = Date()
+        
+        let updateTimeStamp = Int(Date().timeIntervalSince1970)
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat =  "MM-dd-yyyy"//"hh:mm:ss a"
+        dateFormatter.dateFormat = "yyyy-MM-dd 'at' HH:mm"
+        //dateFormatter.dateFormat =  "MM-dd-yyyy"//"hh:mm:ss a"
        
-        let updateTimeStampString = dateFormatter.string(from: updateTimeStamp)
-        var creationDate = selectedNasiDate.creationDate
+    
+        var dateCreated = selectedNasiDate.dateCreated
         
         
-        let revisedDate = NasiDate(boyFullName: boyName, boysAge: boyAge, dateNumber: dateNumber, datingStatus: datingStatus, girlFullName: girlName, girlAge: girlAge, shadchanNotes: shadchanNotes, creationDate: creationDate, updateTimeStamp: updateTimeStampString, nasiProgram: nasiProgram)
+        let revisedDate = NasiDate(boyFullName: boyName, boysAge: boyAge, dateNumber: dateNumber, datingStatus: datingStatus, girlFullName: girlName, girlAge: girlAge, shadchanNotes: shadchanNotes, dateCreated: dateCreated, dateLastUpdate: updateTimeStamp, nasiProgram: nasiProgram)
         
         let dict = revisedDate.toAnyObject()
         let ref = selectedNasiDate.ref
@@ -98,19 +115,27 @@ class AddEditDatesViewController: UITableViewController {
         let shadchanNotes = shadchanNotesTextField.text ?? ""
         let nasiProgram = nasiProgramLabel.text ?? ""
         
-        let updateTimeStamp = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat =  "MM-dd-yyyy"//"hh:mm:ss a"
+        
+        // create a time stamp by conversion to Int
+        let timestamp = Int(Date().timeIntervalSince1970)
+        
+        // create dictionary passing in values
+        //var values: [String: Any] = ["toId": toId, "fromId": fromId, "timestamp": timestamp]
+        let updateTimeStamp = Int(Date().timeIntervalSince1970)
+        var dateFormatter = DateFormatter()
+        //dateFormatter.dateFormat = "yyyy-MM-dd 'at' HH:mm"
        
-        let updateTimeStampString = dateFormatter.string(from: updateTimeStamp)
-        var creationDate = Date()
-        let creationDateString = dateFormatter.string(from: creationDate)
+        //let dateLastUpdateString = dateFormatter.string(from: updateTimeStamp)
         
-        print("the creationDateString is \(creationDateString)")
         
-        print("the updateTimeStampString is \(updateTimeStampString)")
+        var dateCreated = Date()
+        dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd 'at' HH:mm"
         
-        let newDate = NasiDate(boyFullName: boyName, boysAge: boyAge, dateNumber: dateNumber, datingStatus: datingStatus, girlFullName: girlName, girlAge: girlAge, shadchanNotes: shadchanNotes, creationDate: creationDateString, updateTimeStamp: updateTimeStampString, nasiProgram: nasiProgram)
+        
+        let creationDateString = dateFormatter.string(from: dateCreated)
+        
+        let newDate = NasiDate(boyFullName: boyName, boysAge: boyAge, dateNumber: dateNumber, datingStatus: datingStatus, girlFullName: girlName, girlAge: girlAge, shadchanNotes: shadchanNotes, dateCreated: creationDateString, dateLastUpdate: updateTimeStamp, nasiProgram: nasiProgram)
         
         // get uid for current user
         guard let uid = Auth.auth().currentUser?.uid else { return }

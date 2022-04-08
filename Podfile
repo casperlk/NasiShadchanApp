@@ -20,5 +20,7 @@ pod 'AAFloatingButton'
 pod 'Lightbox'
 pod 'Firebase/Analytics'
 pod 'Firebase/Messaging'
+pod 'Eureka'
+pod 'ImageRow', '~> 4.0'
 
 end

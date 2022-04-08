@@ -2,7 +2,10 @@
 import UIKit
 
 class TextFieldSupport: NSObject,UITextFieldDelegate {
+    
+    
     var tfDelegate: UITextFieldDelegate?
+    
     //MARK: TextField Delegate
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         guard let shouldBeignEditing = tfDelegate?.textFieldShouldBeginEditing?(textField) else {
@@ -10,15 +13,19 @@ class TextFieldSupport: NSObject,UITextFieldDelegate {
         }
         return shouldBeignEditing
     }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         tfDelegate?.textFieldDidBeginEditing?(textField)
     }
+    
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         guard let shouldEndEditing = tfDelegate?.textFieldShouldEndEditing?(textField) else {
             return true
         }
         return shouldEndEditing
     }
+    
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         let strText = textField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         if textField.text == "\n" || textField.text == "" || strText == "" {
@@ -27,6 +34,7 @@ class TextFieldSupport: NSObject,UITextFieldDelegate {
         }
         tfDelegate?.textFieldDidEndEditing?(textField)
     }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let changeCharacters = tfDelegate?.textField?(textField, shouldChangeCharactersIn: range, replacementString: string) else {
             return true
@@ -39,6 +47,7 @@ class TextFieldSupport: NSObject,UITextFieldDelegate {
         }
         return shouldClear
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let shouldReturn = tfDelegate?.textFieldShouldReturn?(textField) else {
             return true
@@ -48,10 +57,13 @@ class TextFieldSupport: NSObject,UITextFieldDelegate {
 }
 
 class AlignedPlaceholderTextField: UITextField {
+    
     @IBInspectable var strErrorMsg: String!
     @IBInspectable var strValidRegex: String!
     @IBInspectable var alignPlaceholder: Bool = false
+    
     @IBOutlet weak var txtConfirmtext: AlignedPlaceholderTextField!
+    
     var support: TextFieldSupport = TextFieldSupport.init()
     
     required init(coder aDecoder: NSCoder) {
@@ -63,6 +75,7 @@ class AlignedPlaceholderTextField: UITextField {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
     override var delegate: UITextFieldDelegate? {
         didSet {
             support.tfDelegate = delegate
@@ -75,6 +88,7 @@ class AlignedPlaceholderTextField: UITextField {
         self.leftView = leftPading
         self.leftViewMode = .always
     }
+    
     @objc func textChanged(textField: AlignedPlaceholderTextField) {
         let strText = textField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         if textField.text == "\n" || textField.text == "" || strText == "" {
@@ -87,6 +101,7 @@ class AlignedPlaceholderTextField: UITextField {
             btnTxtValidte.contentMode = .scaleAspectFit
             btnTxtValidte.isUserInteractionEnabled = false
             btnTxtValidte.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+            
             if strValidRegex == "confirm" {
                 (self.text == txtConfirmtext.text) ? btnTxtValidte.setImage(imgName: "imgTxtCDark1") : btnTxtValidte.setImage(imgName: "imgTxtCDark0")
             } else {
@@ -117,6 +132,7 @@ class AlignedPlaceholderTextField: UITextField {
         self.rightView = lblRightPlaceholder
         self.rightViewMode = .always
     }
+    
     @discardableResult func validate() -> Bool {
         let validation =  NSPredicate.init(format: "SELF MATCHES %@",strValidRegex)
         if strValidRegex == "confirm" && self.text == txtConfirmtext.text {

@@ -16,7 +16,16 @@ import IQKeyboardManagerSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    var window: UIWindow?
+   // var window: UIWindow?
+    
+    var handle: AuthStateDidChangeListenerHandle?
+    
+    var window: UIWindow? {
+      didSet {
+        window?.overrideUserInterfaceStyle = .light
+      }
+    }
+
     
     
     class func instance() -> AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
@@ -30,17 +39,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        //self.makingRootFlow(Constant.AppRootFlow.kAuthVc)
+        //self.makingRootFlow(Constant.AppRootFlow.kEnterApp)
+        
         application.applicationIconBadgeNumber = 5
         //Firebase.Analytics.setAnalyticsCollectionEnabled(true)
 
         // -- IQKeyboardManager---
         IQKeyboardManager.shared.enable = true
         
-        if UserInfo.currentUserExists {
-             self.makingRootFlow(Constant.AppRootFlow.kEnterApp)
-        } else {
-             self.makingRootFlow(Constant.AppRootFlow.kAuthVc)
+        
+        handle = Auth.auth().addStateDidChangeListener { _, user in
+          if user == nil {
+             // print("the state of user is \(user!.debugDescription)")
+              
+              
+              
+              
+              self.makingRootFlow(Constant.AppRootFlow.kAuthVc)
+              
+              
+              
+           // self.navigationController?.popToRootViewController(animated: true)
+          } else {
+              print("the state of user is \(user!.debugDescription)")
+              
+              
+           // self.performSegue(withIdentifier: self.loginToList, sender: nil)
+            //self.enterEmail.text = nil
+            //self.enterPassword.text = nil
+              self.makingRootFlow(Constant.AppRootFlow.kEnterApp)
+          }
+            
+            
+        
         }
+        
+        
+        
+        
+       // if UserInfo.currentUserExists {
+       //      self.makingRootFlow(Constant.AppRootFlow.kEnterApp)
+       // } else {
+      //       self.makingRootFlow(Constant.AppRootFlow.kAuthVc)
+      //  }
         //setUpNavigationAppearance()
         // 3
          // (window?.rootViewController as? UITabBarController)?.selectedIndex = 1
@@ -58,10 +100,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let girlAge = "22"
         let shadchanNotes = "Cute Couple"
         let nasiProgram = "Sefardim"
-        let creationDate = "\(Date())"
-        let updateTimeStamp = "\(Date())"
+        let dateCreated = "\(Date())"
+        let dateLastUpdate: Int = 0
         
-        let newDate = NasiDate(boyFullName: boyName, boysAge: boyAge, dateNumber: dateNumber, datingStatus: datingStatus, girlFullName: girlName, girlAge: girlAge, shadchanNotes: shadchanNotes, creationDate: creationDate, updateTimeStamp: updateTimeStamp, nasiProgram: nasiProgram)
+        let newDate = NasiDate(boyFullName: boyName, boysAge: boyAge, dateNumber: dateNumber, datingStatus: datingStatus, girlFullName: girlName, girlAge: girlAge, shadchanNotes: shadchanNotes, dateCreated: dateCreated, dateLastUpdate: dateLastUpdate, nasiProgram: nasiProgram)
         
         // get uid for current user
         guard let uid = Auth.auth().currentUser?.uid else { return }

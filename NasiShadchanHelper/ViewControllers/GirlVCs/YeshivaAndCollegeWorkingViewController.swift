@@ -42,12 +42,6 @@ class YeshivaAndCollegeWorkingViewController: UIViewController, UITableViewDeleg
         tableView.dataSource = self
         tableView.delegate = self
        
-        
-       
-        
-        self.arrGirlsList = self.arrGirlsList.sorted(by: { Int($0.age ) < Int($1.age ) })
-        
-        
         self.arrGirlsList = self.arrGirlsList.filter { (singleGirl) -> Bool in
             return singleGirl.category == Constant.CategoryTypeName.kPredicateString2 || singleGirl.category == Constant.CategoryTypeName.kPredicateString3 || singleGirl.category == Constant.CategoryTypeName.kCategoryString1 ||
                 singleGirl.category ==
@@ -62,6 +56,10 @@ class YeshivaAndCollegeWorkingViewController: UIViewController, UITableViewDeleg
         self.arrProTracKSingleGirls = self.arrGirlsList.filter { (singleGirl) -> Bool in
             return singleGirl.professionalTrack == "Needs professional track"
         }
+        
+        arrNoProTrackSingleGirls = self.arrNoProTrackSingleGirls.sorted(by: { Double($0.age ) < Double($1.age ) })
+        
+        arrProTracKSingleGirls = self.arrProTracKSingleGirls.sorted(by: { Double($0.age ) < Double($1.age ) })
         
         
         arrFilterList = arrProTracKSingleGirls

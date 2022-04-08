@@ -51,7 +51,7 @@ class FullTimeCollegeWorkingViewController: UIViewController, UITableViewDataSou
         // then filter out if koveahIttim == Needs kovea
         // and filter out if does not need
         // and each array is used for different segment
-        arrGirlsList = self.arrGirlsList.sorted(by: { Int($0.age ) < Int($1.age ) })
+      
     
         // make sure the elements have at least one of these category
         // titles have FTC as part of their category
@@ -69,6 +69,16 @@ class FullTimeCollegeWorkingViewController: UIViewController, UITableViewDataSou
         arrDoesNotNeedKoveaSingleSirls = self.arrGirlsList.filter { (singleGirl) -> Bool in
             return singleGirl.koveahIttim == "does not need koveah ittim"
         }
+        
+        
+        arrNeedsKoveaSingleGirls = self.arrNeedsKoveaSingleGirls.sorted(by: { Double($0.age ) < Double($1.age ) })
+        
+        arrDoesNotNeedKoveaSingleSirls = self.arrDoesNotNeedKoveaSingleSirls.sorted(by: { Double($0.age ) < Double($1.age ) })
+        
+        
+        
+        
+        
         arrFilterList = arrNeedsKoveaSingleGirls
         /*
          if segmentControl.selectedSegmentIndex == 0 {

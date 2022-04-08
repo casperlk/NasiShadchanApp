@@ -48,6 +48,10 @@ class AllNasiGirlsViewController: UIViewController, UITableViewDataSource, UITab
             return singleGirl.category != Constant.CategoryTypeName.CategoryEngaged1
         }
             
+            
+            self.allNasiGirlsList = self.allNasiGirlsList.sorted(by: { ($0.lastNameOfGirl ) < ($1.lastNameOfGirl ) })
+            
+    
         DispatchQueue.main.async(execute: {
         self.view.hideLoadingIndicator()
         self.tableView.reloadData()
@@ -60,10 +64,7 @@ class AllNasiGirlsViewController: UIViewController, UITableViewDataSource, UITab
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        print("the array is \(allNasiGirlsList.debugDescription)")
-        
-        
-        
+    
         return allNasiGirlsList.count
     }
     
@@ -100,8 +101,6 @@ class AllNasiGirlsViewController: UIViewController, UITableViewDataSource, UITab
                
                if let indexPath = tableView.indexPath(for: sender
                    as! UITableViewCell) {
-                   
-                  
                    let currentGirl = allNasiGirlsList[indexPath.row]
                    
                    controller.selectedNasiGirl = currentGirl

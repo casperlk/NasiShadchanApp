@@ -23,7 +23,8 @@ class UserInfo : Mappable {
         email <- map["email"]
     }
     
-    class var curentUser:UserInfo? {
+    
+    class var curentUser: UserInfo? {
         set {
             if newValue == nil {
                 UserDefaults.standard.removeObject(forKey: "currentUser")
@@ -35,6 +36,7 @@ class UserInfo : Mappable {
             }
             UserDefaults.standard.synchronize()
         }
+        
         get {
             let dictUser = UserDefaults.standard.dictionary(forKey:"currentUser")
             if dictUser != nil {
@@ -43,6 +45,7 @@ class UserInfo : Mappable {
             return nil
         }
     }
+    
     
     class var currentUserExists:Bool {
         set {}

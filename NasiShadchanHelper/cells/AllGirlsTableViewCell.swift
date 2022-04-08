@@ -30,11 +30,11 @@ class AllGirlsTableViewCell: UITableViewCell {
         profileImageView.backgroundColor = UIColor.darkGray
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+   // override func setSelected(_ selected: Bool, animated: Bool) {
+   //     super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
+   // }
     
     func configureCellForGirl(girl: NasiGirl) {
  nameTextLabel.text = girl.lastNameOfGirl + " " + girl.nameSheIsCalledOrKnownBy
