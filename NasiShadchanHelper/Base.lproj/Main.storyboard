@@ -1934,7 +1934,7 @@
                                                             <rect key="frame" x="236" y="0.0" width="110" height="41"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                            <state key="normal" title="WharsApp">
+                                                            <state key="normal" title="WhatsApp">
                                                                 <color key="titleColor" systemColor="systemGreenColor"/>
                                                             </state>
                                                             <connections>
