@@ -58,6 +58,7 @@
 		52A41BC4277F34AB00FE7C7A /* AllBoysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A41BC3277F34AB00FE7C7A /* AllBoysViewController.swift */; };
 		52A41BC6277F3BF700FE7C7A /* NasiBoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A41BC5277F3BF700FE7C7A /* NasiBoy.swift */; };
 		52A41BC8279353D500FE7C7A /* BoyDetailsVCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A41BC7279353D500FE7C7A /* BoyDetailsVCTableViewController.swift */; };
+		52C18059280203B3005D3827 /* ShadchanUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C18058280203B3005D3827 /* ShadchanUser.swift */; };
 		CE3AC07424536729006B9FEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3AC07324536729006B9FEA /* AppDelegate.swift */; };
 		CE3AC07824536729006B9FEA /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3AC07724536729006B9FEA /* CategoriesViewController.swift */; };
 		CE3AC07B24536729006B9FEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3AC07924536729006B9FEA /* Main.storyboard */; };
@@ -152,6 +153,7 @@
 		52A41BC3277F34AB00FE7C7A /* AllBoysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBoysViewController.swift; sourceTree = "<group>"; };
 		52A41BC5277F3BF700FE7C7A /* NasiBoy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasiBoy.swift; sourceTree = "<group>"; };
 		52A41BC7279353D500FE7C7A /* BoyDetailsVCTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoyDetailsVCTableViewController.swift; sourceTree = "<group>"; };
+		52C18058280203B3005D3827 /* ShadchanUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadchanUser.swift; sourceTree = "<group>"; };
 		690419FF2D95D46817B237C4 /* Pods-NasiShadchanHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasiShadchanHelper.debug.xcconfig"; path = "Target Support Files/Pods-NasiShadchanHelper/Pods-NasiShadchanHelper.debug.xcconfig"; sourceTree = "<group>"; };
 		CE3AC07024536729006B9FEA /* NasiShadchanHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NasiShadchanHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3AC07324536729006B9FEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				52A41BC5277F3BF700FE7C7A /* NasiBoy.swift */,
 				5228CB0D27999EFB00EDF103 /* NasiDate.swift */,
 				5228CB2627B4163300EDF103 /* ShadchanGirlNote.swift */,
+				52C18058280203B3005D3827 /* ShadchanUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -781,6 +784,7 @@
 				5228CB0E27999EFB00EDF103 /* NasiDate.swift in Sources */,
 				CE75EBBF2465CBFA0056A1D7 /* SavedSingleTableViewCell.swift in Sources */,
 				185AB885252F20190058F41D /* Variables.swift in Sources */,
+				52C18059280203B3005D3827 /* ShadchanUser.swift in Sources */,
 				52A41BC4277F34AB00FE7C7A /* AllBoysViewController.swift in Sources */,
 				5228CB1827A5066300EDF103 /* ProgramPickerViewController.swift in Sources */,
 				3DC18497258AF5C200B529F0 /* GirlResearchCell.swift in Sources */,

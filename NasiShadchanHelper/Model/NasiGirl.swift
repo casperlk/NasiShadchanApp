@@ -51,6 +51,7 @@ class NasiGirl: NSObject {
     var nameSheIsCalledOrKnownBy = ""
     var plan = ""
     var relationshipOfThisContactToGirl = ""
+    var relationshipOfReddShidduchContactToGirl = ""
     var seminaryName = ""
     var stateOfResidence = ""
     var yearsOfLearning = ""
@@ -162,6 +163,8 @@ class NasiGirl: NSObject {
         
         let relationshipOfThisContactToGirl = value["relationshipOfThisContactToGirl"] ?? ""
         
+        let relationshipOfReddShidduchContactToGirl = value["relationshipOfReddShidduchContactToGirl"] ?? ""
+        
         let seminaryName = value["seminaryName"] ?? ""
         
         let stateOfResidence = value["stateOfResidence"] ?? ""
@@ -210,10 +213,13 @@ class NasiGirl: NSObject {
         self.lastNameOfGirl = lastNameOfGirl
         self.lastNameOfPersonToContactToReddShidduch = lastNameOfPersonToContactToReddShidduch
         
+        
+        
         self.middleNameOfGirl = middleNameOfGirl
         self.nameSheIsCalledOrKnownBy = nameSheIsCalledOrKnownBy
         self.plan = plan
         self.relationshipOfThisContactToGirl = relationshipOfThisContactToGirl
+        self.relationshipOfReddShidduchContactToGirl = relationshipOfReddShidduchContactToGirl
         self.seminaryName = seminaryName
         self.stateOfResidence = stateOfResidence
         self.yearsOfLearning = yearsOfLearning

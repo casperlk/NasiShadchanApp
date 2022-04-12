@@ -2453,12 +2453,85 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="7nh-JE-ZnW" kind="relationship" relationship="rootViewController" id="s2W-bH-fJF"/>
+                        <segue destination="D66-ly-bIH" kind="relationship" relationship="rootViewController" id="WSy-Qh-36P"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F0e-Cz-ubo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-8442.0560747663549" y="-2390.2807775377973"/>
+            <point key="canvasLocation" x="-9170" y="-2390"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="RIx-ZA-ZiJ">
+            <objects>
+                <viewController id="D66-ly-bIH" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Tr-l8-zvL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgGetStarted" translatesAutoresizingMaskIntoConstraints="NO" id="F1p-DO-Uvd">
+                                <rect key="frame" x="100" y="115" width="175" height="175"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="pDn-FI-MWf"/>
+                                    <constraint firstAttribute="height" constant="175" id="xIf-25-sI4"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVQ-N0-n0p">
+                                <rect key="frame" x="137.66666666666666" y="325" width="100" height="75"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="DWw-q3-CrM"/>
+                                    <constraint firstAttribute="height" constant="75" id="Uge-48-EuD"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Edit Profile"/>
+                                <connections>
+                                    <segue destination="7nh-JE-ZnW" kind="show" id="gvD-aD-r9z"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4c-wJ-bCY">
+                                <rect key="frame" x="8" y="488" width="359" height="31"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuh-4H-aB0">
+                                        <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QPU-VG-d3y">
+                                        <rect key="frame" x="89.666666666666686" y="0.0" width="90" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufS-11-GLO">
+                                        <rect key="frame" x="179.66666666666666" y="0.0" width="89.666666666666657" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRy-XW-suO">
+                                        <rect key="frame" x="269.33333333333331" y="0.0" width="89.666666666666686" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="88O-c8-OIQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZVQ-N0-n0p" firstAttribute="top" secondItem="F1p-DO-Uvd" secondAttribute="bottom" constant="35" id="5Pe-Fq-8fh"/>
+                            <constraint firstItem="F1p-DO-Uvd" firstAttribute="centerX" secondItem="3Tr-l8-zvL" secondAttribute="centerX" id="Hgp-jV-1v9"/>
+                            <constraint firstItem="U4c-wJ-bCY" firstAttribute="leading" secondItem="88O-c8-OIQ" secondAttribute="leading" constant="8" id="MCa-dh-y7R"/>
+                            <constraint firstItem="ZVQ-N0-n0p" firstAttribute="centerX" secondItem="3Tr-l8-zvL" secondAttribute="centerX" id="hWC-tc-Ii4"/>
+                            <constraint firstItem="88O-c8-OIQ" firstAttribute="trailing" secondItem="U4c-wJ-bCY" secondAttribute="trailing" constant="8" id="kAJ-BP-LmZ"/>
+                            <constraint firstItem="F1p-DO-Uvd" firstAttribute="top" secondItem="88O-c8-OIQ" secondAttribute="top" constant="27" id="nv5-5M-0Fv"/>
+                            <constraint firstItem="U4c-wJ-bCY" firstAttribute="top" secondItem="ZVQ-N0-n0p" secondAttribute="bottom" constant="88" id="rWx-qz-t3t"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ulA-7D-c90"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y6f-9P-nN1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-8423.2000000000007" y="-2376.3546798029556"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -2471,6 +2544,7 @@
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="imgBtnEdit" width="26" height="26"/>
         <image name="imgCamera" width="75" height="75"/>
+        <image name="imgGetStarted" width="414" height="897"/>
         <image name="imgLogout" width="23.333333969116211" height="23.333333969116211"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.2" catalog="system" width="128" height="81"/>

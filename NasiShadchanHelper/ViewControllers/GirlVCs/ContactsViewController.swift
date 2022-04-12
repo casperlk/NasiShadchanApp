@@ -50,11 +50,10 @@ class ContactsViewController: UITableViewController {
     
     func populateToReddTextField() {
         
-        
         let toReddNameString = selectedNasiGirl.firstNameOfPersonToContactToReddShidduch + " " + selectedNasiGirl.lastNameOfPersonToContactToReddShidduch
         let toReddTelString = selectedNasiGirl.cellNumberOfContactToReddShidduch
         let toReddEmailstring = selectedNasiGirl.emailOfContactToReddShidduch
-        let relationToGirlString = selectedNasiGirl.relationshipOfThisContactToGirl
+        let relationToGirlString = selectedNasiGirl.relationshipOfReddShidduchContactToGirl
         
     
         let attributedText = NSMutableAttributedString(string: toReddNameString, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 22)])
