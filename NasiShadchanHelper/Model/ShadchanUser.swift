@@ -92,7 +92,8 @@ class ShadchanUser: NSObject {
         "shadchanTitle": shadchanTitle,
         "shadchanProfileImageURLString": shadchanProfileImageURLString,
         "yearsAsShadchan": yearsAsShadchan,
-        "about": about
+        "about": about,
+        "familyTypes": familyTypes
       ]
     }
         
