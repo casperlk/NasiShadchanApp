@@ -64,11 +64,13 @@ class ShadchanUser: NSObject {
         self.about = about ?? ""
         
         self.familyTypes = familyTypes ?? [String]()
+        self.singlesPlan = singlesPlan ?? [String]()
+        self.singlesType =  singlesType ?? [String]()
     }
         
         // MARK: Initialize with user input data to send up
         // to firebase
-    init(shadchanEmail: String, shadchanFirstName: String, shadchanLastName: String, shadchanUserID: String, shadchanTitle: String, shadchanProfileImageURLString: String, yearsAsShadchan: String,about: String,familyTypes:[String], key: String = "") {
+    init(shadchanEmail: String, shadchanFirstName: String, shadchanLastName: String, shadchanUserID: String, shadchanTitle: String, shadchanProfileImageURLString: String, yearsAsShadchan: String,about: String,familyTypes:[String],singlesPlan:[String],singlesType:[String], key: String = "") {
             
           self.ref = nil
           self.key = key
@@ -84,6 +86,9 @@ class ShadchanUser: NSObject {
           self.about = about
             
            self.familyTypes = familyTypes
+        self.singlesPlan = singlesPlan
+        self.singlesType =  singlesType
+        
         }
     
     // MARK: Convert GroceryItem to AnyObject
@@ -97,7 +102,10 @@ class ShadchanUser: NSObject {
         "shadchanProfileImageURLString": shadchanProfileImageURLString,
         "yearsAsShadchan": yearsAsShadchan,
         "about": about,
-        "familyTypes": familyTypes
+        "familyTypes": familyTypes,
+        "singlesPlan": singlesPlan,
+        "singlesType": singlesType
+        
       ]
     }
         
