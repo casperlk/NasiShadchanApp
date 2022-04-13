@@ -108,9 +108,14 @@ class ShadchanUser: NSObject {
         
       ]
     }
-        
+    
+    func createNewUser(){
         
     }
+    }
+        
+        
+    
         
     
 
