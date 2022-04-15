@@ -25,6 +25,8 @@ class ShadchanUser: NSObject {
     var yearsAsShadchan = ""
     var about = ""
     
+    
+    
     var familyTypes: [String] = []
     var singlesPlan: [String] = []
     var singlesType: [String] = []
@@ -70,13 +72,14 @@ class ShadchanUser: NSObject {
         
         // MARK: Initialize with user input data to send up
         // to firebase
-    init(shadchanEmail: String, shadchanFirstName: String, shadchanLastName: String, shadchanUserID: String, shadchanTitle: String, shadchanProfileImageURLString: String, yearsAsShadchan: String,about: String,familyTypes:[String],singlesPlan:[String],singlesType:[String], key: String = "") {
+    init(shadchanEmail: String, shadchanFirstName: String, shadchanLastName: String, shadchanUserID: String,shadchanCell: String, shadchanTitle: String, shadchanProfileImageURLString: String, yearsAsShadchan: String,about: String,familyTypes:[String],singlesPlan:[String],singlesType:[String], key: String = "") {
             
           self.ref = nil
           self.key = key
           self.shadchanEmail = shadchanEmail
           self.shadchanFirstName = shadchanFirstName
           self.shadchanLastName = shadchanLastName
+         self.shadchanCell = shadchanCell
             
           self.shadchanUserID = shadchanUserID
           self.shadchanTitle = shadchanTitle
@@ -97,6 +100,7 @@ class ShadchanUser: NSObject {
         "shadchanEmail": shadchanEmail,
         "shadchanFirstName": shadchanFirstName,
         "shadchanLastName": shadchanLastName,
+        "shadchanCell": shadchanCell,
         "shadchanUserID" : shadchanUserID,
         "shadchanTitle": shadchanTitle,
         "shadchanProfileImageURLString": shadchanProfileImageURLString,
@@ -130,7 +134,7 @@ class ShadchanUser: NSObject {
         let singlesPlan: [String] = ["","",""]
         let singlesType: [String] = ["","",""]
         
-        let newUser = ShadchanUser(shadchanEmail: shadchanEmail!, shadchanFirstName: shadchanFirstName, shadchanLastName: shadchanLastName, shadchanUserID: shadchanUserID, shadchanTitle: shadchanTitle, shadchanProfileImageURLString: shadchanProfileImageURLString, yearsAsShadchan: yearsAsShadchan, about: about, familyTypes: familyTypes, singlesPlan: singlesPlan, singlesType: singlesType)
+        let newUser = ShadchanUser(shadchanEmail: shadchanEmail!, shadchanFirstName: shadchanFirstName, shadchanLastName: shadchanLastName, shadchanUserID: shadchanUserID, shadchanCell: shadchanCell, shadchanTitle: shadchanTitle, shadchanProfileImageURLString: shadchanProfileImageURLString, yearsAsShadchan: yearsAsShadchan, about: about, familyTypes: familyTypes, singlesPlan: singlesPlan, singlesType: singlesType)
         
         let shadchanUserNodeRef = Database.database().reference(withPath: "NasiShadchanUserList")
         

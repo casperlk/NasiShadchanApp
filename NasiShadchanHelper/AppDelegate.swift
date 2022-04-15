@@ -39,13 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        
-        
-        
-        
-        self.createNewShadchanUserInFirebase()
-        
-        
         //self.makingRootFlow(Constant.AppRootFlow.kAuthVc)
         //self.makingRootFlow(Constant.AppRootFlow.kEnterApp)
         
@@ -60,10 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           if user == nil {
              // print("the state of user is \(user!.debugDescription)")
               
-              
-              
-              
-              self.makingRootFlow(Constant.AppRootFlow.kAuthVc)
+            self.makingRootFlow(Constant.AppRootFlow.kAuthVc)
               
               
               
@@ -103,6 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let email = Auth.auth().currentUser?.email
         
         let shadchanEmail = email
+        let shadchanCell = "3109235682"
         let shadchanFirstName = "Avi"
         let shadchanLastName = "Pogrow"
         let shadchanUserID = userID
@@ -114,7 +105,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let singlesPlan: [String] = ["","",""]
         let singlesType: [String] = ["","",""]
         
-        let newUser = ShadchanUser(shadchanEmail: shadchanEmail!, shadchanFirstName: shadchanFirstName, shadchanLastName: shadchanLastName, shadchanUserID: shadchanUserID, shadchanTitle: shadchanTitle, shadchanProfileImageURLString: shadchanProfileImageURLString, yearsAsShadchan: yearsAsShadchan, about: about, familyTypes: familyTypes, singlesPlan: singlesPlan, singlesType: singlesType)
+        let newUser = ShadchanUser(shadchanEmail: shadchanEmail!, shadchanFirstName: shadchanFirstName, shadchanLastName: shadchanLastName, shadchanUserID: shadchanUserID, shadchanCell: shadchanCell, shadchanTitle: shadchanTitle, shadchanProfileImageURLString: shadchanProfileImageURLString, yearsAsShadchan: yearsAsShadchan, about: about, familyTypes: familyTypes, singlesPlan: singlesPlan, singlesType: singlesType)
+    
         
         let shadchanUserNodeRef = Database.database().reference(withPath: "NasiShadchanUserList")
         

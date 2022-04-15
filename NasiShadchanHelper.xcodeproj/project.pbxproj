@@ -136,6 +136,7 @@
 		3DC1849C258BBE6A00B529F0 /* GirlSentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GirlSentCell.swift; sourceTree = "<group>"; };
 		3DC1849E258C13AD00B529F0 /* NasiGirl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasiGirl.swift; sourceTree = "<group>"; };
 		3DC184A025936A7700B529F0 /* SentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentTableViewCell.swift; sourceTree = "<group>"; };
+		52257DE62809CCC8007A5A49 /* EurekaPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = EurekaPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5228CB0D27999EFB00EDF103 /* NasiDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasiDate.swift; sourceTree = "<group>"; };
 		5228CB0F279C492A00EDF103 /* AllDatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDatesViewController.swift; sourceTree = "<group>"; };
 		5228CB11279C6EF400EDF103 /* AddEditDatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditDatesViewController.swift; sourceTree = "<group>"; };
@@ -149,7 +150,6 @@
 		5228CB2427B4122B00EDF103 /* ShadchanGirlNotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadchanGirlNotesVC.swift; sourceTree = "<group>"; };
 		5228CB2627B4163300EDF103 /* ShadchanGirlNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadchanGirlNote.swift; sourceTree = "<group>"; };
 		529A47A027F64EB00026A67E /* ErekaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErekaVC.swift; sourceTree = "<group>"; };
-		529A47A327F7452A0026A67E /* EurekaPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = EurekaPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		52A41BC3277F34AB00FE7C7A /* AllBoysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBoysViewController.swift; sourceTree = "<group>"; };
 		52A41BC5277F3BF700FE7C7A /* NasiBoy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasiBoy.swift; sourceTree = "<group>"; };
 		52A41BC7279353D500FE7C7A /* BoyDetailsVCTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoyDetailsVCTableViewController.swift; sourceTree = "<group>"; };
@@ -452,7 +452,6 @@
 		CE3AC06724536729006B9FEA = {
 			isa = PBXGroup;
 			children = (
-				529A47A327F7452A0026A67E /* EurekaPlayground.playground */,
 				CE3AC07224536729006B9FEA /* NasiShadchanHelper */,
 				CE3AC08924536765006B9FEA /* NasiShadchanHelperTests */,
 				CE3AC09424536765006B9FEA /* NasiShadchanHelperUITests */,
@@ -475,6 +474,7 @@
 		CE3AC07224536729006B9FEA /* NasiShadchanHelper */ = {
 			isa = PBXGroup;
 			children = (
+				52257DE62809CCC8007A5A49 /* EurekaPlayground.playground */,
 				3D9D5B8D2673D7F70063D252 /* NasiShadchanHelper.entitlements */,
 				CE3AC07324536729006B9FEA /* AppDelegate.swift */,
 				18E5DD132525CBC2005DD1DE /* Model */,
