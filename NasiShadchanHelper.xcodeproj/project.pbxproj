@@ -42,6 +42,7 @@
 		3DC1849D258BBE6A00B529F0 /* GirlSentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1849C258BBE6A00B529F0 /* GirlSentCell.swift */; };
 		3DC1849F258C13AD00B529F0 /* NasiGirl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1849E258C13AD00B529F0 /* NasiGirl.swift */; };
 		3DC184A125936A7700B529F0 /* SentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC184A025936A7700B529F0 /* SentTableViewCell.swift */; };
+		52257DE92809FFA8007A5A49 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52257DE82809FFA8007A5A49 /* UserProfileVC.swift */; };
 		5228CB0E27999EFB00EDF103 /* NasiDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228CB0D27999EFB00EDF103 /* NasiDate.swift */; };
 		5228CB10279C492A00EDF103 /* AllDatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228CB0F279C492A00EDF103 /* AllDatesViewController.swift */; };
 		5228CB12279C6EF400EDF103 /* AddEditDatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228CB11279C6EF400EDF103 /* AddEditDatesViewController.swift */; };
@@ -137,6 +138,7 @@
 		3DC1849E258C13AD00B529F0 /* NasiGirl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasiGirl.swift; sourceTree = "<group>"; };
 		3DC184A025936A7700B529F0 /* SentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentTableViewCell.swift; sourceTree = "<group>"; };
 		52257DE62809CCC8007A5A49 /* EurekaPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = EurekaPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		52257DE82809FFA8007A5A49 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		5228CB0D27999EFB00EDF103 /* NasiDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasiDate.swift; sourceTree = "<group>"; };
 		5228CB0F279C492A00EDF103 /* AllDatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDatesViewController.swift; sourceTree = "<group>"; };
 		5228CB11279C6EF400EDF103 /* AddEditDatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditDatesViewController.swift; sourceTree = "<group>"; };
@@ -403,6 +405,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		52257DE72809FF3B007A5A49 /* ShadchanVCS */ = {
+			isa = PBXGroup;
+			children = (
+				529A47A027F64EB00026A67E /* ErekaVC.swift */,
+				52257DE82809FFA8007A5A49 /* UserProfileVC.swift */,
+			);
+			path = ShadchanVCS;
+			sourceTree = "<group>";
+		};
 		5228CB1B27A5CF7A00EDF103 /* DateVCs */ = {
 			isa = PBXGroup;
 			children = (
@@ -518,6 +529,7 @@
 		CEC468DC245B1C0E0071EC85 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				52257DE72809FF3B007A5A49 /* ShadchanVCS */,
 				5228CB1F27A5D14800EDF103 /* GirlVCs */,
 				5228CB1C27A5CFCE00EDF103 /* BoyVCS */,
 				5228CB1B27A5CF7A00EDF103 /* DateVCs */,
@@ -527,7 +539,6 @@
 				CE525A6F2461B55200CBEC41 /* UIImage+Resize.swift */,
 				CEF80D1D245F7014009FE684 /* HudView.swift */,
 				3D9DA71D25ACCEB10056F656 /* ViewResumeVCViewController.swift */,
-				529A47A027F64EB00026A67E /* ErekaVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -756,6 +767,7 @@
 				5228CB10279C492A00EDF103 /* AllDatesViewController.swift in Sources */,
 				184F9859252C622B00187D72 /* AlignedPlaceholderTextField.swift in Sources */,
 				184F2F55252AE16200252C97 /* Categories.swift in Sources */,
+				52257DE92809FFA8007A5A49 /* UserProfileVC.swift in Sources */,
 				CEC468DE245B37950071EC85 /* FullTimeCollegeWorkingViewController.swift in Sources */,
 				CECE6A4F24559EF900084A28 /* Config.swift in Sources */,
 				3D9DA72225AE1A600056F656 /* AllGirlsTableViewCell.swift in Sources */,

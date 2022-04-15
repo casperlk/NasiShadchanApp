@@ -18,6 +18,7 @@ class ErekaVC: FormViewController {
       return fmtr
     }()
     
+    var currentUser: ShadchanUser!
     
     override func viewDidLoad() {
        super.viewDidLoad()
@@ -27,7 +28,7 @@ class ErekaVC: FormViewController {
                            row.title = "Profile Avatar"
                            row.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum]
                            row.clearAction = .yes(style: UIAlertAction.Style.destructive)
-                       }
+        }
         
         /*
         <<< ButtonRow("Native iOS Event Form") { row in
@@ -43,8 +44,9 @@ class ErekaVC: FormViewController {
               //$0.title = "Description" //4
               $0.placeholder = "First Name"
              // $0.value = viewModel.title //5
-              $0.onChange { [unowned self] row in //6
-               // self.viewModel.title = row.value
+                
+$0.onChange { [unowned self] row in //6
+                //  self.currentUser.shadchanFirstName = row.value ?? "FIRST-NAME"
               }
           }
         
@@ -58,21 +60,19 @@ class ErekaVC: FormViewController {
           }
       }
         
-        
-        form.last! <<< ActionSheetRow<String>() {
+    form.last! <<< ActionSheetRow<String>() {
                         $0.title = "Title"
                         $0.selectorTitle = "Title"
                         $0.options = ["Rabbi","Mr.","Mrs.","Ms."]
                         $0.value = "Mrs."    // initially selected
                     }
         
-        
-        form +++ Section("Contact Info")
+    form +++ Section("Contact Info")
                <<< PhoneRow(){
                    $0.title = "Cell"
                    $0.placeholder = "Add numbers here"
                }
-        form
+    form
         +++ Section()
          <<< ActionSheetRow<String>() {
                         $0.title = "Years as A Shadchan"
@@ -99,10 +99,6 @@ class ErekaVC: FormViewController {
           }
         */
     
-        
-     
-          
-        
         +++ Section(header: "Date Started With Nasi", footer: "")
               // <<< DateRow(){
               //     $0.title = "Date"
@@ -160,10 +156,25 @@ class ErekaVC: FormViewController {
         <<< TextAreaRow("Description") {
                 $0.placeholder = "About Yourself"
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 150)
+         }
         }
-        }
+    
+     func updateShadchanUserInFireBase() {
+        
+        let revisedUser = ShadchanUser(shadchanEmail: currentUser.shadchanEmail, shadchanFirstName: currentUser.shadchanFirstName, shadchanLastName: currentUser.shadchanLastName, shadchanUserID: currentUser.shadchanUserID, shadchanCell: currentUser.shadchanCell, shadchanTitle: currentUser.shadchanTitle, shadchanProfileImageURLString: currentUser.shadchanProfileImageURLString, yearsAsShadchan: currentUser.yearsAsShadchan, about: currentUser.about, familyTypes: currentUser.familyTypes, singlesPlan: currentUser.singlesPlan, singlesType: currentUser.singlesType)
+        
+        let dict = revisedUser.toAnyObject()
+        let ref = currentUser.ref
+        ref?.updateChildValues(dict as! [AnyHashable : Any])
+        
+    }
 }
-    /*
+    
+
+
+
+
+/*
    form +++ Section("Callbacks") <<< SwitchRow("scr1") { $0.title = "Switch to turn red"; $0.value = false }
         .onChange({ row in
             if row.value == true {

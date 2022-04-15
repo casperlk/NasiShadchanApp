@@ -2460,10 +2460,10 @@
             </objects>
             <point key="canvasLocation" x="-9170" y="-2390"/>
         </scene>
-        <!--View Controller-->
+        <!--User ProfileVC-->
         <scene sceneID="RIx-ZA-ZiJ">
             <objects>
-                <viewController id="D66-ly-bIH" sceneMemberID="viewController">
+                <viewController id="D66-ly-bIH" customClass="UserProfileVC" customModule="NasiShadchanHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Tr-l8-zvL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

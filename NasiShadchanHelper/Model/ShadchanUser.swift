@@ -68,6 +68,7 @@ class ShadchanUser: NSObject {
         self.familyTypes = familyTypes ?? [String]()
         self.singlesPlan = singlesPlan ?? [String]()
         self.singlesType =  singlesType ?? [String]()
+        
     }
         
         // MARK: Initialize with user input data to send up
@@ -112,10 +113,6 @@ class ShadchanUser: NSObject {
         
       ]
     }
-    
-    
-   
-        
     
     func createNewShadchanUserInFirebase(){
         
