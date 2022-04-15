@@ -126,9 +126,9 @@ class ShadchanUser: NSObject {
         let shadchanProfileImageURLString = ""
         let yearsAsShadchan = "10"
         let about = "Best in the world"
-        let familyTypes: [String] = ["",""]
-        let singlesPlan: [String] = ["",""]
-        let singlesType: [String] = ["",""]
+        let familyTypes: [String] = ["","",""]
+        let singlesPlan: [String] = ["","",""]
+        let singlesType: [String] = ["","",""]
         
         let newUser = ShadchanUser(shadchanEmail: shadchanEmail!, shadchanFirstName: shadchanFirstName, shadchanLastName: shadchanLastName, shadchanUserID: shadchanUserID, shadchanTitle: shadchanTitle, shadchanProfileImageURLString: shadchanProfileImageURLString, yearsAsShadchan: yearsAsShadchan, about: about, familyTypes: familyTypes, singlesPlan: singlesPlan, singlesType: singlesType)
         
