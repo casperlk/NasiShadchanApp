@@ -85,7 +85,7 @@ class ShadchanUser: NSObject {
           self.yearsAsShadchan = yearsAsShadchan
           self.about = about
             
-           self.familyTypes = familyTypes
+        self.familyTypes = familyTypes
         self.singlesPlan = singlesPlan
         self.singlesType =  singlesType
         
@@ -109,7 +109,34 @@ class ShadchanUser: NSObject {
       ]
     }
     
-    func createNewUser(){
+    
+   
+        
+    
+    func createNewShadchanUserInFirebase(){
+        
+        let userID = Auth.auth().currentUser?.uid ?? ""
+        let email = Auth.auth().currentUser?.email
+        
+        let shadchanEmail = email
+        let shadchanFirstName = "Avi"
+        let shadchanLastName = "Pogrow"
+        let shadchanUserID = userID
+        let shadchanTitle = "Rabbi"
+        let shadchanProfileImageURLString = ""
+        let yearsAsShadchan = "10"
+        let about = "Best in the world"
+        let familyTypes: [String] = ["",""]
+        let singlesPlan: [String] = ["",""]
+        let singlesType: [String] = ["",""]
+        
+        let newUser = ShadchanUser(shadchanEmail: shadchanEmail!, shadchanFirstName: shadchanFirstName, shadchanLastName: shadchanLastName, shadchanUserID: shadchanUserID, shadchanTitle: shadchanTitle, shadchanProfileImageURLString: shadchanProfileImageURLString, yearsAsShadchan: yearsAsShadchan, about: about, familyTypes: familyTypes, singlesPlan: singlesPlan, singlesType: singlesType)
+        
+        let shadchanUserNodeRef = Database.database().reference(withPath: "NasiShadchanUserList")
+        
+        let shadchanChildRef = shadchanUserNodeRef.child(shadchanUserID)
+        
+        shadchanChildRef.setValue(newUser.toAnyObject())
         
     }
     }
