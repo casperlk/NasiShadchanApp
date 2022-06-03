@@ -423,8 +423,6 @@
                     <connections>
                         <segue destination="3cg-3Q-dJq" kind="relationship" relationship="viewControllers" id="Wbl-ao-Cgu"/>
                         <segue destination="vrw-cc-emg" kind="relationship" relationship="viewControllers" id="gBX-Ep-fgK"/>
-                        <segue destination="Kie-3Y-l51" kind="relationship" relationship="viewControllers" id="bOO-we-PkG"/>
-                        <segue destination="fBE-bd-Pv8" kind="relationship" relationship="viewControllers" id="VHv-Xf-uxE"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QQg-7o-HRW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

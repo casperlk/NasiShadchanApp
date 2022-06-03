@@ -20,16 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var handle: AuthStateDidChangeListenerHandle?
     
+    // solve dark mode by keeping it in light mode always
     var window: UIWindow? {
       didSet {
         window?.overrideUserInterfaceStyle = .light
       }
     }
 
-    
-    
     class func instance() -> AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
 
+    
     override init () {
         FirebaseApp.configure()
         FirebaseConfiguration.shared.setLoggerLevel(.min)
@@ -55,9 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
               
             self.makingRootFlow(Constant.AppRootFlow.kAuthVc)
               
-              
-              
-           // self.navigationController?.popToRootViewController(animated: true)
+            // self.navigationController?.popToRootViewController(animated: true)
           } else {
               print("the state of user is \(user!.debugDescription)")
               
@@ -68,14 +66,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
               self.makingRootFlow(Constant.AppRootFlow.kEnterApp)
           }
             
-            
+            }
         
-        }
-        
-        
-        
-        
-       // if UserInfo.currentUserExists {
+    // if UserInfo.currentUserExists {
        //      self.makingRootFlow(Constant.AppRootFlow.kEnterApp)
        // } else {
       //       self.makingRootFlow(Constant.AppRootFlow.kAuthVc)
@@ -115,7 +108,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         shadchanChildRef.setValue(newUser.toAnyObject())
         
     }
-    
     
     func createNewDateInFirebase() {
         
