@@ -31,6 +31,12 @@ class ContactsViewController: UITableViewController {
         var startingString = originalString
         let dash: Character = "-"
         
+        print("the original string is\(originalString)")
+        if originalString != "N/A" {
+        
+        
+        
+        
         let firstDashIndex =  originalString.index(originalString.startIndex, offsetBy: 3)
         let secondDashIndex = originalString.index(originalString.startIndex, offsetBy: 7)
         
@@ -41,6 +47,9 @@ class ContactsViewController: UITableViewController {
         //let fourthChar = originalString[fourthIndex]
         
         finalString = startingString
+        } else {
+        finalString = "N/A"
+        }
 
         return finalString
     }
