@@ -102,7 +102,8 @@ class ContactsViewController: UITableViewController {
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = self
         
-        let toDiscussTelString = selectedNasiGirl.cellNumberOfContactWhoKNowsGirl
+        let toDiscussTelString =
+        selectedNasiGirl.cellNumberOfContactWhoKNowsGirl
          
         // Configure the fields of the interface.
         composeVC.recipients = [toDiscussTelString]
@@ -131,7 +132,6 @@ class ContactsViewController: UITableViewController {
     
     @IBAction func callContactToRedd(_ sender: Any) {
         Utility.makeACall(selectedNasiGirl.cellNumberOfContactToReddShidduch)
-      
     }
     
     @IBAction func textContactToRedd(_ sender: Any) {
@@ -182,8 +182,6 @@ class ContactsViewController: UITableViewController {
         whatsAppTheToRedd()
     }
     
-    
-    
     @IBAction func girlWappTapped(_ sender: Any) {
         whatsAppTheGirl()
     }
@@ -191,7 +189,9 @@ class ContactsViewController: UITableViewController {
     func whatsAppTheToDisccuss(){
         // 1
         let url = "https://wa.me/1"
-        let number = selectedNasiGirl.cellNumberOfContactWhoKNowsGirl
+        // let url2 = "https://wa.me/?text=I'm%20inquiring%20about%20the%20apartment%20lising"
+        let number =
+        selectedNasiGirl.cellNumberOfContactWhoKNowsGirl
         let urlWhatsAppNumb = url + number
         // 2
         if let urlWhatsAppNumbString = urlWhatsAppNumb.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {

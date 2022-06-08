@@ -423,6 +423,7 @@
                     <connections>
                         <segue destination="3cg-3Q-dJq" kind="relationship" relationship="viewControllers" id="Wbl-ao-Cgu"/>
                         <segue destination="vrw-cc-emg" kind="relationship" relationship="viewControllers" id="gBX-Ep-fgK"/>
+                        <segue destination="7nh-JE-ZnW" kind="relationship" relationship="viewControllers" id="epn-35-5d2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QQg-7o-HRW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2449,7 +2450,7 @@
             </objects>
             <point key="canvasLocation" x="-2603" y="-494"/>
         </scene>
-        <!--ErekaVC-->
+        <!--Item-->
         <scene sceneID="era-jd-k8l">
             <objects>
                 <viewController id="7nh-JE-ZnW" customClass="ErekaVC" customModule="NasiShadchanHelper" customModuleProvider="target" sceneMemberID="viewController">
@@ -2459,6 +2460,7 @@
                         <viewLayoutGuide key="safeArea" id="MdI-oC-9FM"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="pVs-2O-69o"/>
                     <navigationItem key="navigationItem" id="vJ1-7z-Hw6">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="xEH-4c-jlE"/>
                     </navigationItem>
@@ -2580,6 +2582,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="epn-35-5d2"/>
         <segue reference="RpK-Er-MFj"/>
     </inferredMetricsTieBreakers>
     <resources>

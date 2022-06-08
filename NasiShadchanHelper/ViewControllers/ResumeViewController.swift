@@ -58,22 +58,14 @@ class ResumeViewController: UITableViewController {
         
         documentController = UIDocumentInteractionController(url:self.localImageURL)
         
-        
-        
-        
         documentController.presentOptionsMenu(from: sender.frame, in: self.view, animated: true)
         
     }
-    
-    
-    
     
     @IBAction func sendResumeWhatsAppTapped (sender: UIButton)  {
        
         
         documentController = UIDocumentInteractionController(url:self.localURL)
-        
-       
         documentController.presentOptionsMenu(from: sender.frame, in: self.view, animated: true)
         
     }
