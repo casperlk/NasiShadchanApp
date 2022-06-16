@@ -18,12 +18,15 @@ class ShadchanGirlNote: NSObject {
     var ShadchanEmail: String = ""
     var ShadchanFirstName: String = ""
     var ShadchanLastName: String = ""
+    
     var girlFirstName: String = ""
     var girlLastName: String = ""
     var girlRef: String = ""
     var girlUID: String = ""
+    
     var notesImageURL: String = ""
     var notesTextString: String  = ""
+    var elevatorPitchTextString: String  = ""
     var timeStamp: String = ""
     
     init(snapshot: DataSnapshot) {
@@ -46,6 +49,7 @@ class ShadchanGirlNote: NSObject {
         
         let notesImageURL = value["notesImageURL"] ?? ""
         let notesTextString = value["notesTextString"] ?? ""
+        let elevatorPitchText = value["elevatorPitchText"] ?? ""
         let timeStamp = value["timeStamp"] ?? ""
         
         self.ShachanID = ShachanID
@@ -60,11 +64,12 @@ class ShadchanGirlNote: NSObject {
         
         self.notesImageURL = notesImageURL
         self.notesTextString = notesTextString
+        self.elevatorPitchTextString = elevatorPitchText
         self.timeStamp = timeStamp
     }
     
     // MARK: Initialize with Raw Data
-    init(ShachanID: String, ShadchanEmail: String, ShadchanFirstName: String, ShadchanLastName: String, girlFirstName: String, girlLastName: String, girlRef: String, girlUID: String, notesImageURL: String, notesTextString: String,timeStamp: String, key: String = "") {
+    init(ShachanID: String, ShadchanEmail: String, ShadchanFirstName: String, ShadchanLastName: String, girlFirstName: String, girlLastName: String, girlRef: String, girlUID: String, notesImageURL: String, notesTextString: String, elevatorPitchText: String, timeStamp: String, key: String = "") {
         
         
       self.ref = nil
@@ -80,6 +85,7 @@ class ShadchanGirlNote: NSObject {
       self.girlRef = girlRef
       self.girlUID = girlUID
         
+      self.elevatorPitchTextString = elevatorPitchText
       self.notesImageURL = notesImageURL
       self.notesTextString = notesTextString
         
@@ -97,6 +103,7 @@ class ShadchanGirlNote: NSObject {
         "girlRef": girlRef,
         "girlUID": girlUID,
         "notesImageURL": notesImageURL,
+        "elevatorPitchText": elevatorPitchTextString,
         "notesTextString": notesTextString
       ]
     }
