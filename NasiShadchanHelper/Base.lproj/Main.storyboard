@@ -2148,6 +2148,33 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Elevator Pitch" id="bJz-eS-VLs" userLabel="Elevator Pitch">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="278" id="5AJ-ID-SMP">
+                                        <rect key="frame" x="0.0" y="607.33333015441895" width="375" height="278"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5AJ-ID-SMP" id="fME-hM-wHS">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="278"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AG4-MC-Xtn">
+                                                    <rect key="frame" x="16" y="8" width="343" height="262"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="textColor" systemColor="labelColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="AG4-MC-Xtn" secondAttribute="bottom" constant="8" id="0Ee-lm-lQa"/>
+                                                <constraint firstAttribute="trailing" secondItem="AG4-MC-Xtn" secondAttribute="trailing" constant="16" id="5xO-t1-x0B"/>
+                                                <constraint firstItem="AG4-MC-Xtn" firstAttribute="leading" secondItem="fME-hM-wHS" secondAttribute="leading" constant="16" id="n0T-2F-CLF"/>
+                                                <constraint firstItem="AG4-MC-Xtn" firstAttribute="top" secondItem="fME-hM-wHS" secondAttribute="top" constant="8" id="sMQ-QE-Noh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="o4b-Y8-YS9" id="Nzq-vc-VTH"/>
@@ -2162,6 +2189,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="elevatorPitchTextField" destination="AG4-MC-Xtn" id="VPa-JG-Hzx"/>
                         <outlet property="notesImageView" destination="NSN-mr-bVS" id="f3S-0Y-nqS"/>
                         <outlet property="notesTextField" destination="7xA-Cj-Bp2" id="XSu-D4-bMX"/>
                     </connections>
