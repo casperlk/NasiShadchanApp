@@ -24,12 +24,18 @@ class ShadchanUser: NSObject {
     var shadchanCell = ""
     var yearsAsShadchan = ""
     var about = ""
-    
-    
-    
     var familyTypes: [String] = []
     var singlesPlan: [String] = []
     var singlesType: [String] = []
+    
+    var welcomePaidBrainstormingSessions: String = ""
+    var needToMeetSingle: String = ""
+    
+    var yearsInShidduchimPrimary: String = ""
+    var yearsInShidduchimSecondary: String = ""
+    var methodOfCommunicationPrimary: String = ""
+    var methodOfCommunicationSecondary: String = ""
+    
     
     // initialize from a firebase snapshot coming down into app
     init(snapshot: DataSnapshot) {
@@ -50,7 +56,20 @@ class ShadchanUser: NSObject {
         let shadchanCell = value["shadchanCell"]  as? String
         let yearsAsShadchan = value["yearsAsShadchan"]  as? String
         let about = value["about"]  as? String
+        
+        let welcomePaidBrainstormingSessions = value["welcomePaidBrainstormingSessions"] as? String
+        
+        let needToMeetSingle = value["needToMeetSingle"] as? String
+        
         let familyTypes = value["familyTypes"] as? [String]
+        let  singlesPlan = value["singlesPlan"] as? [String]
+        var singlesTypes = value["singlesTypes"] as? [String]
+        
+        
+        let yearsInShidduchimPrimary = value["yearsInShidduchimPrimary"] as? String
+        var yearsInShidduchimSecondary = value["yearsInShidduchimSecondary"] as? String
+        var methodOfCommunicationPrimary = value["methodOfCommunicationPrimary"] as? String
+        var methodOfCommunicationSecondary = value["methodOfCommunicationSecondary"] as? String
         
         
         self.shadchanEmail = shadchanEmail ?? ""
@@ -63,6 +82,16 @@ class ShadchanUser: NSObject {
         
         self.shadchanCell = shadchanCell ?? ""
         self.yearsAsShadchan = yearsAsShadchan ?? ""
+        self.yearsInShidduchimPrimary = yearsInShidduchimPrimary ?? ""
+        self.yearsInShidduchimSecondary = yearsInShidduchimSecondary ?? ""
+        self.methodOfCommunicationPrimary = methodOfCommunicationPrimary ?? ""
+        self.methodOfCommunicationSecondary = methodOfCommunicationSecondary ?? ""
+        
+        
+        //welcomeBrainstormLabel
+        self.welcomePaidBrainstormingSessions = welcomePaidBrainstormingSessions ?? ""
+        
+        self.needToMeetSingle = needToMeetSingle ?? ""
         self.about = about ?? ""
         
         self.familyTypes = familyTypes ?? [String]()
@@ -73,7 +102,7 @@ class ShadchanUser: NSObject {
         
         // MARK: Initialize with user input data to send up
         // to firebase
-    init(shadchanEmail: String, shadchanFirstName: String, shadchanLastName: String, shadchanUserID: String,shadchanCell: String, shadchanTitle: String, shadchanProfileImageURLString: String, yearsAsShadchan: String,about: String,familyTypes:[String],singlesPlan:[String],singlesType:[String], key: String = "") {
+    init(shadchanEmail: String, shadchanFirstName: String, shadchanLastName: String, shadchanUserID: String,shadchanCell: String, shadchanTitle: String, shadchanProfileImageURLString: String, yearsAsShadchan: String,about: String,familyTypes:[String],singlesPlan:[String],singlesType:[String],needToMeetSingle: String, welcomePaidBrainstormingSessions: String,yearsInShidduchimPrimary:String, yearsInShidduchimSecondary:String,methodOfCommunicationPrimary:String, methodOfCommunicationSecondary:String, key: String = "") {
             
           self.ref = nil
           self.key = key
@@ -88,10 +117,17 @@ class ShadchanUser: NSObject {
         
           self.yearsAsShadchan = yearsAsShadchan
           self.about = about
+        self.needToMeetSingle = needToMeetSingle
+        self.welcomePaidBrainstormingSessions = welcomePaidBrainstormingSessions
             
         self.familyTypes = familyTypes
         self.singlesPlan = singlesPlan
         self.singlesType =  singlesType
+        
+        self.yearsInShidduchimPrimary = yearsInShidduchimPrimary
+        self.yearsInShidduchimSecondary = yearsInShidduchimSecondary
+        self.methodOfCommunicationPrimary = methodOfCommunicationPrimary
+        self.methodOfCommunicationSecondary = methodOfCommunicationSecondary
         
         }
     
@@ -109,11 +145,33 @@ class ShadchanUser: NSObject {
         "about": about,
         "familyTypes": familyTypes,
         "singlesPlan": singlesPlan,
-        "singlesType": singlesType
+        "singlesType": singlesType,
+        "welcomePaidBrainstormingSessions": welcomePaidBrainstormingSessions,
+        "needToMeetSingle": needToMeetSingle,
+        "yearsInShidduchimPrimary": yearsInShidduchimPrimary,
+        "yearsInShidduchimSecondary": yearsInShidduchimSecondary,
+        "methodOfCommunicationPrimary":methodOfCommunicationPrimary,
+        "methodOfCommunicationSecondary": methodOfCommunicationSecondary
+        
         
       ]
     }
+  /*
+},
+"2oqG8NvbhxUCYHsD653asRWVmy92": {
+  "about": "",
+  "dateStartedApp": 1609131600,
+  "dateStartedWithNasi": 1345694400,
+  "lastModifiedDate": 1654055218,
+  "lastModifiedSource": "spreadsheet",
+
+  "shadchanProfileImage": "",
+},
+    */
     
+    
+    
+    /*
     func createNewShadchanUserInFirebase(){
         
         let userID = Auth.auth().currentUser?.uid ?? ""
@@ -138,8 +196,10 @@ class ShadchanUser: NSObject {
         let shadchanChildRef = shadchanUserNodeRef.child(shadchanUserID)
         
         shadchanChildRef.setValue(newUser.toAnyObject())
+         
         
     }
+     */
     }
         
         

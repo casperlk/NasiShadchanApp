@@ -22,14 +22,17 @@ class ErekaVC: FormViewController {
     
     override func viewDidLoad() {
        super.viewDidLoad()
-        //view.backgroundColor = .green
+        
+        
+        
+        /*
         form +++ Section()
                        <<< ImageRow() { row in
                            row.title = "Profile Avatar"
                            row.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum]
                            row.clearAction = .yes(style: UIAlertAction.Style.destructive)
         }
-        
+        */
         /*
         <<< ButtonRow("Native iOS Event Form") { row in
                 row.title = row.tag
@@ -43,10 +46,10 @@ class ErekaVC: FormViewController {
             <<< TextRow() { // 3
               //$0.title = "Description" //4
               $0.placeholder = "First Name"
-             // $0.value = viewModel.title //5
+                $0.value = currentUser.shadchanFirstName //5
                 
 $0.onChange { [unowned self] row in //6
-                //  self.currentUser.shadchanFirstName = row.value ?? "FIRST-NAME"
+                  self.currentUser.shadchanFirstName = row.value ?? "FIRST-NAME"
               }
           }
         
@@ -54,9 +57,10 @@ $0.onChange { [unowned self] row in //6
         <<< TextRow() { // 3
           //$0.title = "Description" //4
           $0.placeholder = "Last Name"
-         // $0.value = viewModel.title //5
+            
           $0.onChange { [unowned self] row in //6
-           // self.viewModel.title = row.value
+        self.currentUser.shadchanLastName = row.value ??
+              "LAST-NAME"
           }
       }
         
@@ -72,8 +76,12 @@ $0.onChange { [unowned self] row in //6
                    $0.title = "Cell"
                    $0.placeholder = "Add numbers here"
                }
+        <<< EmailRow(){
+            $0.title = "Email"
+            $0.placeholder = "Add Email here"
+        }
     form
-        +++ Section()
+        +++ Section("Shadchan Business Bio")
          <<< ActionSheetRow<String>() {
                         $0.title = "Years as A Shadchan"
                         $0.selectorTitle = "Choose a Range"
@@ -98,7 +106,7 @@ $0.onChange { [unowned self] row in //6
             }
           }
         */
-    
+    /*
         +++ Section(header: "Date Started With Nasi", footer: "")
               // <<< DateRow(){
               //     $0.title = "Date"
@@ -108,8 +116,63 @@ $0.onChange { [unowned self] row in //6
             $0.title = "Select Date"
             $0.value = Date()
         }
+        */
         
-        form +++ Section("Specialties - Types of Singles and Families")
+        form
+            +++ Section()
+             <<< ActionSheetRow<String>() {
+                            $0.title = "Years in Shidducim Primary"
+                            $0.selectorTitle = "Choose One Range"
+                            $0.options = ["1-3 Years","3-5 Years","5-10 Years","10 Plus Years"]
+                            $0.value = "1-3 Years"    // initially selected
+                        }
+        
+        form
+            +++ Section()
+             <<< ActionSheetRow<String>() {
+                            $0.title = "Years in Shidducim Secondary"
+                            $0.selectorTitle = "Choose One Range"
+                            $0.options = ["1-3 Years","3-5 Years","5-10 Years","10 Plus Years"]
+                            $0.value = "3-5 Years"    // initially selected
+                        }
+        
+        form
+            +++ Section()
+             <<< ActionSheetRow<String>() {
+                            $0.title = "Open To Paid BrainStorming Sessions"
+                            $0.selectorTitle = "Choose Y/N"
+                            $0.options = ["Yes","No"]
+                            $0.value = "Yes"    // initially selected
+                        }
+        
+        form
+            +++ Section()
+             <<< ActionSheetRow<String>() {
+                            $0.title = "Need To Meet Single?"
+                            $0.selectorTitle = "Choose Y/N"
+                            $0.options = ["Yes","No"]
+                            $0.value = "Yes"    // initially selected
+                        }
+        
+        form
+            +++ Section()
+             <<< ActionSheetRow<String>() {
+                            $0.title = "Preferred Mode of Communication"
+                            $0.selectorTitle = "Choose Method"
+                            $0.options = ["WhatsApp","Text","Email","Phone"]
+                            $0.value = "WhatsApp"    // initially selected
+                        }
+        form
+            +++ Section()
+             <<< ActionSheetRow<String>() {
+                            $0.title = "Secondary Mode of Communication"
+                            $0.selectorTitle = "Choose Method"
+                            $0.options = ["WhatsApp","Text","Email","Phone"]
+                            $0.value = "Text"    // initially selected
+                        }
+        
+
+        form +++ Section("Specialties - Types of Singles and Families - Check All That Apply")
         form +++ SelectableSection<ListCheckRow<String>>("Family Type", selectionType: .multipleSelection)
                                                                 
                                              
@@ -124,7 +187,7 @@ $0.onChange { [unowned self] row in //6
             }
         }
       
-        form +++ SelectableSection<ListCheckRow<String>>("Singles Plan", selectionType: .multipleSelection)
+        form +++ SelectableSection<ListCheckRow<String>>("Singles Plan - Check All That Apply", selectionType: .multipleSelection)
         
         let SinglesPlan = ["Learning 1-3 years", "Learning 3-5 years", "Learning 5 plus","Part Time Learning", "Working"]
         
@@ -137,7 +200,7 @@ $0.onChange { [unowned self] row in //6
             }
         }
         
-        form +++ SelectableSection<ListCheckRow<String>>("Singles Type", selectionType: .multipleSelection)
+        form +++ SelectableSection<ListCheckRow<String>>("Singles Type - Check All That Apply", selectionType: .multipleSelection)
                                                                 
                                              
         let singleType = ["Yeshivish","Toradig","Baale Batish", "Chasidish", "Heimish", "Sefardi", "Modern Orthodox"]
@@ -151,6 +214,12 @@ $0.onChange { [unowned self] row in //6
             }
         }
         
+        
+        
+        
+        
+        
+        
         form +++ Section(header: "Description",footer: "")
             //form.last!
         <<< TextAreaRow("Description") {
@@ -160,9 +229,10 @@ $0.onChange { [unowned self] row in //6
         }
     
      func updateShadchanUserInFireBase() {
-        
-        let revisedUser = ShadchanUser(shadchanEmail: currentUser.shadchanEmail, shadchanFirstName: currentUser.shadchanFirstName, shadchanLastName: currentUser.shadchanLastName, shadchanUserID: currentUser.shadchanUserID, shadchanCell: currentUser.shadchanCell, shadchanTitle: currentUser.shadchanTitle, shadchanProfileImageURLString: currentUser.shadchanProfileImageURLString, yearsAsShadchan: currentUser.yearsAsShadchan, about: currentUser.about, familyTypes: currentUser.familyTypes, singlesPlan: currentUser.singlesPlan, singlesType: currentUser.singlesType)
-        
+         let revisedUser  = ShadchanUser(shadchanEmail: currentUser.shadchanEmail, shadchanFirstName: currentUser.shadchanFirstName, shadchanLastName: currentUser.shadchanLastName, shadchanUserID: currentUser.shadchanUserID, shadchanCell: currentUser.shadchanCell, shadchanTitle: currentUser.shadchanTitle, shadchanProfileImageURLString: currentUser.shadchanProfileImageURLString, yearsAsShadchan: currentUser.yearsAsShadchan, about: currentUser.about, familyTypes: currentUser.familyTypes, singlesPlan: currentUser.singlesPlan, singlesType: currentUser.singlesType, needToMeetSingle: currentUser.needToMeetSingle, welcomePaidBrainstormingSessions: currentUser.welcomePaidBrainstormingSessions, yearsInShidduchimPrimary: currentUser.yearsInShidduchimPrimary, yearsInShidduchimSecondary: currentUser.yearsInShidduchimSecondary, methodOfCommunicationPrimary: currentUser.methodOfCommunicationPrimary, methodOfCommunicationSecondary: currentUser.methodOfCommunicationSecondary)
+        /*
+         let revisedUser = ShadchanUser(shadchanEmail: currentUser.shadchanEmail, shadchanFirstName: currentUser.shadchanFirstName, shadchanLastName: currentUser.shadchanLastName, shadchanUserID: currentUser.shadchanUserID, shadchanCell: currentUser.shadchanCell, shadchanTitle: currentUser.shadchanTitle, shadchanProfileImageURLString: currentUser.shadchanProfileImageURLString, yearsAsShadchan: currentUser.yearsAsShadchan, about: currentUser.about, familyTypes: currentUser.familyTypes, singlesPlan: currentUser.singlesPlan, singlesType: currentUser.singlesType, needToMeetSingle: currentUser.needToMeetSingle, welcomePaidBrainstormingSessions: currentUser.welcomePaidBrainstormingSessions)
+        */
         let dict = revisedUser.toAnyObject()
         let ref = currentUser.ref
         ref?.updateChildValues(dict as! [AnyHashable : Any])
