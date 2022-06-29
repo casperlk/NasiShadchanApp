@@ -31,8 +31,8 @@ class ShadchanUser: NSObject {
     var welcomePaidBrainstormingSessions: String = ""
     var needToMeetSingle: String = ""
     
-    var yearsInShidduchimPrimary: String = ""
-    var yearsInShidduchimSecondary: String = ""
+    var yearsInShidduchimPrimary: [String] = []
+    var yearsInShidduchimSecondary: [String] = []
     var methodOfCommunicationPrimary: String = ""
     var methodOfCommunicationSecondary: String = ""
     
@@ -66,8 +66,8 @@ class ShadchanUser: NSObject {
         var singlesTypes = value["singlesTypes"] as? [String]
         
         
-        let yearsInShidduchimPrimary = value["yearsInShidduchimPrimary"] as? String
-        var yearsInShidduchimSecondary = value["yearsInShidduchimSecondary"] as? String
+        let yearsInShidduchimPrimary = value["yearsInShidduchimPrimary"] as? [String]
+        var yearsInShidduchimSecondary = value["yearsInShidduchimSecondary"] as? [String]
         var methodOfCommunicationPrimary = value["methodOfCommunicationPrimary"] as? String
         var methodOfCommunicationSecondary = value["methodOfCommunicationSecondary"] as? String
         
@@ -82,8 +82,8 @@ class ShadchanUser: NSObject {
         
         self.shadchanCell = shadchanCell ?? ""
         self.yearsAsShadchan = yearsAsShadchan ?? ""
-        self.yearsInShidduchimPrimary = yearsInShidduchimPrimary ?? ""
-        self.yearsInShidduchimSecondary = yearsInShidduchimSecondary ?? ""
+        self.yearsInShidduchimPrimary = yearsInShidduchimPrimary ?? [String]()
+        self.yearsInShidduchimSecondary = yearsInShidduchimSecondary ?? [String]()
         self.methodOfCommunicationPrimary = methodOfCommunicationPrimary ?? ""
         self.methodOfCommunicationSecondary = methodOfCommunicationSecondary ?? ""
         
@@ -102,7 +102,7 @@ class ShadchanUser: NSObject {
         
         // MARK: Initialize with user input data to send up
         // to firebase
-    init(shadchanEmail: String, shadchanFirstName: String, shadchanLastName: String, shadchanUserID: String,shadchanCell: String, shadchanTitle: String, shadchanProfileImageURLString: String, yearsAsShadchan: String,about: String,familyTypes:[String],singlesPlan:[String],singlesType:[String],needToMeetSingle: String, welcomePaidBrainstormingSessions: String,yearsInShidduchimPrimary:String, yearsInShidduchimSecondary:String,methodOfCommunicationPrimary:String, methodOfCommunicationSecondary:String, key: String = "") {
+    init(shadchanEmail: String, shadchanFirstName: String, shadchanLastName: String, shadchanUserID: String,shadchanCell: String, shadchanTitle: String, shadchanProfileImageURLString: String, yearsAsShadchan: String,about: String,familyTypes:[String],singlesPlan:[String],singlesType:[String],needToMeetSingle: String, welcomePaidBrainstormingSessions: String,yearsInShidduchimPrimary:[String], yearsInShidduchimSecondary:[String],methodOfCommunicationPrimary:String, methodOfCommunicationSecondary:String, key: String = "") {
             
           self.ref = nil
           self.key = key

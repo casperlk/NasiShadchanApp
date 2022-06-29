@@ -2462,7 +2462,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="pVs-2O-69o"/>
                     <navigationItem key="navigationItem" id="vJ1-7z-Hw6">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="xEH-4c-jlE"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="xEH-4c-jlE">
+                            <connections>
+                                <action selector="saveTapped:" destination="7nh-JE-ZnW" id="d8E-AI-b2g"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="By0-Iu-3WI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

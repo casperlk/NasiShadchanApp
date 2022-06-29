@@ -10,6 +10,7 @@ import UIKit
 import Eureka
 import ImageRow
 
+
 class ErekaVC: FormViewController {
     
     private lazy var dateFormatter: DateFormatter = {
@@ -22,6 +23,58 @@ class ErekaVC: FormViewController {
     
     override func viewDidLoad() {
        super.viewDidLoad()
+        
+        
+       
+        
+        
+        
+        
+        let continents = ["Rabbi","Mr","Mrs","Ms"]
+
+        form +++ SelectableSection<ImageCheckRow<String>>() { section in
+            section.header = HeaderFooterView(title: "What is your title")
+        }
+
+        for option in continents {
+            form.last! <<< ImageCheckRow<String>(option){ lrow in
+                lrow.title = option
+                lrow.selectableValue = option
+                lrow.value = nil
+            }
+        }
+        
+        let options = ["1-3 Years","3-5 Years","5-10 Years","10 Plus Years"]
+
+
+        form +++ SelectableSection<ImageCheckRow<String>>("What range do you specialize in?", selectionType: .multipleSelection)
+        for option in options {
+            form.last! <<< ImageCheckRow<String>(option){ lrow in
+                lrow.title = option
+                lrow.selectableValue = option
+                
+                let currentElement = option
+                let arry = currentUser.yearsInShidduchimPrimary
+                let check = arry.contains(currentElement)
+                if check == true {
+                
+                lrow.value =  currentElement
+                } else {
+                    lrow.value = nil
+                }
+                
+                
+                }.cellSetup { cell, _ in
+                    cell.trueImage = UIImage(named: "selectedRectangle")!
+                    cell.falseImage = UIImage(named: "unselectedRectangle")!
+                    cell.accessoryType = .checkmark
+            }
+            
+            
+            
+        }
+        
+       
         
         
         
@@ -87,6 +140,8 @@ $0.onChange { [unowned self] row in //6
                         $0.selectorTitle = "Choose a Range"
                         $0.options = ["1-3","3-5","5-10","10 Plus"]
                         $0.value = "1-3"    // initially selected
+             
+             //$0.onChange(<#T##callback: (ActionSheetRow<String>) -> Void##(ActionSheetRow<String>) -> Void#>)
                     }
          
         /*
@@ -176,11 +231,11 @@ $0.onChange { [unowned self] row in //6
         form +++ SelectableSection<ListCheckRow<String>>("Family Type", selectionType: .multipleSelection)
                                                                 
                                              
-        let familyType = ["Yeshivishe","Americanish","Baale Batishe","Klei Kodesh","Modern Orthodoxish", "Chasidishe", "Heimishe", "Sefardishe","Russian" ]
+        let familyType = ["Yeshivish","American","Baale Batish","Klei Kodesh","Modern Orthodox", "Chasidish", "Heimish", "Sefardi","Russian" ]
         
         for i in familyType {
             
-            form.last! <<< ListCheckRow<String>(i){ listRow in
+            form.last! <<< ListCheckRow<String>(){ listRow in
                 listRow.title = i
                 listRow.selectableValue = i
                 listRow.value = nil
@@ -193,10 +248,12 @@ $0.onChange { [unowned self] row in //6
         
         for option in SinglesPlan {
             
-            form.last! <<< ListCheckRow<String>(option){ listRow in
+            form.last! <<< ListCheckRow<String>(){ listRow in
                 listRow.title = option
                 listRow.selectableValue = option
                 listRow.value = nil
+            
+            
             }
         }
         
@@ -207,19 +264,14 @@ $0.onChange { [unowned self] row in //6
         
         for option in singleType {
             
-            form.last! <<< ListCheckRow<String>(option){ listRow in
+            form.last! <<< ListCheckRow<String>(){ listRow in
                 listRow.title = option
                 listRow.selectableValue = option
                 listRow.value = nil
             }
         }
         
-        
-        
-        
-        
-        
-        
+
         form +++ Section(header: "Description",footer: "")
             //form.last!
         <<< TextAreaRow("Description") {
@@ -228,14 +280,37 @@ $0.onChange { [unowned self] row in //6
          }
         }
     
+    override func valueHasBeenChanged(for row: BaseRow, oldValue: Any?, newValue: Any?) {
+        if row.section === form[0] {
+            print("Single Selection:\((row.section as! SelectableSection<ImageCheckRow<String>>).selectedRow()?.baseValue ?? "No row selected")")
+        }
+        
+        else if row.section === form[1] {
+           var values = (row.section as! SelectableSection<ImageCheckRow<String>>).selectedRows().map({$0.baseValue!}) as! [String]
+            print(values)
+            self.currentUser.yearsInShidduchimPrimary = values
+        }
+    }
+    
+    
+    
+   
+
+    @IBAction func saveTapped(_ sender: Any) {
+        updateShadchanUserInFireBase()
+    }
+    
+    
+    
+    
      func updateShadchanUserInFireBase() {
-         let revisedUser  = ShadchanUser(shadchanEmail: currentUser.shadchanEmail, shadchanFirstName: currentUser.shadchanFirstName, shadchanLastName: currentUser.shadchanLastName, shadchanUserID: currentUser.shadchanUserID, shadchanCell: currentUser.shadchanCell, shadchanTitle: currentUser.shadchanTitle, shadchanProfileImageURLString: currentUser.shadchanProfileImageURLString, yearsAsShadchan: currentUser.yearsAsShadchan, about: currentUser.about, familyTypes: currentUser.familyTypes, singlesPlan: currentUser.singlesPlan, singlesType: currentUser.singlesType, needToMeetSingle: currentUser.needToMeetSingle, welcomePaidBrainstormingSessions: currentUser.welcomePaidBrainstormingSessions, yearsInShidduchimPrimary: currentUser.yearsInShidduchimPrimary, yearsInShidduchimSecondary: currentUser.yearsInShidduchimSecondary, methodOfCommunicationPrimary: currentUser.methodOfCommunicationPrimary, methodOfCommunicationSecondary: currentUser.methodOfCommunicationSecondary)
+         let revisedUser  = ShadchanUser(shadchanEmail: currentUser.shadchanEmail, shadchanFirstName: currentUser.shadchanFirstName, shadchanLastName: currentUser.shadchanLastName, shadchanUserID: currentUser.shadchanUserID, shadchanCell: currentUser.shadchanCell, shadchanTitle: currentUser.shadchanTitle, shadchanProfileImageURLString: currentUser.shadchanProfileImageURLString, yearsAsShadchan: currentUser.yearsAsShadchan, about: currentUser.about, familyTypes: currentUser.familyTypes, singlesPlan: currentUser.singlesPlan, singlesType: currentUser.singlesType, needToMeetSingle: currentUser.needToMeetSingle, welcomePaidBrainstormingSessions: currentUser.welcomePaidBrainstormingSessions, yearsInShidduchimPrimary: currentUser.yearsInShidduchimPrimary, yearsInShidduchimSecondary: currentUser.yearsInShidduchimSecondary, methodOfCommunicationPrimary: "Text", methodOfCommunicationSecondary: "Email")
         /*
          let revisedUser = ShadchanUser(shadchanEmail: currentUser.shadchanEmail, shadchanFirstName: currentUser.shadchanFirstName, shadchanLastName: currentUser.shadchanLastName, shadchanUserID: currentUser.shadchanUserID, shadchanCell: currentUser.shadchanCell, shadchanTitle: currentUser.shadchanTitle, shadchanProfileImageURLString: currentUser.shadchanProfileImageURLString, yearsAsShadchan: currentUser.yearsAsShadchan, about: currentUser.about, familyTypes: currentUser.familyTypes, singlesPlan: currentUser.singlesPlan, singlesType: currentUser.singlesType, needToMeetSingle: currentUser.needToMeetSingle, welcomePaidBrainstormingSessions: currentUser.welcomePaidBrainstormingSessions)
         */
         let dict = revisedUser.toAnyObject()
         let ref = currentUser.ref
-        ref?.updateChildValues(dict as! [AnyHashable : Any])
+        ref?.setValue(dict as! [AnyHashable : Any])
         
     }
 }

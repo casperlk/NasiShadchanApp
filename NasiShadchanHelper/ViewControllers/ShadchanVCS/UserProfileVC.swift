@@ -55,33 +55,7 @@ class UserProfileVC: UITableViewController {
     
     func fetchUser(){
         
-        /*
-        func fetchAndCreateBoysArray() {
-
-          let boysListRef  = Database.database().reference().child("NasiBoysList")
-            
-            guard let myId = UserInfo.curentUser?.id else {return}
-            
-            let currentUserBoysListRef = boysListRef.child(myId)
-          
-            currentUserBoysListRef.observe(.value, with: { snapshot in
-            
-             var boysArray: [NasiBoy] = []
-                
-                for child in snapshot.children {
-                  
-                let snapshot = child as? DataSnapshot
-                let nasiBoy = NasiBoy(snapshot: snapshot!)
-                    
-                boysArray.append(nasiBoy)
-            }
-            self.shadchanBoysArray = boysArray
-            self.tableView.reloadData()
-                
-          })
-        }
-       
-        */
+        
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         Database.database().reference().child("NasiShadchanUserList").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -95,7 +69,10 @@ class UserProfileVC: UITableViewController {
             self.shadchanUser = currentUser
             self.tableView.reloadData()
             
-            print("current user is \(currentUser.description)")
+            print("*****current user is \(self.shadchanUser)")
+            
+            
+            
                 
             //self.user = User(dictionary: dictionary)
             //self.navigationItem.title = self.user?.username
@@ -136,8 +113,12 @@ class UserProfileVC: UITableViewController {
         currentUser.yearsAsShadchan
         // yes/No
         
-        yearsInShidduchimPrimary.text = currentUser.yearsInShidduchimSecondary
-        yearsInShidduchimSecondary.text = currentUser.yearsInShidduchimPrimary
+        let primaryYearsStringArry = currentUser.yearsInShidduchimSecondary
+        
+        let primaryJoined = currentUser.yearsInShidduchimPrimary.joined(separator: " - ")
+        
+        yearsInShidduchimPrimary.text = primaryJoined
+        //yearsInShidduchimSecondary.text = currentUser.yearsInShidduchimPrimary
         
         communicationMethodPreferredLabel.text = currentUser.methodOfCommunicationPrimary
         communicationMethodSecondaryLabel.text = currentUser.methodOfCommunicationSecondary
@@ -155,3 +136,5 @@ class UserProfileVC: UITableViewController {
             
         }
 }
+
+

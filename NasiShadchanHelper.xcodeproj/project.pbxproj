@@ -56,6 +56,7 @@
 		5228CB2527B4122B00EDF103 /* ShadchanGirlNotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228CB2427B4122B00EDF103 /* ShadchanGirlNotesVC.swift */; };
 		5228CB2727B4163300EDF103 /* ShadchanGirlNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228CB2627B4163300EDF103 /* ShadchanGirlNote.swift */; };
 		529A47A127F64EB00026A67E /* ErekaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529A47A027F64EB00026A67E /* ErekaVC.swift */; };
+		529D1DFB286A78FF0030F193 /* custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529D1DFA286A78FF0030F193 /* custom.swift */; };
 		52A41BC4277F34AB00FE7C7A /* AllBoysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A41BC3277F34AB00FE7C7A /* AllBoysViewController.swift */; };
 		52A41BC6277F3BF700FE7C7A /* NasiBoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A41BC5277F3BF700FE7C7A /* NasiBoy.swift */; };
 		52A41BC8279353D500FE7C7A /* BoyDetailsVCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A41BC7279353D500FE7C7A /* BoyDetailsVCTableViewController.swift */; };
@@ -152,6 +153,7 @@
 		5228CB2427B4122B00EDF103 /* ShadchanGirlNotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadchanGirlNotesVC.swift; sourceTree = "<group>"; };
 		5228CB2627B4163300EDF103 /* ShadchanGirlNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadchanGirlNote.swift; sourceTree = "<group>"; };
 		529A47A027F64EB00026A67E /* ErekaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErekaVC.swift; sourceTree = "<group>"; };
+		529D1DFA286A78FF0030F193 /* custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = custom.swift; sourceTree = "<group>"; };
 		52A41BC3277F34AB00FE7C7A /* AllBoysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBoysViewController.swift; sourceTree = "<group>"; };
 		52A41BC5277F3BF700FE7C7A /* NasiBoy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasiBoy.swift; sourceTree = "<group>"; };
 		52A41BC7279353D500FE7C7A /* BoyDetailsVCTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoyDetailsVCTableViewController.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 			children = (
 				529A47A027F64EB00026A67E /* ErekaVC.swift */,
 				52257DE82809FFA8007A5A49 /* UserProfileVC.swift */,
+				529D1DFA286A78FF0030F193 /* custom.swift */,
 			);
 			path = ShadchanVCS;
 			sourceTree = "<group>";
@@ -752,6 +755,7 @@
 				18E5DD152525CBCE005DD1DE /* NasiGirlsList.swift in Sources */,
 				52A41BC6277F3BF700FE7C7A /* NasiBoy.swift in Sources */,
 				529A47A127F64EB00026A67E /* ErekaVC.swift in Sources */,
+				529D1DFB286A78FF0030F193 /* custom.swift in Sources */,
 				3DC18495258809A100B529F0 /* ResearchViewController.swift in Sources */,
 				3DC1849D258BBE6A00B529F0 /* GirlSentCell.swift in Sources */,
 				CEC468DB245A217F0071EC85 /* ResumeViewController.swift in Sources */,
