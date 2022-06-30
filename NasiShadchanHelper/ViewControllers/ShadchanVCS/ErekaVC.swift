@@ -107,25 +107,36 @@ class ErekaVC: FormViewController {
                          "N/A"
             }
         }
-        
-        
         //section 4
         form +++ Section("Specialties - Types of Singles and Families")
         
         //section 5
-        form +++ SelectableSection<ListCheckRow<String>>("Family Type - Check All That Apply", selectionType: .multipleSelection)
+        //form +++ SelectableSection<ListCheckRow<String>>("Family Type - Check All That Apply", selectionType: .multipleSelection)
+        
+        form +++ SelectableSection<ImageCheckRow<String>>("Family Type - Check All That Apply", selectionType: .multipleSelection)
                                                                 
-                                             
         let familyType = ["Yeshivish","American","Baale Batish","Klei Kodesh","Modern Orthodox", "Chasidish", "Heimish", "Sefardi","Russian" ]
         
-        for i in familyType {
-            
-            form.last! <<< ListCheckRow<String>(){ listRow in
-                listRow.title = i
-                listRow.selectableValue = i
-                listRow.value = nil
+        for option in familyType {
+            form.last! <<< ImageCheckRow<String>(){ lrow in
+                lrow.title = option
+                lrow.selectableValue = option
                 
-         }
+                let currentElement = option
+                let arry = currentUser.familyTypes
+                let check = arry.contains(currentElement)
+                if check == true {
+                
+                lrow.value =  currentElement
+                } else {
+                    lrow.value = nil
+                }
+                
+                }.cellSetup { cell, _ in
+                    cell.trueImage = UIImage(named: "selectedRectangle")!
+                    cell.falseImage = UIImage(named: "unselectedRectangle")!
+                    cell.accessoryType = .checkmark
+            }
         }
         //section 6
         form +++ SelectableSection<ListCheckRow<String>>("Singles Plan - Check All That Apply", selectionType: .multipleSelection)
@@ -133,29 +144,54 @@ class ErekaVC: FormViewController {
         let SinglesPlan = ["Learning 1-3 years", "Learning 3-5 years", "Learning 5 plus","Part Time Learning", "Working"]
         
         for option in SinglesPlan {
-            
-            form.last! <<< ListCheckRow<String>(){ listRow in
-                listRow.title = option
-                listRow.selectableValue = option
-                listRow.value = nil
+            form.last! <<< ImageCheckRow<String>(){ lrow in
+                lrow.title = option
+                lrow.selectableValue = option
+                
+                let currentElement = option
+                let arry = currentUser.singlesPlan
+                let check = arry.contains(currentElement)
+                if check == true {
+                
+                lrow.value =  currentElement
+                } else {
+                    lrow.value = nil
+                }
+                
+                }.cellSetup { cell, _ in
+                    cell.trueImage = UIImage(named: "selectedRectangle")!
+                    cell.falseImage = UIImage(named: "unselectedRectangle")!
+                    cell.accessoryType = .checkmark
             }
         }
             
         //section 7
         form +++ SelectableSection<ListCheckRow<String>>("Singles Type - Check All That Apply", selectionType: .multipleSelection)
                                                                 
-                                             
         let singleType = ["Yeshivish","Toradig","Baale Batish", "Chasidish", "Heimish", "Sefardi", "Modern Orthodox"]
         
-        for option in singleType {
-            
-            form.last! <<< ListCheckRow<String>(){ listRow in
-                listRow.title = option
-                listRow.selectableValue = option
-                listRow.value = nil
+        for option in SinglesPlan {
+            form.last! <<< ImageCheckRow<String>(){ lrow in
+                lrow.title = option
+                lrow.selectableValue = option
+                
+                let currentElement = option
+                let arry = currentUser.singlesType
+                let check = arry.contains(currentElement)
+                if check == true {
+                
+                lrow.value =  currentElement
+                } else {
+                    lrow.value = nil
+                }
+                
+                }.cellSetup { cell, _ in
+                    cell.trueImage = UIImage(named: "selectedRectangle")!
+                    cell.falseImage = UIImage(named: "unselectedRectangle")!
+                    cell.accessoryType = .checkmark
             }
         }
-        
+        //section 8
         let options = ["N/A","1-3 Years","3-5 Years","5-10 Years","10 Plus Years"]
 
         form +++ SelectableSection<ImageCheckRow<String>>("What PRIMARY range do you specialize in?", selectionType: .multipleSelection)
@@ -181,9 +217,8 @@ class ErekaVC: FormViewController {
                     cell.accessoryType = .checkmark
             }
         }
-        
-        
-        
+    
+        //section 9
 form +++ SelectableSection<ImageCheckRow<String>>("What SECONDARY range do you specialize in?", selectionType: .multipleSelection)
 
 for option in options {
@@ -208,10 +243,6 @@ for option in options {
    }
 }
 
-        
-        
-        
-        
         //section
         form +++ Section("Shadchan Business Bio")
              <<< ActionSheetRow<String>() {
@@ -219,16 +250,25 @@ for option in options {
               $0.selectorTitle = "Choose a Range"
               $0.options = ["1-3","3-5","5-10","10 Plus"]
               $0.value = "1-3"    // initially selected
+             
+             $0.onChange { [unowned self] row in
+            self.currentUser.yearsAsShadchan = row.value ??
+            "N/A"
              }
+        }
                  
-                 
-            form
+     form
         +++ Section()
             <<< ActionSheetRow<String>() {
                 $0.title = "Open To Paid BrainStorming Sessions"
                 $0.selectorTitle = "Choose Y/N"
                 $0.options = ["Yes","No"]
                 $0.value = "Yes"    // initially selected
+                
+                $0.onChange { [unowned self] row in
+                self.currentUser.welcomePaidBrainstormingSessions = row.value ??
+               "N/A"
+                }
               }
                  
             form
@@ -237,182 +277,92 @@ for option in options {
             $0.title = "Need To Meet Single?"
             $0.selectorTitle = "Choose Y/N"
             $0.options = ["Yes","No"]
-            $0.value = "Yes"    // initially selected
+            $0.value = self.currentUser.needToMeetSingle ?? "N/A"
+                
+            $0.onChange { [unowned self] row in
+            self.currentUser.needToMeetSingle = row.value ??
+               "N/A"
+             }
             }
             
             form +++ Section(header: "Description",footer: "")
-                     //form.last!
             <<< TextAreaRow("Description") {
             $0.placeholder = "About Yourself"
             $0.textAreaHeight = .dynamic(initialTextViewHeight: 150)
-            }
-            
-        
-        /*
-        let titles = ["N/A","Rabbi","Mr","Mrs","Ms"]
-
-        form +++ SelectableSection<ImageCheckRow<String>>() { section in
-            section.header = HeaderFooterView(title: "What is your title")
-        }
-
-        for option in titles {
-            form.last! <<< ImageCheckRow<String>(){ lrow in
-                lrow.title = option
-                lrow.selectableValue = option
-                lrow.value = nil
-            }
-        }
-        */
-        
-        
-     
-        
-        
+            $0.value = self.currentUser.about ?? ""
                 
-       
-        
-        
-        
-        /*
-        form +++ Section()
-                       <<< ImageRow() { row in
-                           row.title = "Profile Avatar"
-                           row.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum]
-                           row.clearAction = .yes(style: UIAlertAction.Style.destructive)
-        }
-        */
-        /*
-        <<< ButtonRow("Native iOS Event Form") { row in
-                row.title = row.tag
-                row.presentationMode = .segueName(segueName: "NativeEventsFormNavigationControllerSegue", onDismiss:{  vc in vc.dismiss(animated: true) })
+            $0.onChange { [unowned self] row in
+            self.currentUser.about = row.value ??
+                   ""
+             }
             }
-        */
-        
-         
-        
-        //+++ Section()    //2
-        
-        
-    
-        
-   
-  
-             
-             //$0.onChange(<#T##callback: (ActionSheetRow<String>) -> Void##(ActionSheetRow<String>) -> Void#>)
-                    }
-         
-        /*
-        +++ Section()
-          <<< DateTimeRow() {
-            
-           // $0.dateFormatter = type(of: self).dateFormatter //1
-            $0.title = "Date of Birth" //2
-            //$0.value = viewModel.dueDate //3
-            $0.minimumDate = Date() //4
-            $0.onChange { [unowned self] row in //5
-              if let date = row.value {
-             //   self.viewModel.dueDate = date
-                  row.baseCell.textLabel?.textColor = .blue
-                  row.baseCell.detailTextLabel?.textColor = .blue
-              }
-            }
-          }
-        */
-    /*
-        +++ Section(header: "Date Started With Nasi", footer: "")
-              // <<< DateRow(){
-              //     $0.title = "Date"
-              //     $0.value = //Date(timeIntervalSinceReferenceDate: 0)
-             //  }
-        form.last!  <<< DateInlineRow() {
-            $0.title = "Select Date"
-            $0.value = Date()
         }
-        */
-        
-       
-        
-        
-        
-
-        
-      
-      
-        
-        
-        
-
-        
     
     override func valueHasBeenChanged(for row: BaseRow, oldValue: Any?, newValue: Any?) {
+        
         /*
-        if row.section === form[0] {
-            print("Single Selection:\((row.section as! SelectableSection<ImageCheckRow<String>>).selectedRow()?.baseValue ?? "No row selected")")
-        }
-        */
-        //else
-        if row.section === form[1] {
+        var values = (row.section as! SelectableSection<ImageCheckRow<String>>).selectedRows().map({$0.baseValue!}) as! [String]
+         */
+        
+        let section = row.section!.index!
+        print(section)
+         //print(values)
+        
+     if section == 5 {
+         var values = (row.section as! SelectableSection<ImageCheckRow<String>>).selectedRows().map({$0.baseValue!}) as! [String]
+          print(values)
+         self.currentUser.familyTypes = values
+     }
+     if section == 6 {
+         
+         var values = (row.section as! SelectableSection<ImageCheckRow<String>>).selectedRows().map({$0.baseValue!}) as! [String]
+          print(values)
+         self.currentUser.singlesPlan = values
+     }
+     if section ==  7 {
+         
+         var values = (row.section as! SelectableSection<ImageCheckRow<String>>).selectedRows().map({$0.baseValue!}) as! [String]
+          print(values)
+          self.currentUser.singlesType = values
+     }
+     if section == 8 {
+         
+         var values = (row.section as! SelectableSection<ImageCheckRow<String>>).selectedRows().map({$0.baseValue!}) as! [String]
+          print(values)
+          self.currentUser.yearsInShidduchimPrimary = values
+          
+     }
+     if section == 9 {
+         
+         
            var values = (row.section as! SelectableSection<ImageCheckRow<String>>).selectedRows().map({$0.baseValue!}) as! [String]
             print(values)
-            self.currentUser.yearsInShidduchimPrimary = values
+        self.currentUser.yearsInShidduchimSecondary = values
+          
         }
     }
-    
-    
-    
-   
 
     @IBAction func saveTapped(_ sender: Any) {
         updateShadchanUserInFireBase()
     }
     
     
-    
-    
      func updateShadchanUserInFireBase() {
          let revisedUser  = ShadchanUser(shadchanEmail: currentUser.shadchanEmail, shadchanFirstName: currentUser.shadchanFirstName, shadchanLastName: currentUser.shadchanLastName, shadchanUserID: currentUser.shadchanUserID, shadchanCell: currentUser.shadchanCell, shadchanTitle: currentUser.shadchanTitle, shadchanProfileImageURLString: currentUser.shadchanProfileImageURLString, yearsAsShadchan: currentUser.yearsAsShadchan, about: currentUser.about, familyTypes: currentUser.familyTypes, singlesPlan: currentUser.singlesPlan, singlesType: currentUser.singlesType, needToMeetSingle: currentUser.needToMeetSingle, welcomePaidBrainstormingSessions: currentUser.welcomePaidBrainstormingSessions, yearsInShidduchimPrimary: currentUser.yearsInShidduchimPrimary, yearsInShidduchimSecondary: currentUser.yearsInShidduchimSecondary, methodOfCommunicationPrimary: currentUser.methodOfCommunicationPrimary, methodOfCommunicationSecondary: currentUser.methodOfCommunicationSecondary)
-        /*
-         let revisedUser = ShadchanUser(shadchanEmail: currentUser.shadchanEmail, shadchanFirstName: currentUser.shadchanFirstName, shadchanLastName: currentUser.shadchanLastName, shadchanUserID: currentUser.shadchanUserID, shadchanCell: currentUser.shadchanCell, shadchanTitle: currentUser.shadchanTitle, shadchanProfileImageURLString: currentUser.shadchanProfileImageURLString, yearsAsShadchan: currentUser.yearsAsShadchan, about: currentUser.about, familyTypes: currentUser.familyTypes, singlesPlan: currentUser.singlesPlan, singlesType: currentUser.singlesType, needToMeetSingle: currentUser.needToMeetSingle, welcomePaidBrainstormingSessions: currentUser.welcomePaidBrainstormingSessions)
-        */
+      
         let dict = revisedUser.toAnyObject()
         let ref = currentUser.ref
         ref?.setValue(dict as! [AnyHashable : Any])
-        
-    }
-}
-    
-
-
-
-
-/*
-   form +++ Section("Callbacks") <<< SwitchRow("scr1") { $0.title = "Switch to turn red"; $0.value = false }
-        .onChange({ row in
-            if row.value == true {
-                row.cell.backgroundColor = .red
-            } else {
-                row.cell.backgroundColor = .black
-            }
-        })
-    
-    }
-        */
-    
-        
-        /*
- form +++ SelectableSection<ListCheckRow<String>>("Where do you live", selectionType: .singleSelection(enableDeselection: true))
-
-        
-        let continents = ["New York City", "Baltimore", "Lakewood", "Monsey", "Israel"]
-        
-        for option in continents {
-            form.last! <<< ListCheckRow<String>(option){ listRow in
-                listRow.title = option
-                listRow.selectableValue = option
-                listRow.value = nil
-            }
         }
-         */
+    }
+    
+
+
+
+
+
+        
+ 
             
        
         
