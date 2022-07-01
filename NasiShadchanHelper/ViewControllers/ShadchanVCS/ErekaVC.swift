@@ -139,12 +139,12 @@ class ErekaVC: FormViewController {
                     cell.accessoryType = .checkmark
             }
         }
-        //section 6
-        form +++ SelectableSection<ListCheckRow<String>>("Singles Plan - Check All That Apply", selectionType: .multipleSelection)
         
-        let SinglesPlan = ["Learning 1-3 years", "Learning 3-5 years", "Learning 5 plus","Part Time Learning", "Working"]
+        form +++ SelectableSection<ImageCheckRow<String>>("Singles Plan - Check All That Apply", selectionType: .multipleSelection)
+                                                                
+        let singlesPlan = ["Learning 1-3 years", "Learning 3-5 years", "Learning 5 plus","Part Time Learning", "Working"]
         
-        for option in SinglesPlan {
+        for option in singlesPlan {
             form.last! <<< ImageCheckRow<String>(){ lrow in
                 lrow.title = option
                 lrow.selectableValue = option
@@ -165,7 +165,67 @@ class ErekaVC: FormViewController {
                     cell.accessoryType = .checkmark
             }
         }
-            
+        
+        //section 7
+        form +++ SelectableSection<ImageCheckRow<String>>("Singles Type - Check All That Apply", selectionType: .multipleSelection)
+                                                                
+        let singlesType = ["Yeshivish","Toradig","Baale Batish", "Chasidish", "Heimish", "Sefardi", "Modern Orthodox"]
+        
+        for option in singlesType {
+            form.last! <<< ImageCheckRow<String>(){ lrow in
+                lrow.title = option
+                lrow.selectableValue = option
+                
+                let currentElement = option
+                let arry = currentUser.singlesTypes
+                let check = arry.contains(currentElement)
+                if check == true {
+                
+                lrow.value =  currentElement
+                } else {
+                    lrow.value = nil
+                }
+                
+                }.cellSetup { cell, _ in
+                    cell.trueImage = UIImage(named: "selectedRectangle")!
+                    cell.falseImage = UIImage(named: "unselectedRectangle")!
+                    cell.accessoryType = .checkmark
+            }
+        }
+        
+        
+        
+        
+        
+        /*
+        //section 7
+        form +++ SelectableSection<ListCheckRow<String>>("Singles Type - Check All That Apply", selectionType: .multipleSelection)
+                                                                
+        let singlesTypes = ["Yeshivish","Toradig","Baale Batish", "Chasidish", "Heimish", "Sefardi", "Modern Orthodox"]
+        
+        for option in singlesTypes {
+            form.last! <<< ImageCheckRow<String>(){ lrow in
+                lrow.title = option
+                lrow.selectableValue = option
+                
+                let currentElement = option
+                let arry = currentUser.singlesTypes
+                let check = arry.contains(currentElement)
+                if check == true {
+                
+                lrow.value =  currentElement
+                } else {
+                    lrow.value = nil
+                }
+                
+                }.cellSetup { cell, _ in
+                    cell.trueImage = UIImage(named: "selectedRectangle")!
+                    cell.falseImage = UIImage(named: "unselectedRectangle")!
+                    cell.accessoryType = .checkmark
+            }
+        }
+        */
+        /*
         //section 7
         form +++ SelectableSection<ListCheckRow<String>>("Singles Type - Check All That Apply", selectionType: .multipleSelection)
                                                                 
@@ -192,6 +252,7 @@ class ErekaVC: FormViewController {
                     cell.accessoryType = .checkmark
             }
         }
+         */
         //section 8
         var options = ["1-3 Years in shidduchim","3-5 Years","5-10 Years","10 Plus Years"]
 
@@ -362,16 +423,15 @@ for option in options {
         DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds)
         {
          hudView.hide()
-        //self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
        }
     }
     
     
-     let singlesTypes = ["Yeshivish","Toradig","Baale Batish"]
-    let singlesPlan = ["Learning 1-3 years", "Learning 3-5 years","Working"]
+    
     
      func updateShadchanUserInFireBase() {
-         let revisedUser  = ShadchanUser(shadchanEmail: currentUser.shadchanEmail, shadchanFirstName: currentUser.shadchanFirstName, shadchanLastName: currentUser.shadchanLastName, shadchanUserID: currentUser.shadchanUserID, shadchanCell: currentUser.shadchanCell, shadchanTitle: currentUser.shadchanTitle, shadchanProfileImageURLString: currentUser.shadchanProfileImageURLString, yearsAsShadchan: currentUser.yearsAsShadchan, about: currentUser.about, familyTypes: currentUser.familyTypes, singlesPlan: singlesPlan, singlesTypes: singlesTypes, needToMeetSingle: currentUser.needToMeetSingle, welcomePaidBrainstormingSessions: currentUser.welcomePaidBrainstormingSessions, yearsInShidduchimPrimary: currentUser.yearsInShidduchimPrimary, yearsInShidduchimSecondary: currentUser.yearsInShidduchimSecondary, methodOfCommunicationPrimary: currentUser.methodOfCommunicationPrimary, methodOfCommunicationSecondary: currentUser.methodOfCommunicationSecondary)
+         let revisedUser  = ShadchanUser(shadchanEmail: currentUser.shadchanEmail, shadchanFirstName: currentUser.shadchanFirstName, shadchanLastName: currentUser.shadchanLastName, shadchanUserID: currentUser.shadchanUserID, shadchanCell: currentUser.shadchanCell, shadchanTitle: currentUser.shadchanTitle, shadchanProfileImageURLString: currentUser.shadchanProfileImageURLString, yearsAsShadchan: currentUser.yearsAsShadchan, about: currentUser.about, familyTypes: currentUser.familyTypes, singlesPlan: currentUser.singlesPlan, singlesTypes: currentUser.singlesTypes, needToMeetSingle: currentUser.needToMeetSingle, welcomePaidBrainstormingSessions: currentUser.welcomePaidBrainstormingSessions, yearsInShidduchimPrimary: currentUser.yearsInShidduchimPrimary, yearsInShidduchimSecondary: currentUser.yearsInShidduchimSecondary, methodOfCommunicationPrimary: currentUser.methodOfCommunicationPrimary, methodOfCommunicationSecondary: currentUser.methodOfCommunicationSecondary)
       
         let dict = revisedUser.toAnyObject()
         let ref = currentUser.ref

@@ -985,7 +985,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NasiShadchanHelper/NasiShadchanHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31.9;
+				CURRENT_PROJECT_VERSION = 40.0;
 				DEVELOPMENT_TEAM = P77A2352BM;
 				INFOPLIST_FILE = NasiShadchanHelper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -993,7 +993,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 31.9;
+				MARKETING_VERSION = 40.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AviPogrow.NasiShadchanHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1008,7 +1008,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NasiShadchanHelper/NasiShadchanHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31.9;
+				CURRENT_PROJECT_VERSION = 40.0;
 				DEVELOPMENT_TEAM = P77A2352BM;
 				INFOPLIST_FILE = NasiShadchanHelper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1016,7 +1016,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 31.9;
+				MARKETING_VERSION = 40.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AviPogrow.NasiShadchanHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
