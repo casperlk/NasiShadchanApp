@@ -52,6 +52,10 @@ class UserProfileVC: UITableViewController {
         fetchUser()
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+        fetchUser()
+    }
     
     func fetchUser(){
         
@@ -99,26 +103,26 @@ class UserProfileVC: UITableViewController {
         titleLabel.text = currentUser.shadchanTitle
         
         
-        //singlesPlanLabel.text =
-        //currentUser.singlesPlan
+        singlesPlanLabel.text =
+        currentUser.singlesPlan.joined(separator: ",")
         
-        //familyTypeLabel.text =
-        //currentUser.familyTypes
+        familyTypeLabel.text =
+        currentUser.familyTypes.joined(separator: ",")
         
-        //singlesTypeLabel.text =
-        //currentUser.singlesType
+        singlesTypeLabel.text =
+        currentUser.singlesTypes.joined(separator: ",")
         
         // professional bio
         numberOfYearsLabel.text =
         currentUser.yearsAsShadchan
         // yes/No
         
-        let primaryYearsStringArry = currentUser.yearsInShidduchimSecondary
+        let primaryYearsStringArry = currentUser.yearsInShidduchimPrimary
         
         let primaryJoined = currentUser.yearsInShidduchimPrimary.joined(separator: " - ")
         
         yearsInShidduchimPrimary.text = primaryJoined
-        //yearsInShidduchimSecondary.text = currentUser.yearsInShidduchimPrimary
+        yearsInShidduchimSecondary.text = currentUser.yearsInShidduchimSecondary.joined(separator: ",")
         
         communicationMethodPreferredLabel.text = currentUser.methodOfCommunicationPrimary
         communicationMethodSecondaryLabel.text = currentUser.methodOfCommunicationSecondary

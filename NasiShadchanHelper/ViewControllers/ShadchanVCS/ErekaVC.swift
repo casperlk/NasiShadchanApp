@@ -24,6 +24,7 @@ class ErekaVC: FormViewController {
     override func viewDidLoad() {
        super.viewDidLoad()
         
+        
     //1 section 0
      form +++ Section("Shadchan Name")
           <<< TextRow() {
@@ -170,13 +171,13 @@ class ErekaVC: FormViewController {
                                                                 
         let singleType = ["Yeshivish","Toradig","Baale Batish", "Chasidish", "Heimish", "Sefardi", "Modern Orthodox"]
         
-        for option in SinglesPlan {
+        for option in singleType {
             form.last! <<< ImageCheckRow<String>(){ lrow in
                 lrow.title = option
                 lrow.selectableValue = option
                 
                 let currentElement = option
-                let arry = currentUser.singlesType
+                let arry = currentUser.singlesTypes
                 let check = arry.contains(currentElement)
                 if check == true {
                 
@@ -192,9 +193,9 @@ class ErekaVC: FormViewController {
             }
         }
         //section 8
-        let options = ["N/A","1-3 Years","3-5 Years","5-10 Years","10 Plus Years"]
+        var options = ["1-3 Years in shidduchim","3-5 Years","5-10 Years","10 Plus Years"]
 
-        form +++ SelectableSection<ImageCheckRow<String>>("What PRIMARY range do you specialize in?", selectionType: .multipleSelection)
+        form +++ SelectableSection<ImageCheckRow<String>>("What PRIMARY age range do you specialize in?", selectionType: .multipleSelection)
         
         for option in options {
             form.last! <<< ImageCheckRow<String>(){ lrow in
@@ -219,7 +220,10 @@ class ErekaVC: FormViewController {
         }
     
         //section 9
-form +++ SelectableSection<ImageCheckRow<String>>("What SECONDARY range do you specialize in?", selectionType: .multipleSelection)
+form +++ SelectableSection<ImageCheckRow<String>>("What SECONDARY age range do you specialize in?", selectionType: .multipleSelection)
+        
+        //section 9
+ options = ["N/A","1-3 Years","3-5 Years","5-10 Years","10 Plus Years"]
 
 for option in options {
    form.last! <<< ImageCheckRow<String>(option){ lrow in
@@ -227,7 +231,7 @@ for option in options {
        lrow.selectableValue = option
        
        let currentElement = option
-       let arry = currentUser.yearsInShidduchimPrimary
+       let arry = currentUser.yearsInShidduchimSecondary
        let check = arry.contains(currentElement)
        if check == true {
        
@@ -300,13 +304,9 @@ for option in options {
     
     override func valueHasBeenChanged(for row: BaseRow, oldValue: Any?, newValue: Any?) {
         
-        /*
-        var values = (row.section as! SelectableSection<ImageCheckRow<String>>).selectedRows().map({$0.baseValue!}) as! [String]
-         */
-        
         let section = row.section!.index!
         print(section)
-         //print(values)
+        
         
      if section == 5 {
          var values = (row.section as! SelectableSection<ImageCheckRow<String>>).selectedRows().map({$0.baseValue!}) as! [String]
@@ -323,7 +323,7 @@ for option in options {
          
          var values = (row.section as! SelectableSection<ImageCheckRow<String>>).selectedRows().map({$0.baseValue!}) as! [String]
           print(values)
-          self.currentUser.singlesType = values
+          self.currentUser.singlesTypes = values
      }
      if section == 8 {
          
@@ -343,12 +343,35 @@ for option in options {
     }
 
     @IBAction func saveTapped(_ sender: Any) {
-        updateShadchanUserInFireBase()
+        saveDataToFirebase()
     }
     
     
+    func saveDataToFirebase() {
+        
+        guard let mainView = navigationController?.parent?.view
+            else { return }
+          
+        let hudView = HudView.hud(inView: view, animated: true)
+         hudView.text = "Saved"
+       
+       
+        updateShadchanUserInFireBase()
+        
+        let delayInSeconds = 1.9
+        DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds)
+        {
+         hudView.hide()
+        //self.navigationController?.popViewController(animated: true)
+       }
+    }
+    
+    
+     let singlesTypes = ["Yeshivish","Toradig","Baale Batish"]
+    let singlesPlan = ["Learning 1-3 years", "Learning 3-5 years","Working"]
+    
      func updateShadchanUserInFireBase() {
-         let revisedUser  = ShadchanUser(shadchanEmail: currentUser.shadchanEmail, shadchanFirstName: currentUser.shadchanFirstName, shadchanLastName: currentUser.shadchanLastName, shadchanUserID: currentUser.shadchanUserID, shadchanCell: currentUser.shadchanCell, shadchanTitle: currentUser.shadchanTitle, shadchanProfileImageURLString: currentUser.shadchanProfileImageURLString, yearsAsShadchan: currentUser.yearsAsShadchan, about: currentUser.about, familyTypes: currentUser.familyTypes, singlesPlan: currentUser.singlesPlan, singlesType: currentUser.singlesType, needToMeetSingle: currentUser.needToMeetSingle, welcomePaidBrainstormingSessions: currentUser.welcomePaidBrainstormingSessions, yearsInShidduchimPrimary: currentUser.yearsInShidduchimPrimary, yearsInShidduchimSecondary: currentUser.yearsInShidduchimSecondary, methodOfCommunicationPrimary: currentUser.methodOfCommunicationPrimary, methodOfCommunicationSecondary: currentUser.methodOfCommunicationSecondary)
+         let revisedUser  = ShadchanUser(shadchanEmail: currentUser.shadchanEmail, shadchanFirstName: currentUser.shadchanFirstName, shadchanLastName: currentUser.shadchanLastName, shadchanUserID: currentUser.shadchanUserID, shadchanCell: currentUser.shadchanCell, shadchanTitle: currentUser.shadchanTitle, shadchanProfileImageURLString: currentUser.shadchanProfileImageURLString, yearsAsShadchan: currentUser.yearsAsShadchan, about: currentUser.about, familyTypes: currentUser.familyTypes, singlesPlan: singlesPlan, singlesTypes: singlesTypes, needToMeetSingle: currentUser.needToMeetSingle, welcomePaidBrainstormingSessions: currentUser.welcomePaidBrainstormingSessions, yearsInShidduchimPrimary: currentUser.yearsInShidduchimPrimary, yearsInShidduchimSecondary: currentUser.yearsInShidduchimSecondary, methodOfCommunicationPrimary: currentUser.methodOfCommunicationPrimary, methodOfCommunicationSecondary: currentUser.methodOfCommunicationSecondary)
       
         let dict = revisedUser.toAnyObject()
         let ref = currentUser.ref

@@ -26,7 +26,7 @@ class ShadchanUser: NSObject {
     var about = ""
     var familyTypes: [String] = []
     var singlesPlan: [String] = []
-    var singlesType: [String] = []
+    var singlesTypes: [String] = []
     
     var welcomePaidBrainstormingSessions: String = ""
     var needToMeetSingle: String = ""
@@ -96,13 +96,13 @@ class ShadchanUser: NSObject {
         
         self.familyTypes = familyTypes ?? [String]()
         self.singlesPlan = singlesPlan ?? [String]()
-        self.singlesType =  singlesType ?? [String]()
+        self.singlesTypes =  singlesTypes ?? [String]()
         
     }
         
         // MARK: Initialize with user input data to send up
         // to firebase
-    init(shadchanEmail: String, shadchanFirstName: String, shadchanLastName: String, shadchanUserID: String,shadchanCell: String, shadchanTitle: String, shadchanProfileImageURLString: String, yearsAsShadchan: String,about: String,familyTypes:[String],singlesPlan:[String],singlesType:[String],needToMeetSingle: String, welcomePaidBrainstormingSessions: String,yearsInShidduchimPrimary:[String], yearsInShidduchimSecondary:[String],methodOfCommunicationPrimary:String, methodOfCommunicationSecondary:String, key: String = "") {
+    init(shadchanEmail: String, shadchanFirstName: String, shadchanLastName: String, shadchanUserID: String,shadchanCell: String, shadchanTitle: String, shadchanProfileImageURLString: String, yearsAsShadchan: String,about: String,familyTypes:[String],singlesPlan:[String],singlesTypes:[String],needToMeetSingle: String, welcomePaidBrainstormingSessions: String,yearsInShidduchimPrimary:[String], yearsInShidduchimSecondary:[String],methodOfCommunicationPrimary:String, methodOfCommunicationSecondary:String, key: String = "") {
             
           self.ref = nil
           self.key = key
@@ -122,7 +122,7 @@ class ShadchanUser: NSObject {
             
         self.familyTypes = familyTypes
         self.singlesPlan = singlesPlan
-        self.singlesType =  singlesType
+        self.singlesTypes =  singlesTypes
         
         self.yearsInShidduchimPrimary = yearsInShidduchimPrimary
         self.yearsInShidduchimSecondary = yearsInShidduchimSecondary
@@ -145,7 +145,7 @@ class ShadchanUser: NSObject {
         "about": about,
         "familyTypes": familyTypes,
         "singlesPlan": singlesPlan,
-        "singlesType": singlesType,
+        "singlesTypes": singlesTypes,
         "welcomePaidBrainstormingSessions": welcomePaidBrainstormingSessions,
         "needToMeetSingle": needToMeetSingle,
         "yearsInShidduchimPrimary": yearsInShidduchimPrimary,
