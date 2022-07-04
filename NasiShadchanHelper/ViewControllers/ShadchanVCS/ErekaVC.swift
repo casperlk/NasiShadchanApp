@@ -328,7 +328,7 @@ for option in options {
                 $0.title = "Open To Paid BrainStorming Sessions"
                 $0.selectorTitle = "Choose Y/N"
                 $0.options = ["Yes","No"]
-                $0.value = "Yes"    // initially selected
+                $0.value = self.currentUser.welcomePaidBrainstormingSessions ?? "N/A"    // initially selected
                 
                 $0.onChange { [unowned self] row in
                 self.currentUser.welcomePaidBrainstormingSessions = row.value ??

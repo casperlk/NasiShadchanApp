@@ -126,6 +126,9 @@ class UserProfileVC: UITableViewController {
         
         communicationMethodPreferredLabel.text = currentUser.methodOfCommunicationPrimary
         communicationMethodSecondaryLabel.text = currentUser.methodOfCommunicationSecondary
+        
+        needToMeetLabel.text = currentUser.needToMeetSingle
+        welcomeBrainstormLabel.text = currentUser.welcomePaidBrainstormingSessions
         aboutLabel.text = currentUser.about
         
         }

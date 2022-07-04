@@ -414,7 +414,6 @@
 			children = (
 				529A47A027F64EB00026A67E /* ErekaVC.swift */,
 				52257DE82809FFA8007A5A49 /* UserProfileVC.swift */,
-				529D1DFA286A78FF0030F193 /* custom.swift */,
 			);
 			path = ShadchanVCS;
 			sourceTree = "<group>";
@@ -494,6 +493,7 @@
 				52257DE62809CCC8007A5A49 /* EurekaPlayground.playground */,
 				3D9D5B8D2673D7F70063D252 /* NasiShadchanHelper.entitlements */,
 				CE3AC07324536729006B9FEA /* AppDelegate.swift */,
+				529D1DFA286A78FF0030F193 /* custom.swift */,
 				18E5DD132525CBC2005DD1DE /* Model */,
 				18A37F9E252F8A7E009C6BEB /* cells */,
 				1825F998252C3BA800448269 /* AuthViewControllers */,
