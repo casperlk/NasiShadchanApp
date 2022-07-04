@@ -73,7 +73,7 @@ class UserProfileVC: UITableViewController {
             self.shadchanUser = currentUser
             self.tableView.reloadData()
             
-            print("*****current user is \(self.shadchanUser)")
+            print("*****current user is \(currentUser.shadchanUserID)")
             
             
             

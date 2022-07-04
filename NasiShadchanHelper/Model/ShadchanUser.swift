@@ -48,6 +48,8 @@ class ShadchanUser: NSObject {
         
         let shadchanEmail = value["shadchanEmail"]  as? String
         let shadchanUserID = value["shadchanUserID"]  as? String
+        
+
         let shadchanLastName = value["shadchanLastName"]  as? String
         let shadchanFirstName = value["shadchanFirstName"]  as? String
         let shadchanTitle = value["shadchanTitle"]  as? String
@@ -102,7 +104,7 @@ class ShadchanUser: NSObject {
         
         // MARK: Initialize with user input data to send up
         // to firebase
-    init(shadchanEmail: String, shadchanFirstName: String, shadchanLastName: String, shadchanUserID: String,shadchanCell: String, shadchanTitle: String, shadchanProfileImageURLString: String, yearsAsShadchan: String,about: String,familyTypes:[String],singlesPlan:[String],singlesTypes:[String],needToMeetSingle: String, welcomePaidBrainstormingSessions: String,yearsInShidduchimPrimary:[String], yearsInShidduchimSecondary:[String],methodOfCommunicationPrimary:String, methodOfCommunicationSecondary:String, key: String = "") {
+    init(shadchanEmail: String, shadchanFirstName: String, shadchanLastName: String, shadchanUserID: String, shadchanCell: String, shadchanTitle: String, shadchanProfileImageURLString: String, yearsAsShadchan: String,about: String,familyTypes:[String],singlesPlan:[String],singlesTypes:[String],needToMeetSingle: String, welcomePaidBrainstormingSessions: String,yearsInShidduchimPrimary:[String], yearsInShidduchimSecondary:[String],methodOfCommunicationPrimary:String, methodOfCommunicationSecondary:String, key: String = "") {
             
           self.ref = nil
           self.key = key
