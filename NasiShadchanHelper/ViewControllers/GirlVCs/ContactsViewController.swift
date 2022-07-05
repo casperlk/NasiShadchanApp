@@ -26,10 +26,43 @@ class ContactsViewController: UITableViewController {
         populateGirlTextField()
     }
     
+    func addDashesToCellString(originalString: String) -> String{
+        var  finalString = ""
+        var startingString = originalString
+        let dash: Character = "-"
+        
+        print("the original string is\(originalString)")
+        if originalString != "N/A" {
+        
+        let firstDashIndex =  originalString.index(originalString.startIndex, offsetBy: 3)
+        let secondDashIndex = originalString.index(originalString.startIndex, offsetBy: 7)
+        
+        startingString.insert(dash, at: firstDashIndex)
+        startingString.insert(dash, at: secondDashIndex)
+        //let fourthIndex = cafeCombining.index(originalString.startIndex,
+       //                                       offsetBy: 3)
+        //let fourthChar = originalString[fourthIndex]
+        
+        finalString = startingString
+        } else {
+        finalString = "N/A"
+        }
+
+        return finalString
+    }
+    
     func populateToDiscussTextField() {
         
         let toDiscussNameString = selectedNasiGirl.firstNameOfAContactWhoKnowsGirl + " " + selectedNasiGirl.lastNameOfAContactWhoKnowsGirl
-        let toDiscussTelString = selectedNasiGirl.cellNumberOfContactWhoKNowsGirl
+        var toDiscussTelString = selectedNasiGirl.cellNumberOfContactWhoKNowsGirl
+        
+        let telString = addDashesToCellString(originalString: toDiscussTelString)
+        
+        print(telString)
+        
+        
+        
+        
         let toDiscussEmailstring = selectedNasiGirl.emailOfContactWhoKnowsGirl
         let relationToGirlString = selectedNasiGirl.relationshipOfThisContactToGirl
         
@@ -37,7 +70,7 @@ class ContactsViewController: UITableViewController {
         
         attributedText.append(NSAttributedString(string: "\n", attributes:  [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)]))
         
-        attributedText.append(NSAttributedString(string: toDiscussTelString, attributes: [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]))
+        attributedText.append(NSAttributedString(string: telString, attributes: [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]))
         attributedText.append(NSAttributedString(string: "\n", attributes:  [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)]))
         
         attributedText.append(NSAttributedString(string: toDiscussEmailstring, attributes: [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]))
@@ -52,6 +85,8 @@ class ContactsViewController: UITableViewController {
         
         let toReddNameString = selectedNasiGirl.firstNameOfPersonToContactToReddShidduch + " " + selectedNasiGirl.lastNameOfPersonToContactToReddShidduch
         let toReddTelString = selectedNasiGirl.cellNumberOfContactToReddShidduch
+        
+        let telString = addDashesToCellString(originalString: toReddTelString)
         let toReddEmailstring = selectedNasiGirl.emailOfContactToReddShidduch
         let relationToGirlString = selectedNasiGirl.relationshipOfReddShidduchContactToGirl
         
@@ -60,7 +95,7 @@ class ContactsViewController: UITableViewController {
         
         attributedText.append(NSAttributedString(string: "\n", attributes:  [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)]))
         
-        attributedText.append(NSAttributedString(string: toReddTelString, attributes: [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]))
+        attributedText.append(NSAttributedString(string: telString, attributes: [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]))
         attributedText.append(NSAttributedString(string: "\n", attributes:  [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)]))
         
         attributedText.append(NSAttributedString(string: toReddEmailstring, attributes: [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]))
@@ -75,6 +110,9 @@ class ContactsViewController: UITableViewController {
         
         let girlNameString = selectedNasiGirl.nameSheIsCalledOrKnownBy + " " + selectedNasiGirl.lastNameOfGirl
         let girlTelString = selectedNasiGirl.girlsCellNumber
+        
+        let telString = addDashesToCellString(originalString: girlTelString)
+        
         let girlEmailstring = selectedNasiGirl.girlsEmailAddress
         
         
@@ -83,7 +121,7 @@ class ContactsViewController: UITableViewController {
         
         attributedText.append(NSAttributedString(string: "\n", attributes:  [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)]))
         
-        attributedText.append(NSAttributedString(string: girlTelString, attributes: [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]))
+        attributedText.append(NSAttributedString(string: telString, attributes: [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]))
         attributedText.append(NSAttributedString(string: "\n", attributes:  [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)]))
         
         attributedText.append(NSAttributedString(string: girlEmailstring, attributes: [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]))
@@ -102,7 +140,8 @@ class ContactsViewController: UITableViewController {
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = self
         
-        let toDiscussTelString = selectedNasiGirl.cellNumberOfContactWhoKNowsGirl
+        let toDiscussTelString =
+        selectedNasiGirl.cellNumberOfContactWhoKNowsGirl
          
         // Configure the fields of the interface.
         composeVC.recipients = [toDiscussTelString]
@@ -131,7 +170,6 @@ class ContactsViewController: UITableViewController {
     
     @IBAction func callContactToRedd(_ sender: Any) {
         Utility.makeACall(selectedNasiGirl.cellNumberOfContactToReddShidduch)
-      
     }
     
     @IBAction func textContactToRedd(_ sender: Any) {
@@ -182,8 +220,6 @@ class ContactsViewController: UITableViewController {
         whatsAppTheToRedd()
     }
     
-    
-    
     @IBAction func girlWappTapped(_ sender: Any) {
         whatsAppTheGirl()
     }
@@ -191,7 +227,9 @@ class ContactsViewController: UITableViewController {
     func whatsAppTheToDisccuss(){
         // 1
         let url = "https://wa.me/1"
-        let number = selectedNasiGirl.cellNumberOfContactWhoKNowsGirl
+        // let url2 = "https://wa.me/?text=I'm%20inquiring%20about%20the%20apartment%20lising"
+        let number =
+        selectedNasiGirl.cellNumberOfContactWhoKNowsGirl
         let urlWhatsAppNumb = url + number
         // 2
         if let urlWhatsAppNumbString = urlWhatsAppNumb.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {

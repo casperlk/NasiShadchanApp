@@ -25,6 +25,7 @@ class NasiBoy: NSObject {
     var dob = ""
     var sendResumeEmail = ""
     var sendResumeText = ""
+    var photoUrl = ""
 
     init(snapshot: DataSnapshot) {
     //let value = snapshot.value as! [String: AnyObject]

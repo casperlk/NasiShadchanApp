@@ -20,16 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var handle: AuthStateDidChangeListenerHandle?
     
+    // solve dark mode by keeping it in light mode always
     var window: UIWindow? {
       didSet {
         window?.overrideUserInterfaceStyle = .light
       }
     }
 
-    
-    
     class func instance() -> AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
 
+    
     override init () {
         FirebaseApp.configure()
         FirebaseConfiguration.shared.setLoggerLevel(.min)
@@ -53,14 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           if user == nil {
              // print("the state of user is \(user!.debugDescription)")
               
+            self.makingRootFlow(Constant.AppRootFlow.kAuthVc)
               
-              
-              
-              self.makingRootFlow(Constant.AppRootFlow.kAuthVc)
-              
-              
-              
-           // self.navigationController?.popToRootViewController(animated: true)
+            // self.navigationController?.popToRootViewController(animated: true)
           } else {
               print("the state of user is \(user!.debugDescription)")
               
@@ -71,14 +66,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
               self.makingRootFlow(Constant.AppRootFlow.kEnterApp)
           }
             
-            
+            }
         
-        }
-        
-        
-        
-        
-       // if UserInfo.currentUserExists {
+    // if UserInfo.currentUserExists {
        //      self.makingRootFlow(Constant.AppRootFlow.kEnterApp)
        // } else {
       //       self.makingRootFlow(Constant.AppRootFlow.kAuthVc)
@@ -89,6 +79,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
+    
+    /*
+    func createNewShadchanUserInFirebase(){
+        
+        let userID = Auth.auth().currentUser?.uid ?? ""
+        let email = Auth.auth().currentUser?.email
+        
+        let shadchanEmail = email
+        let shadchanCell = "3109235682"
+        let shadchanFirstName = "Avi"
+        let shadchanLastName = "Pogrow"
+        let shadchanUserID = userID
+        let shadchanTitle = "Rabbi"
+        let shadchanProfileImageURLString = ""
+        let yearsAsShadchan = "10"
+        let about = "Best in the world"
+        let familyTypes: [String] = ["","",""]
+        let singlesPlan: [String] = ["","",""]
+        let singlesType: [String] = ["","",""]
+        
+        let newUser = ShadchanUser(shadchanEmail: shadchanEmail!, shadchanFirstName: shadchanFirstName, shadchanLastName: shadchanLastName, shadchanUserID: shadchanUserID, shadchanCell: shadchanCell, shadchanTitle: shadchanTitle, shadchanProfileImageURLString: shadchanProfileImageURLString, yearsAsShadchan: yearsAsShadchan, about: about, familyTypes: familyTypes, singlesPlan: singlesPlan, singlesType: singlesType)
+    
+        
+        let shadchanUserNodeRef = Database.database().reference(withPath: "NasiShadchanUserList")
+        
+        let shadchanChildRef = shadchanUserNodeRef.child(shadchanUserID)
+        
+        shadchanChildRef.setValue(newUser.toAnyObject())
+        
+    }
+     */
     
     func createNewDateInFirebase() {
         

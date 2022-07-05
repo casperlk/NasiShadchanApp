@@ -37,7 +37,8 @@ class ResumeViewController: UITableViewController {
 
     var ref: DatabaseReference!
     var sentSegmentChildArr = [[String : String]]()
-    lazy var  subject = selectedNasiGirl.firstNameOfGirl + " " + selectedNasiGirl.lastNameOfGirl + " Shidduch Information"
+    lazy var  subject = selectedNasiGirl.firstNameOfGirl + " " + selectedNasiGirl.lastNameOfGirl + " - Shidduch Information" +
+    " - Please confirm receipt"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,22 +59,14 @@ class ResumeViewController: UITableViewController {
         
         documentController = UIDocumentInteractionController(url:self.localImageURL)
         
-        
-        
-        
         documentController.presentOptionsMenu(from: sender.frame, in: self.view, animated: true)
         
     }
-    
-    
-    
     
     @IBAction func sendResumeWhatsAppTapped (sender: UIButton)  {
        
         
         documentController = UIDocumentInteractionController(url:self.localURL)
-        
-       
         documentController.presentOptionsMenu(from: sender.frame, in: self.view, animated: true)
         
     }
@@ -386,7 +379,7 @@ extension ResumeViewController: MFMailComposeViewControllerDelegate, MFMessageCo
         guard let mainView = navigationController?.parent?.view
             else { return }
           
-        let hudView = HudView.hud(inView: view, animated: true)
+        var hudView:HudView!
           
         if result.rawValue == 0 {
           // it was cancelled
@@ -398,14 +391,13 @@ extension ResumeViewController: MFMailComposeViewControllerDelegate, MFMessageCo
         
         if result.rawValue == 2 {
            // "It was sent"
+             hudView = HudView.hud(inView: view, animated: true)
             hudView.text = "Sent"
             addToSendNode()
-         
-        
-            
-        }
+         }
         if result.rawValue == 3 {
             // it failed
+            hudView = HudView.hud(inView: view, animated: true)
             hudView.text = "ooops.. failed to send"
         }
         
@@ -415,7 +407,10 @@ extension ResumeViewController: MFMailComposeViewControllerDelegate, MFMessageCo
         DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds)
         {
         
-        hudView.hide()
+            if hudView != nil {
+                hudView.hide()
+                
+            }
        
       }
     }
