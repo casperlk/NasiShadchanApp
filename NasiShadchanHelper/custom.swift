@@ -25,13 +25,14 @@ public class ImageCheckCell<T: Equatable> : Cell<T>, CellType {
 
     required public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
     }
-
+    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    /// Image for selected state
+    // Image for selected state
     lazy public var trueImage: UIImage = {
         return UIImage(named: "selected")!
     }()
@@ -74,5 +75,4 @@ public class ImageCheckCell<T: Equatable> : Cell<T>, CellType {
         row.select()
         row.deselect()
     }
-
 }

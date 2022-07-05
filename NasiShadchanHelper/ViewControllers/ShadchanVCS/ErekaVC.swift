@@ -10,7 +10,6 @@ import UIKit
 import Eureka
 import ImageRow
 
-
 class ErekaVC: FormViewController {
     
     private lazy var dateFormatter: DateFormatter = {
@@ -192,11 +191,6 @@ class ErekaVC: FormViewController {
                     cell.accessoryType = .checkmark
             }
         }
-        
-        
-        
-        
-        
         /*
         //section 7
         form +++ SelectableSection<ListCheckRow<String>>("Singles Type - Check All That Apply", selectionType: .multipleSelection)
@@ -426,10 +420,7 @@ for option in options {
         self.navigationController?.popViewController(animated: true)
        }
     }
-    
-    
-    
-    
+
      func updateShadchanUserInFireBase() {
          let revisedUser  = ShadchanUser(shadchanEmail: currentUser.shadchanEmail, shadchanFirstName: currentUser.shadchanFirstName, shadchanLastName: currentUser.shadchanLastName, shadchanUserID: currentUser.shadchanUserID, shadchanCell: currentUser.shadchanCell, shadchanTitle: currentUser.shadchanTitle, shadchanProfileImageURLString: currentUser.shadchanProfileImageURLString, yearsAsShadchan: currentUser.yearsAsShadchan, about: currentUser.about, familyTypes: currentUser.familyTypes, singlesPlan: currentUser.singlesPlan, singlesTypes: currentUser.singlesTypes, needToMeetSingle: currentUser.needToMeetSingle, welcomePaidBrainstormingSessions: currentUser.welcomePaidBrainstormingSessions, yearsInShidduchimPrimary: currentUser.yearsInShidduchimPrimary, yearsInShidduchimSecondary: currentUser.yearsInShidduchimSecondary, methodOfCommunicationPrimary: currentUser.methodOfCommunicationPrimary, methodOfCommunicationSecondary: currentUser.methodOfCommunicationSecondary)
       
