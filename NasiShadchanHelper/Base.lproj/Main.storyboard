@@ -443,7 +443,6 @@
                         <segue destination="3cg-3Q-dJq" kind="relationship" relationship="viewControllers" id="Wbl-ao-Cgu"/>
                         <segue destination="vrw-cc-emg" kind="relationship" relationship="viewControllers" id="gBX-Ep-fgK"/>
                         <segue destination="Kie-3Y-l51" kind="relationship" relationship="viewControllers" id="Tib-lT-mC6"/>
-                        <segue destination="fBE-bd-Pv8" kind="relationship" relationship="viewControllers" id="sRa-fO-GzP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QQg-7o-HRW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2545,7 +2544,7 @@
                             <tableViewSection headerTitle="Shadchan Business Bio" id="wow-OY-6Nl">
                                 <cells/>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Years As Shadvhan" id="HHy-Ui-vho">
+                            <tableViewSection headerTitle="Years As Shadchan" id="HHy-Ui-vho">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="hNv-U6-OmX">
                                         <rect key="frame" x="20" y="1208" width="374" height="51.5"/>

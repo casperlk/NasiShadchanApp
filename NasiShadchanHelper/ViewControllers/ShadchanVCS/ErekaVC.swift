@@ -314,7 +314,7 @@ for option in options {
               $0.title = "Years as A Shadchan"
               $0.selectorTitle = "Choose a Range"
               $0.options = ["1-3","3-5","5-10","10 Plus"]
-              $0.value = "1-3"    // initially selected
+              $0.value = self.currentUser.yearsAsShadchan ?? "N/A"     // initially selected
              
              $0.onChange { [unowned self] row in
             self.currentUser.yearsAsShadchan = row.value ??
