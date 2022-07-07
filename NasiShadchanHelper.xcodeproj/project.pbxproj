@@ -42,6 +42,7 @@
 		3DC1849D258BBE6A00B529F0 /* GirlSentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1849C258BBE6A00B529F0 /* GirlSentCell.swift */; };
 		3DC1849F258C13AD00B529F0 /* NasiGirl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1849E258C13AD00B529F0 /* NasiGirl.swift */; };
 		3DC184A125936A7700B529F0 /* SentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC184A025936A7700B529F0 /* SentTableViewCell.swift */; };
+		5209A1E828706F180023EEDE /* EditBoysVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209A1E728706F180023EEDE /* EditBoysVC.swift */; };
 		52257DE92809FFA8007A5A49 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52257DE82809FFA8007A5A49 /* UserProfileVC.swift */; };
 		5228CB0E27999EFB00EDF103 /* NasiDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228CB0D27999EFB00EDF103 /* NasiDate.swift */; };
 		5228CB10279C492A00EDF103 /* AllDatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228CB0F279C492A00EDF103 /* AllDatesViewController.swift */; };
@@ -56,6 +57,7 @@
 		5228CB2527B4122B00EDF103 /* ShadchanGirlNotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228CB2427B4122B00EDF103 /* ShadchanGirlNotesVC.swift */; };
 		5228CB2727B4163300EDF103 /* ShadchanGirlNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228CB2627B4163300EDF103 /* ShadchanGirlNote.swift */; };
 		529A47A127F64EB00026A67E /* ErekaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529A47A027F64EB00026A67E /* ErekaVC.swift */; };
+		529D1DFB286A78FF0030F193 /* custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529D1DFA286A78FF0030F193 /* custom.swift */; };
 		52A41BC4277F34AB00FE7C7A /* AllBoysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A41BC3277F34AB00FE7C7A /* AllBoysViewController.swift */; };
 		52A41BC6277F3BF700FE7C7A /* NasiBoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A41BC5277F3BF700FE7C7A /* NasiBoy.swift */; };
 		52A41BC8279353D500FE7C7A /* BoyDetailsVCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A41BC7279353D500FE7C7A /* BoyDetailsVCTableViewController.swift */; };
@@ -137,6 +139,7 @@
 		3DC1849C258BBE6A00B529F0 /* GirlSentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GirlSentCell.swift; sourceTree = "<group>"; };
 		3DC1849E258C13AD00B529F0 /* NasiGirl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasiGirl.swift; sourceTree = "<group>"; };
 		3DC184A025936A7700B529F0 /* SentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentTableViewCell.swift; sourceTree = "<group>"; };
+		5209A1E728706F180023EEDE /* EditBoysVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBoysVC.swift; sourceTree = "<group>"; };
 		52257DE62809CCC8007A5A49 /* EurekaPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = EurekaPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		52257DE82809FFA8007A5A49 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		5228CB0D27999EFB00EDF103 /* NasiDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasiDate.swift; sourceTree = "<group>"; };
@@ -152,6 +155,7 @@
 		5228CB2427B4122B00EDF103 /* ShadchanGirlNotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadchanGirlNotesVC.swift; sourceTree = "<group>"; };
 		5228CB2627B4163300EDF103 /* ShadchanGirlNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadchanGirlNote.swift; sourceTree = "<group>"; };
 		529A47A027F64EB00026A67E /* ErekaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErekaVC.swift; sourceTree = "<group>"; };
+		529D1DFA286A78FF0030F193 /* custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = custom.swift; sourceTree = "<group>"; };
 		52A41BC3277F34AB00FE7C7A /* AllBoysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBoysViewController.swift; sourceTree = "<group>"; };
 		52A41BC5277F3BF700FE7C7A /* NasiBoy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasiBoy.swift; sourceTree = "<group>"; };
 		52A41BC7279353D500FE7C7A /* BoyDetailsVCTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoyDetailsVCTableViewController.swift; sourceTree = "<group>"; };
@@ -432,6 +436,7 @@
 				52A41BC7279353D500FE7C7A /* BoyDetailsVCTableViewController.swift */,
 				52A41BC3277F34AB00FE7C7A /* AllBoysViewController.swift */,
 				5228CB1D27A5D02E00EDF103 /* AddEditBoyViewController.swift */,
+				5209A1E728706F180023EEDE /* EditBoysVC.swift */,
 			);
 			path = BoyVCS;
 			sourceTree = "<group>";
@@ -488,6 +493,7 @@
 				52257DE62809CCC8007A5A49 /* EurekaPlayground.playground */,
 				3D9D5B8D2673D7F70063D252 /* NasiShadchanHelper.entitlements */,
 				CE3AC07324536729006B9FEA /* AppDelegate.swift */,
+				529D1DFA286A78FF0030F193 /* custom.swift */,
 				18E5DD132525CBC2005DD1DE /* Model */,
 				18A37F9E252F8A7E009C6BEB /* cells */,
 				1825F998252C3BA800448269 /* AuthViewControllers */,
@@ -752,6 +758,7 @@
 				18E5DD152525CBCE005DD1DE /* NasiGirlsList.swift in Sources */,
 				52A41BC6277F3BF700FE7C7A /* NasiBoy.swift in Sources */,
 				529A47A127F64EB00026A67E /* ErekaVC.swift in Sources */,
+				529D1DFB286A78FF0030F193 /* custom.swift in Sources */,
 				3DC18495258809A100B529F0 /* ResearchViewController.swift in Sources */,
 				3DC1849D258BBE6A00B529F0 /* GirlSentCell.swift in Sources */,
 				CEC468DB245A217F0071EC85 /* ResumeViewController.swift in Sources */,
@@ -794,6 +801,7 @@
 				18AB903E252DC21100D9FCAB /* UserInfo.swift in Sources */,
 				3DC1849B258BBBF600B529F0 /* SentViewController.swift in Sources */,
 				5228CB0E27999EFB00EDF103 /* NasiDate.swift in Sources */,
+				5209A1E828706F180023EEDE /* EditBoysVC.swift in Sources */,
 				CE75EBBF2465CBFA0056A1D7 /* SavedSingleTableViewCell.swift in Sources */,
 				185AB885252F20190058F41D /* Variables.swift in Sources */,
 				52C18059280203B3005D3827 /* ShadchanUser.swift in Sources */,
@@ -981,7 +989,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NasiShadchanHelper/NasiShadchanHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31.8;
+				CURRENT_PROJECT_VERSION = 40.3;
 				DEVELOPMENT_TEAM = P77A2352BM;
 				INFOPLIST_FILE = NasiShadchanHelper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -989,7 +997,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 31.8;
+				MARKETING_VERSION = 40.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AviPogrow.NasiShadchanHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1004,7 +1012,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NasiShadchanHelper/NasiShadchanHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31.8;
+				CURRENT_PROJECT_VERSION = 40.3;
 				DEVELOPMENT_TEAM = P77A2352BM;
 				INFOPLIST_FILE = NasiShadchanHelper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1012,7 +1020,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 31.8;
+				MARKETING_VERSION = 40.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AviPogrow.NasiShadchanHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

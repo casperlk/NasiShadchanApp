@@ -80,6 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    /*
     func createNewShadchanUserInFirebase(){
         
         let userID = Auth.auth().currentUser?.uid ?? ""
@@ -108,6 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         shadchanChildRef.setValue(newUser.toAnyObject())
         
     }
+     */
     
     func createNewDateInFirebase() {
         
