@@ -15,8 +15,6 @@ class ShadchanGirlNotesVC: UITableViewController {
     var notesImageURLString = ""
     var textFieldString = ""
     var elevatorPitchFieldString = ""
-    
-//    var isEditingElevatorPitch: Bool = false
 
     
     var selectedGirlNote: ShadchanGirlNote!
@@ -39,24 +37,37 @@ class ShadchanGirlNotesVC: UITableViewController {
         
     }
     
+//    func getPerUserPerGirlNotesRef() -> NSObject {
+//        let allNotesRef = Database.database().reference().child("ShadchanNotesAndImagesOfNotes")
+//
+//          // get uid for current user
+//          guard let uid = Auth.auth().currentUser?.uid else { return nil }
+//
+//          let currentUserNotesRef = allNotesRef.child(uid)
+//          let currentGirlUID = selectedNasiGirl.key
+//
+//        return currentUserNotesRef.child(currentGirlUID)
+//    }
+    
     func fetchNoteForGirl() {
-      //self.view.showLoadingIndicator()
-      
-    //  get the node
-      let allNotesRef = Database.database().reference().child("ShadchanNotesAndImagesOfNotes")
+        
+        let allNotesRef = Database.database().reference().child("ShadchanNotesAndImagesOfNotes")
         
         // get uid for current user
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         let currentUserNotesRef = allNotesRef.child(uid)
         let currentGirlUID = selectedNasiGirl.key
-    
+        print("The type of currentUserNotesRef.child(currentGirlUID) is: ")
+        print(type(of: currentUserNotesRef.child(currentGirlUID)))
+        
+        //        let currentUserCurrentGirlNotesRef = getPerUserPerGirlNotesRef()
         let currentUserCurrentGirlNotesRef = currentUserNotesRef.child(currentGirlUID)
         
         currentUserCurrentGirlNotesRef.observe(.value, with: { snapshot in
-        
-//            let snapshot = snapshot as? DataSnapshot //unused code, cmlk commented out 6/10/22
-           let note = ShadchanGirlNote(snapshot: snapshot) //as! ShadchanGirlNote //unused code, cmlk commented out 6/10/22
+            
+            //            let snapshot = snapshot as? DataSnapshot //unused code, cmlk commented out 6/10/22
+            let note = ShadchanGirlNote(snapshot: snapshot) //as! ShadchanGirlNote //unused code, cmlk commented out 6/10/22
             
             print("the url String is\(note.key)\(note.notesImageURL)")
             
@@ -68,8 +79,8 @@ class ShadchanGirlNotesVC: UITableViewController {
             self.populateTextField()
             self.populateElevatorPitch()
             self.tableView.reloadData()
-     })
-   }
+        })
+    }
         
     
      func populateImageView() {

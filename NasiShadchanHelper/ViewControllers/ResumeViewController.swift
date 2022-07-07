@@ -13,28 +13,34 @@ import MessageUI
 
 class ResumeViewController: UITableViewController {
     
-   
+    
     @IBOutlet weak var girlProfileImageView: UIImageView!
     
     @IBOutlet weak var pdfView: PDFView!
     var selectedNasiGirl: NasiGirl!
     
+    
+    var elevatorPitchFieldString = ""
+    var selectedGirlNote: ShadchanGirlNote!
+    
+    
+    
     var documentController : UIDocumentInteractionController!
     
-
+    
     // set up url session for download
     // so we get delegate call backs
     lazy var downloadsSession: URLSession = {
-      let configuration = URLSessionConfiguration.default
+        let configuration = URLSessionConfiguration.default
         return URLSession(configuration: configuration,
-                             delegate: self,
-                             delegateQueue: nil)
-      }()
+                          delegate: self,
+                          delegateQueue: nil)
+    }()
     
     
     var localURL: URL!
     var localImageURL: URL!
-
+    
     var ref: DatabaseReference!
     var sentSegmentChildArr = [[String : String]]()
     lazy var  subject = selectedNasiGirl.firstNameOfGirl + " " + selectedNasiGirl.lastNameOfGirl + " - Shidduch Information" +
@@ -47,8 +53,9 @@ class ResumeViewController: UITableViewController {
         view.showLoadingIndicator()
         
         self.navigationItem.title =
-         selectedNasiGirl.nameSheIsCalledOrKnownBy + " " + selectedNasiGirl.lastNameOfGirl
+        selectedNasiGirl.nameSheIsCalledOrKnownBy + " " + selectedNasiGirl.lastNameOfGirl
         downloadDocument()
+        fetchNoteForGirl()
         downloadProfileImage()
     }
     
@@ -64,7 +71,7 @@ class ResumeViewController: UITableViewController {
     }
     
     @IBAction func sendResumeWhatsAppTapped (sender: UIButton)  {
-       
+        
         
         documentController = UIDocumentInteractionController(url:self.localURL)
         documentController.presentOptionsMenu(from: sender.frame, in: self.view, animated: true)
@@ -74,38 +81,38 @@ class ResumeViewController: UITableViewController {
     
     @IBAction func emailJustResumeTapped(_ sender: Any) {
         let documentAsImage = drawPDFfromURL(url: localURL)
-     let docAsData = documentAsImage?.jpegData(compressionQuality: 0.10)
-    if MFMailComposeViewController.canSendMail() {
-        let composeVC = MFMailComposeViewController()
-        
-        composeVC.mailComposeDelegate = self
-         
-        // Configure the fields of the interface.
-        //composeVC.setToRecipients(["address@example.com"])
-        composeVC.setSubject(subject)
-        //composeVC.setMessageBody("XXXXXX", isHTML: false)
-        composeVC.addAttachmentData(docAsData!, mimeType: "image/jpeg", fileName: "girls resume")
-        self.present(composeVC, animated: true, completion: nil)
-          }
+        let docAsData = documentAsImage?.jpegData(compressionQuality: 0.10)
+        if MFMailComposeViewController.canSendMail() {
+            let composeVC = MFMailComposeViewController()
+            
+            composeVC.mailComposeDelegate = self
+            
+            // Configure the fields of the interface.
+            //composeVC.setToRecipients(["address@example.com"])
+            composeVC.setSubject(subject)
+            composeVC.setMessageBody(elevatorPitchFieldString, isHTML: false)
+            composeVC.addAttachmentData(docAsData!, mimeType: "image/jpeg", fileName: "girls resume")
+            self.present(composeVC, animated: true, completion: nil)
+        }
     }
     
     @IBAction func emailJustPhotoTapped(_ sender: Any) {
         
         let selectedGirlProfileImage =  girlProfileImageView.image
-         let imageData = selectedGirlProfileImage?.jpegData(compressionQuality: 0.10)
+        let imageData = selectedGirlProfileImage?.jpegData(compressionQuality: 0.10)
         
         if MFMailComposeViewController.canSendMail() {
             let composeVC = MFMailComposeViewController()
             
             composeVC.mailComposeDelegate = self
-             
+            
             // Configure the fields of the interface.
             //composeVC.setToRecipients(["address@example.com"])
             composeVC.setSubject(subject)
             //composeVC.setMessageBody("XXXXXX", isHTML: false)
             composeVC.addAttachmentData(imageData!, mimeType: "image/jpeg", fileName: "girlsPhoto")
             self.present(composeVC, animated: true, completion: nil)
-       }
+        }
     }
     
     
@@ -115,8 +122,8 @@ class ResumeViewController: UITableViewController {
         // 3 sharing items
         // 1 Resume pdf as UIImage
         let documentAsImage = drawPDFfromURL(url: localURL)
-     let docAsData = documentAsImage?.jpegData(compressionQuality: 0.10)
-       let selectedGirlProfileImage =  girlProfileImageView.image
+        let docAsData = documentAsImage?.jpegData(compressionQuality: 0.10)
+        let selectedGirlProfileImage =  girlProfileImageView.image
         let imageData = selectedGirlProfileImage?.jpegData(compressionQuality: 0.10)
         
         // 2 profile image
@@ -129,33 +136,33 @@ class ResumeViewController: UITableViewController {
             let composeVC = MFMailComposeViewController()
             
             composeVC.mailComposeDelegate = self
-             
+            
             // Configure the fields of the interface.
             //composeVC.setToRecipients(["address@example.com"])
             composeVC.setSubject(subject)
-            //composeVC.setMessageBody("HelloXXXXXXXXX", isHTML: false)
+            composeVC.setMessageBody(elevatorPitchFieldString, isHTML: false)
             composeVC.addAttachmentData(imageData!, mimeType: "image/jpeg", fileName: "girlsPhoto")
             
             composeVC.addAttachmentData(docAsData!, mimeType: "image/jpeg", fileName: "girls resume")
             self.present(composeVC, animated: true, completion: nil)
-      }
+        }
     }
     @IBAction func textJustResumeTapped(_ sender: Any) {
         let documentAsImage = drawPDFfromURL(url: localURL)
-     let docAsData = documentAsImage?.jpegData(compressionQuality: 0.10)
+        let docAsData = documentAsImage?.jpegData(compressionQuality: 0.10)
         
         if !MFMessageComposeViewController.canSendText() {
             print("SMS services are not available")
         }
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = self
-         
+        
         // Configure the fields of the interface.
         //composeVC.recipients = ["3109235682"]
-        //composeVC.body = "HelloXXXXXXXXXX"
+        
         
         composeVC.addAttachmentData(docAsData!, typeIdentifier: "public.data", filename: "image.jpeg")
-         
+        composeVC.body = elevatorPitchFieldString
         // Present the view controller modally.
         self.present(composeVC, animated: true, completion: nil)
     }
@@ -163,18 +170,18 @@ class ResumeViewController: UITableViewController {
     @IBAction func textJustPhotoTapped(_ sender: Any) {
         
         let selectedGirlProfileImage =  girlProfileImageView.image
-         let imageData = selectedGirlProfileImage?.jpegData(compressionQuality: 0.10)
+        let imageData = selectedGirlProfileImage?.jpegData(compressionQuality: 0.10)
         
         if !MFMessageComposeViewController.canSendText() {
             print("SMS services are not available")
         }
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = self
-         
+        
         // Configure the fields of the interface.
-       // composeVC.recipients = ["3109235682"]
-       // composeVC.body = "Hello XXXXXXXXXXXX"
-
+        // composeVC.recipients = ["3109235682"]
+        // composeVC.body = "Hello XXXXXXXXXXXX"
+        
         composeVC.addAttachmentData(imageData!, typeIdentifier: "public.data", filename: "image.jpeg")
         // Present the view controller modally.
         self.present(composeVC, animated: true, completion: nil)
@@ -183,8 +190,8 @@ class ResumeViewController: UITableViewController {
     @IBAction func textBothTapped(_ sender: Any) {
         
         let documentAsImage = drawPDFfromURL(url: localURL)
-     let docAsData = documentAsImage?.jpegData(compressionQuality: 0.10)
-       let selectedGirlProfileImage =  girlProfileImageView.image
+        let docAsData = documentAsImage?.jpegData(compressionQuality: 0.10)
+        let selectedGirlProfileImage =  girlProfileImageView.image
         let imageData = selectedGirlProfileImage?.jpegData(compressionQuality: 0.10)
         
         if !MFMessageComposeViewController.canSendText() {
@@ -192,22 +199,39 @@ class ResumeViewController: UITableViewController {
         }
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = self
-         
+        
         // Configure the fields of the interface.
-       // composeVC.recipients = ["3109235682"]
-       // composeVC.body = "Hello XXXXXXXXXXXX"
+        // composeVC.recipients = ["3109235682"]
+        
         composeVC.addAttachmentData(docAsData!, typeIdentifier: "public.data", filename: "image.jpeg")
         
         composeVC.addAttachmentData(imageData!, typeIdentifier: "public.data", filename: "image.jpeg")
-      
-         
+        composeVC.body = elevatorPitchFieldString
+        
         // Present the view controller modally.
         self.present(composeVC, animated: true, completion: nil)
     }
     
+    func fetchNoteForGirl() {
+        
+        let allNotesRef = Database.database().reference().child("ShadchanNotesAndImagesOfNotes")
+        
+        // get uid for current user
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let currentUserNotesRef = allNotesRef.child(uid)
+        let currentGirlUID = selectedNasiGirl.key
+        let currentUserCurrentGirlNotesRef = currentUserNotesRef.child(currentGirlUID)
+        
+        currentUserCurrentGirlNotesRef.observe(.value, with: { snapshot in
+            let note = ShadchanGirlNote(snapshot: snapshot)
+            self.elevatorPitchFieldString = note.elevatorPitchTextString
+        })
+    }
+    
     
     func addToSendNode() {
-      
+        
         //let ShadchanUserUID = ""
         //"R6w4ccaV1mdnGQV6zndtltfDgWS2"
         let girlsUID = selectedNasiGirl.key
@@ -218,171 +242,171 @@ class ResumeViewController: UITableViewController {
         
         guard let ShadchanUserUID = Auth.auth().currentUser?.uid else { return }
         
-       
-       let sentResumeNodeRef = Database.database().reference().child("sentsSegemntWithTimeStamp").child(ShadchanUserUID)
+        
+        let sentResumeNodeRef = Database.database().reference().child("sentsSegemntWithTimeStamp").child(ShadchanUserUID)
         
         let newSendDict = ["timeStamp": sendTimeStamp,
                            "ShadchanUserUID": ShadchanUserUID,
-                            "girlsUID": girlsUID]
+                           "girlsUID": girlsUID]
         
         let ref = sentResumeNodeRef.childByAutoId()
         ref.setValue(newSendDict)
-        }
+    }
     
     func drawPDFfromURL(url: URL) -> UIImage? {
-           guard let document = CGPDFDocument(url as CFURL) else { return nil }
-           guard let page = document.page(at: 1) else { return nil }
-
-           let pageRect = page.getBoxRect(.mediaBox)
-           let renderer = UIGraphicsImageRenderer(size: pageRect.size)
-           let img = renderer.image { ctx in
-               UIColor.white.set()
-               ctx.fill(pageRect)
-
-               ctx.cgContext.translateBy(x: 0.0, y: pageRect.size.height)
-               ctx.cgContext.scaleBy(x: 1.0, y: -1.0)
-
-               ctx.cgContext.drawPDFPage(page)
-           }
-
-           return img
-       }
-   
+        guard let document = CGPDFDocument(url as CFURL) else { return nil }
+        guard let page = document.page(at: 1) else { return nil }
+        
+        let pageRect = page.getBoxRect(.mediaBox)
+        let renderer = UIGraphicsImageRenderer(size: pageRect.size)
+        let img = renderer.image { ctx in
+            UIColor.white.set()
+            ctx.fill(pageRect)
+            
+            ctx.cgContext.translateBy(x: 0.0, y: pageRect.size.height)
+            ctx.cgContext.scaleBy(x: 1.0, y: -1.0)
+            
+            ctx.cgContext.drawPDFPage(page)
+        }
+        
+        return img
+    }
+    
     /// Get local file path: download task stores tune here; AV player plays it.
     let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-
+    
 }
 extension ResumeViewController: URLSessionDownloadDelegate {
-  
+    
     func downloadDocument() {
         self.pdfView.showLoadingIndicator()
-     
+        
         let documentURL = URL(string: selectedNasiGirl.documentDownloadURLString )
         
-      let downloadTask = downloadsSession.downloadTask(with: documentURL!)
+        let downloadTask = downloadsSession.downloadTask(with: documentURL!)
         
-      downloadTask.resume()
-    
+        downloadTask.resume()
+        
     }
     
     func downloadProfileImage() {
-
+        
         let profileImageURL = URL(string: selectedNasiGirl.imageDownloadURLString )
         let downloadTask = downloadsSession.downloadTask(with: profileImageURL!)
-     
-      downloadTask.resume()
-     
+        
+        downloadTask.resume()
+        
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
-                  didFinishDownloadingTo location: URL) {
-      
-      let originalURL = downloadTask.originalRequest!.url!
-      let downloadType = downloadTask.originalRequest!.url!.pathExtension
-    
-      print("the download type is \(downloadType)")
-      if downloadType == "pdf" {
-         localURL = copyFromTempURLToLocalURL(remoteURL: originalURL, location: location)
-          
-      } else {
-        localImageURL = copyFromTempURLToLocalURL(remoteURL: originalURL, location: location)
-    }
-    
-     
+                    didFinishDownloadingTo location: URL) {
+        
+        let originalURL = downloadTask.originalRequest!.url!
+        let downloadType = downloadTask.originalRequest!.url!.pathExtension
+        
+        print("the download type is \(downloadType)")
+        if downloadType == "pdf" {
+            localURL = copyFromTempURLToLocalURL(remoteURL: originalURL, location: location)
+            
+        } else {
+            localImageURL = copyFromTempURLToLocalURL(remoteURL: originalURL, location: location)
+        }
+        
+        
         if localURL != nil && localImageURL != nil {
-    DispatchQueue.main.async {
-        //self.waitingForDataLabel.isHidden = true
-        self.setUpPDFView()
-        self.setupProfileImageFromLocalURL()
-        self.view.isUserInteractionEnabled = true
-        self.view.hideLoadingIndicator()
-        
-        
+            DispatchQueue.main.async {
+                //self.waitingForDataLabel.isHidden = true
+                self.setUpPDFView()
+                self.setupProfileImageFromLocalURL()
+                self.view.isUserInteractionEnabled = true
+                self.view.hideLoadingIndicator()
+                
+                
             }
-     }
-    
-   }
+        }
+        
+    }
     
     
     func setUpPDFView() {
-           
-           var document: PDFDocument!
-           
-           if  let pathURL = localURL {
-           document = PDFDocument(url: pathURL)
-           }
-           
-           if let document = document {
-               pdfView.displayMode = .singlePageContinuous
-               pdfView.autoScales = true
-               pdfView.displayDirection = .vertical
-               pdfView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
-               pdfView.document = document
-           }
-          self.pdfView.hideLoadingIndicator()
-       }
+        
+        var document: PDFDocument!
+        
+        if  let pathURL = localURL {
+            document = PDFDocument(url: pathURL)
+        }
+        
+        if let document = document {
+            pdfView.displayMode = .singlePageContinuous
+            pdfView.autoScales = true
+            pdfView.displayDirection = .vertical
+            pdfView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
+            pdfView.document = document
+        }
+        self.pdfView.hideLoadingIndicator()
+    }
     
     
     func setupProfileImageFromLocalURL() {
-         
-           if localImageURL != nil {
-           
-           //let localImageURL = URL(string: localURLAsString)
-           let imageData = try! Data(contentsOf: localImageURL!)
-           
-           let imageFromURl = UIImage(data: imageData)
+        
+        if localImageURL != nil {
+            
+            //let localImageURL = URL(string: localURLAsString)
+            let imageData = try! Data(contentsOf: localImageURL!)
+            
+            let imageFromURl = UIImage(data: imageData)
             self.girlProfileImageView.image = imageFromURl
-           }
-       }
+        }
+    }
     
     
     func copyFromTempURLToLocalURL(remoteURL: URL, location: URL) -> URL {
-      
+        
         // 1 get the original url we used to download
         // the document from fire base storage
-       //let sourceURL = URL(string: selectedSingle.documentDownloadURLString ?? "")!
+        //let sourceURL = URL(string: selectedSingle.documentDownloadURLString ?? "")!
         
         let sourceURL = remoteURL
-       // 2 create a file path pointing to the local
-       // document directory
-       let destinationURL = localFilePath(for: sourceURL)
-       print(destinationURL)
-       
-       // 3 get the default file manager
-       let fileManager = FileManager.default
-       
+        // 2 create a file path pointing to the local
+        // document directory
+        let destinationURL = localFilePath(for: sourceURL)
+        print(destinationURL)
+        
+        // 3 get the default file manager
+        let fileManager = FileManager.default
+        
         // clear out the destination url in case something
         // is there
         try? fileManager.removeItem(at: destinationURL)
-
-       do {
-         try fileManager.copyItem(at: location, to: destinationURL)
-         //download?.track.downloaded = true
-       } catch let error {
-         print("Could not copy file to disk: \(error.localizedDescription)")
-       }
-
+        
+        do {
+            try fileManager.copyItem(at: location, to: destinationURL)
+            //download?.track.downloaded = true
+        } catch let error {
+            print("Could not copy file to disk: \(error.localizedDescription)")
+        }
+        
         return destinationURL
         
     }
     
     func localFilePath(for url: URL) -> URL {
-         return documentsPath.appendingPathComponent(url.lastPathComponent)
-       }
+        return documentsPath.appendingPathComponent(url.lastPathComponent)
+    }
 }
 
 extension ResumeViewController: MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
     
-   
+    
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
         guard let mainView = navigationController?.parent?.view
-            else { return }
-          
+        else { return }
+        
         var hudView:HudView!
-          
+        
         if result.rawValue == 0 {
-          // it was cancelled
+            // it was cancelled
         }
         
         if result.rawValue == 1 {
@@ -390,11 +414,11 @@ extension ResumeViewController: MFMailComposeViewControllerDelegate, MFMessageCo
         }
         
         if result.rawValue == 2 {
-           // "It was sent"
-             hudView = HudView.hud(inView: view, animated: true)
+            // "It was sent"
+            hudView = HudView.hud(inView: view, animated: true)
             hudView.text = "Sent"
             addToSendNode()
-         }
+        }
         if result.rawValue == 3 {
             // it failed
             hudView = HudView.hud(inView: view, animated: true)
@@ -406,21 +430,21 @@ extension ResumeViewController: MFMailComposeViewControllerDelegate, MFMessageCo
         let delayInSeconds = 1.6
         DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds)
         {
-        
+            
             if hudView != nil {
                 hudView.hide()
                 
             }
-       
-      }
+            
+        }
     }
     
     func messageComposeViewController(_ controller: MFMessageComposeViewController,
-                        didFinishWith result: MessageComposeResult) {
+                                      didFinishWith result: MessageComposeResult) {
         
         guard let mainView = navigationController?.parent?.view
-            else { return }
-          
+        else { return }
+        
         let hudView = HudView.hud(inView: view, animated: true)
         
         // Check the result or perform other tasks.
@@ -441,12 +465,12 @@ extension ResumeViewController: MFMailComposeViewControllerDelegate, MFMessageCo
         let delayInSeconds = 1.6
         DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds)
         {
-        
-        hudView.hide()
-       
-      }
+            
+            hudView.hide()
+            
         }
+    }
 }
-   
-   
-   
+
+
+

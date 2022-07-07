@@ -990,7 +990,7 @@
 				CODE_SIGN_ENTITLEMENTS = NasiShadchanHelper/NasiShadchanHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 40.3;
-				DEVELOPMENT_TEAM = P77A2352BM;
+				DEVELOPMENT_TEAM = MHWRAH3X7K;
 				INFOPLIST_FILE = NasiShadchanHelper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -998,7 +998,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 40.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.AviPogrow.NasiShadchanHelper;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CasperLesperanceKerckhoff.NasiShadchanHelper18-58-45";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
