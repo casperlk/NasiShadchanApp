@@ -33,53 +33,42 @@ class ShadchanGirlNotesVC: UITableViewController {
     // get the current girl
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchNoteForGirl()
+        fetchNoteForGirl(perUserPerGirlNotesRef: getPerUserPerGirlNotesRef())
         
     }
     
-//    func getPerUserPerGirlNotesRef() -> NSObject {
-//        let allNotesRef = Database.database().reference().child("ShadchanNotesAndImagesOfNotes")
-//
-//          // get uid for current user
-//          guard let uid = Auth.auth().currentUser?.uid else { return nil }
-//
-//          let currentUserNotesRef = allNotesRef.child(uid)
-//          let currentGirlUID = selectedNasiGirl.key
-//
-//        return currentUserNotesRef.child(currentGirlUID)
-//    }
-    
-    func fetchNoteForGirl() {
+    /// Returns database reference for notes specific to the shadchan logged in and the girl's profile they are viewing
+    ///
+    func getPerUserPerGirlNotesRef() -> DatabaseReference? {
         
         let allNotesRef = Database.database().reference().child("ShadchanNotesAndImagesOfNotes")
-        
-        // get uid for current user
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let uid = Auth.auth().currentUser?.uid else { return nil }    // get uid for current user
         
         let currentUserNotesRef = allNotesRef.child(uid)
         let currentGirlUID = selectedNasiGirl.key
-        print("The type of currentUserNotesRef.child(currentGirlUID) is: ")
-        print(type(of: currentUserNotesRef.child(currentGirlUID)))
         
-        //        let currentUserCurrentGirlNotesRef = getPerUserPerGirlNotesRef()
-        let currentUserCurrentGirlNotesRef = currentUserNotesRef.child(currentGirlUID)
+        return currentUserNotesRef.child(currentGirlUID)
+    }
+    
+    
+    func fetchNoteForGirl(perUserPerGirlNotesRef: DatabaseReference?) {
         
-        currentUserCurrentGirlNotesRef.observe(.value, with: { snapshot in
+        if let currentUserCurrentGirlNotesRef = perUserPerGirlNotesRef {
             
-            //            let snapshot = snapshot as? DataSnapshot //unused code, cmlk commented out 6/10/22
-            let note = ShadchanGirlNote(snapshot: snapshot) //as! ShadchanGirlNote //unused code, cmlk commented out 6/10/22
-            
-            print("the url String is\(note.key)\(note.notesImageURL)")
-            
-            self.notesImageURLString = note.notesImageURL
-            self.textFieldString = note.notesTextString
-            self.elevatorPitchFieldString = note.elevatorPitchTextString
-            
-            self.populateImageView()
-            self.populateTextField()
-            self.populateElevatorPitch()
-            self.tableView.reloadData()
-        })
+            currentUserCurrentGirlNotesRef.observe(.value, with: { snapshot in
+                
+                let note = ShadchanGirlNote(snapshot: snapshot) //I would like to instead save this note in the viewcontroller
+                
+                self.notesImageURLString = note.notesImageURL
+                self.textFieldString = note.notesTextString
+                self.elevatorPitchFieldString = note.elevatorPitchTextString
+                
+                self.populateImageView()
+                self.populateTextField()
+                self.populateElevatorPitch()
+                self.tableView.reloadData()
+            })
+        }
     }
         
     
