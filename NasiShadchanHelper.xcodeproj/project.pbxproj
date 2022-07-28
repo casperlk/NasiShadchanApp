@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		05E7F1273EBB1D17F275CE05 /* Pods_NasiShadchanHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D387D40A1052AD5A246D2953 /* Pods_NasiShadchanHelper.framework */; };
 		1825F99E252C3FE400448269 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1825F99D252C3FE400448269 /* LoginVC.swift */; };
 		1825F9A0252C400600448269 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1825F99F252C400600448269 /* SignUpVC.swift */; };
 		1825F9A7252C5F6B00448269 /* UserAuthentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1825F9A6252C5F6B00448269 /* UserAuthentication.storyboard */; };
@@ -62,6 +61,21 @@
 		52A41BC6277F3BF700FE7C7A /* NasiBoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A41BC5277F3BF700FE7C7A /* NasiBoy.swift */; };
 		52A41BC8279353D500FE7C7A /* BoyDetailsVCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A41BC7279353D500FE7C7A /* BoyDetailsVCTableViewController.swift */; };
 		52C18059280203B3005D3827 /* ShadchanUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C18058280203B3005D3827 /* ShadchanUser.swift */; };
+		AF42FD8C28921D1800042C0B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AF42FD8B28921D1800042C0B /* FirebaseAnalytics */; };
+		AF42FD8E28921D1800042C0B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AF42FD8D28921D1800042C0B /* FirebaseAuth */; };
+		AF42FD9028921D1800042C0B /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = AF42FD8F28921D1800042C0B /* FirebaseDatabase */; };
+		AF42FD9228921D1800042C0B /* FirebaseInstallations in Frameworks */ = {isa = PBXBuildFile; productRef = AF42FD9128921D1800042C0B /* FirebaseInstallations */; };
+		AF42FD9428921D1800042C0B /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = AF42FD9328921D1800042C0B /* FirebaseMessaging */; };
+		AF42FD9628921D1800042C0B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AF42FD9528921D1800042C0B /* FirebaseStorage */; };
+		AF74239E2890B69300E58A2F /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = AF74239D2890B69300E58A2F /* ObjectMapper */; };
+		AF7423A12890B75B00E58A2F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AF7423A02890B75B00E58A2F /* Kingfisher */; };
+		AF7423A32890B75B00E58A2F /* KingfisherDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = AF7423A22890B75B00E58A2F /* KingfisherDynamic */; };
+		AF7423A52890B75B00E58A2F /* KingfisherStatic in Frameworks */ = {isa = PBXBuildFile; productRef = AF7423A42890B75B00E58A2F /* KingfisherStatic */; };
+		AF7423A82890B81C00E58A2F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = AF7423A72890B81C00E58A2F /* Lottie */; };
+		AF7423AB2890B9EF00E58A2F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = AF7423AA2890B9EF00E58A2F /* GoogleSignIn */; };
+		AF7423AE2890BB0C00E58A2F /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AF7423AD2890BB0C00E58A2F /* IQKeyboardManagerSwift */; };
+		AF7423B12890BBA300E58A2F /* Eureka in Frameworks */ = {isa = PBXBuildFile; productRef = AF7423B02890BBA300E58A2F /* Eureka */; };
+		AF7423B42890BBD200E58A2F /* ImageRow in Frameworks */ = {isa = PBXBuildFile; productRef = AF7423B32890BBD200E58A2F /* ImageRow */; };
 		CE3AC07424536729006B9FEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3AC07324536729006B9FEA /* AppDelegate.swift */; };
 		CE3AC07824536729006B9FEA /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3AC07724536729006B9FEA /* CategoriesViewController.swift */; };
 		CE3AC07B24536729006B9FEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3AC07924536729006B9FEA /* Main.storyboard */; };
@@ -103,7 +117,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		120B71D82B9D8096BD2F254A /* Pods-NasiShadchanHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasiShadchanHelper.release.xcconfig"; path = "Target Support Files/Pods-NasiShadchanHelper/Pods-NasiShadchanHelper.release.xcconfig"; sourceTree = "<group>"; };
 		1825F99D252C3FE400448269 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		1825F99F252C400600448269 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		1825F9A6252C5F6B00448269 /* UserAuthentication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserAuthentication.storyboard; sourceTree = "<group>"; };
@@ -160,7 +173,6 @@
 		52A41BC5277F3BF700FE7C7A /* NasiBoy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasiBoy.swift; sourceTree = "<group>"; };
 		52A41BC7279353D500FE7C7A /* BoyDetailsVCTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoyDetailsVCTableViewController.swift; sourceTree = "<group>"; };
 		52C18058280203B3005D3827 /* ShadchanUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadchanUser.swift; sourceTree = "<group>"; };
-		690419FF2D95D46817B237C4 /* Pods-NasiShadchanHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasiShadchanHelper.debug.xcconfig"; path = "Target Support Files/Pods-NasiShadchanHelper/Pods-NasiShadchanHelper.debug.xcconfig"; sourceTree = "<group>"; };
 		CE3AC07024536729006B9FEA /* NasiShadchanHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NasiShadchanHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3AC07324536729006B9FEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE3AC07724536729006B9FEA /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
@@ -188,7 +200,6 @@
 		CECE6A4E24559EF900084A28 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		CEF80D1D245F7014009FE684 /* HudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		CEF80D212460BBBC009FE684 /* FTCollegeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCollegeTableViewCell.swift; sourceTree = "<group>"; };
-		D387D40A1052AD5A246D2953 /* Pods_NasiShadchanHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NasiShadchanHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,7 +207,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05E7F1273EBB1D17F275CE05 /* Pods_NasiShadchanHelper.framework in Frameworks */,
+				AF7423AE2890BB0C00E58A2F /* IQKeyboardManagerSwift in Frameworks */,
+				AF7423A82890B81C00E58A2F /* Lottie in Frameworks */,
+				AF42FD9428921D1800042C0B /* FirebaseMessaging in Frameworks */,
+				AF42FD9228921D1800042C0B /* FirebaseInstallations in Frameworks */,
+				AF7423A12890B75B00E58A2F /* Kingfisher in Frameworks */,
+				AF7423B12890BBA300E58A2F /* Eureka in Frameworks */,
+				AF7423B42890BBD200E58A2F /* ImageRow in Frameworks */,
+				AF7423A32890B75B00E58A2F /* KingfisherDynamic in Frameworks */,
+				AF42FD9628921D1800042C0B /* FirebaseStorage in Frameworks */,
+				AF42FD9028921D1800042C0B /* FirebaseDatabase in Frameworks */,
+				AF7423A52890B75B00E58A2F /* KingfisherStatic in Frameworks */,
+				AF42FD8E28921D1800042C0B /* FirebaseAuth in Frameworks */,
+				AF74239E2890B69300E58A2F /* ObjectMapper in Frameworks */,
+				AF42FD8C28921D1800042C0B /* FirebaseAnalytics in Frameworks */,
+				AF7423AB2890B9EF00E58A2F /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,14 +426,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		38A65EC2E3BE9EB8512EFC50 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D387D40A1052AD5A246D2953 /* Pods_NasiShadchanHelper.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		52257DE72809FF3B007A5A49 /* ShadchanVCS */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,8 +476,6 @@
 		79D0799967B4D24C67E66333 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				690419FF2D95D46817B237C4 /* Pods-NasiShadchanHelper.debug.xcconfig */,
-				120B71D82B9D8096BD2F254A /* Pods-NasiShadchanHelper.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -473,7 +488,6 @@
 				CE3AC09424536765006B9FEA /* NasiShadchanHelperUITests */,
 				CE3AC07124536729006B9FEA /* Products */,
 				79D0799967B4D24C67E66333 /* Pods */,
-				38A65EC2E3BE9EB8512EFC50 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -556,18 +570,32 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE3AC09A24536765006B9FEA /* Build configuration list for PBXNativeTarget "NasiShadchanHelper" */;
 			buildPhases = (
-				A73FCE1D7CC1DB61C4512302 /* [CP] Check Pods Manifest.lock */,
 				CE3AC06C24536729006B9FEA /* Sources */,
 				CE3AC06D24536729006B9FEA /* Frameworks */,
 				CE3AC06E24536729006B9FEA /* Resources */,
-				40F4C25EE19BABD92E813037 /* [CP] Embed Pods Frameworks */,
-				AB9C185867E588C14D35CD7C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = NasiShadchanHelper;
+			packageProductDependencies = (
+				AF74239D2890B69300E58A2F /* ObjectMapper */,
+				AF7423A02890B75B00E58A2F /* Kingfisher */,
+				AF7423A22890B75B00E58A2F /* KingfisherDynamic */,
+				AF7423A42890B75B00E58A2F /* KingfisherStatic */,
+				AF7423A72890B81C00E58A2F /* Lottie */,
+				AF7423AA2890B9EF00E58A2F /* GoogleSignIn */,
+				AF7423AD2890BB0C00E58A2F /* IQKeyboardManagerSwift */,
+				AF7423B02890BBA300E58A2F /* Eureka */,
+				AF7423B32890BBD200E58A2F /* ImageRow */,
+				AF42FD8B28921D1800042C0B /* FirebaseAnalytics */,
+				AF42FD8D28921D1800042C0B /* FirebaseAuth */,
+				AF42FD8F28921D1800042C0B /* FirebaseDatabase */,
+				AF42FD9128921D1800042C0B /* FirebaseInstallations */,
+				AF42FD9328921D1800042C0B /* FirebaseMessaging */,
+				AF42FD9528921D1800042C0B /* FirebaseStorage */,
+			);
 			productName = NasiShadchanHelper;
 			productReference = CE3AC07024536729006B9FEA /* NasiShadchanHelper.app */;
 			productType = "com.apple.product-type.application";
@@ -640,6 +668,16 @@
 				Base,
 			);
 			mainGroup = CE3AC06724536729006B9FEA;
+			packageReferences = (
+				AF74239C2890B69300E58A2F /* XCRemoteSwiftPackageReference "ObjectMapper" */,
+				AF74239F2890B75B00E58A2F /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				AF7423A62890B81B00E58A2F /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				AF7423A92890B9EF00E58A2F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				AF7423AC2890BB0C00E58A2F /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				AF7423AF2890BBA200E58A2F /* XCRemoteSwiftPackageReference "Eureka" */,
+				AF7423B22890BBD200E58A2F /* XCRemoteSwiftPackageReference "ImageRow" */,
+				AF42FD8A28921D1800042C0B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = CE3AC07124536729006B9FEA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -685,65 +723,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		40F4C25EE19BABD92E813037 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NasiShadchanHelper/Pods-NasiShadchanHelper-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NasiShadchanHelper/Pods-NasiShadchanHelper-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NasiShadchanHelper/Pods-NasiShadchanHelper-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A73FCE1D7CC1DB61C4512302 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-NasiShadchanHelper-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AB9C185867E588C14D35CD7C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NasiShadchanHelper/Pods-NasiShadchanHelper-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NasiShadchanHelper/Pods-NasiShadchanHelper-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NasiShadchanHelper/Pods-NasiShadchanHelper-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE3AC06C24536729006B9FEA /* Sources */ = {
@@ -984,13 +963,12 @@
 		};
 		CE3AC09B24536765006B9FEA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 690419FF2D95D46817B237C4 /* Pods-NasiShadchanHelper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NasiShadchanHelper/NasiShadchanHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 40.3;
-				DEVELOPMENT_TEAM = P77A2352BM;
+				DEVELOPMENT_TEAM = MHWRAH3X7K;
 				INFOPLIST_FILE = NasiShadchanHelper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -998,7 +976,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 40.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.AviPogrow.NasiShadchanHelper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.casperlesperancekerckhoff.nasishadchanhelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1007,13 +985,12 @@
 		};
 		CE3AC09C24536765006B9FEA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 120B71D82B9D8096BD2F254A /* Pods-NasiShadchanHelper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NasiShadchanHelper/NasiShadchanHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 40.3;
-				DEVELOPMENT_TEAM = P77A2352BM;
+				DEVELOPMENT_TEAM = MHWRAH3X7K;
 				INFOPLIST_FILE = NasiShadchanHelper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1021,7 +998,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 40.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.AviPogrow.NasiShadchanHelper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.casperlesperancekerckhoff.nasishadchanhelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1152,6 +1129,151 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AF42FD8A28921D1800042C0B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+		AF74239C2890B69300E58A2F /* XCRemoteSwiftPackageReference "ObjectMapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tristanhimmelman/ObjectMapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		AF74239F2890B75B00E58A2F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.15.3;
+			};
+		};
+		AF7423A62890B81B00E58A2F /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		AF7423A92890B9EF00E58A2F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		AF7423AC2890BB0C00E58A2F /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
+		AF7423AF2890BBA200E58A2F /* XCRemoteSwiftPackageReference "Eureka" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/xmartlabs/Eureka";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		AF7423B22890BBD200E58A2F /* XCRemoteSwiftPackageReference "ImageRow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/EurekaCommunity/ImageRow";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AF42FD8B28921D1800042C0B /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF42FD8A28921D1800042C0B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		AF42FD8D28921D1800042C0B /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF42FD8A28921D1800042C0B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		AF42FD8F28921D1800042C0B /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF42FD8A28921D1800042C0B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		AF42FD9128921D1800042C0B /* FirebaseInstallations */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF42FD8A28921D1800042C0B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseInstallations;
+		};
+		AF42FD9328921D1800042C0B /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF42FD8A28921D1800042C0B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		AF42FD9528921D1800042C0B /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF42FD8A28921D1800042C0B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		AF74239D2890B69300E58A2F /* ObjectMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF74239C2890B69300E58A2F /* XCRemoteSwiftPackageReference "ObjectMapper" */;
+			productName = ObjectMapper;
+		};
+		AF7423A02890B75B00E58A2F /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF74239F2890B75B00E58A2F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		AF7423A22890B75B00E58A2F /* KingfisherDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF74239F2890B75B00E58A2F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = KingfisherDynamic;
+		};
+		AF7423A42890B75B00E58A2F /* KingfisherStatic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF74239F2890B75B00E58A2F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = KingfisherStatic;
+		};
+		AF7423A72890B81C00E58A2F /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF7423A62890B81B00E58A2F /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		AF7423AA2890B9EF00E58A2F /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF7423A92890B9EF00E58A2F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		AF7423AD2890BB0C00E58A2F /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF7423AC2890BB0C00E58A2F /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		AF7423B02890BBA300E58A2F /* Eureka */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF7423AF2890BBA200E58A2F /* XCRemoteSwiftPackageReference "Eureka" */;
+			productName = Eureka;
+		};
+		AF7423B32890BBD200E58A2F /* ImageRow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF7423B22890BBD200E58A2F /* XCRemoteSwiftPackageReference "ImageRow" */;
+			productName = ImageRow;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE3AC06824536729006B9FEA /* Project object */;
 }
