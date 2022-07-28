@@ -38,11 +38,11 @@ class LoginParentVC: UIViewController {
     }
     
     //Google Sign In Methods
-    func signInWithGoogle() {
-        GIDSignIn.sharedInstance().presentingViewController = self
-        GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().signIn()
-    }
+//    func signInWithGoogle() {
+//        GIDSignIn.sharedInstance().presentingViewController = self
+//        GIDSignIn.sharedInstance().delegate = self
+//        GIDSignIn.sharedInstance().signIn()
+//    }
     
     //MARK: IBActions
     @IBAction func btnCancelTapped(_ sender: Any) {
@@ -53,38 +53,38 @@ class LoginParentVC: UIViewController {
     }
 }
 
-extension LoginParentVC : GIDSignInDelegate {
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        if error != nil {
-            
-        } else {
-            guard let authentication = user.authentication else { return }
-            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-            self.firebaseLogin(credential)
-        }
-    }
-    
-    func firebaseLogin(_ credential: AuthCredential) {
-        self.view.showLoadingIndicator()
-        if let user = Auth.auth().currentUser {
-            user.link(with: credential) { (authResult, error) in
-                if error != nil {
-                    self.view.hideLoadingIndicator()
-                    self.showAlert(title: Constant.ValidationMessages.oopsTitle, msg: error!.localizedDescription, onDismiss: { })
-                } else {
-                    //self.validateUserEmailWithConcierr(Auth.auth().currentUser?.email ?? "")
-                }
-            }
-        } else {
-            Auth.auth().signIn(with: credential) { (authResult, error) in
-                if error != nil {
-                    self.view.hideLoadingIndicator()
-                    self.showAlert(title: Constant.ValidationMessages.oopsTitle, msg: error!.localizedDescription, onDismiss: { })
-                } else {
-                   // self.validateUserEmailWithConcierr(Auth.auth().currentUser?.email ?? "")
-                }
-            }
-        }
-    }
-}
+//extension LoginParentVC : GIDSignInDelegate {
+//    
+//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+//        if error != nil {
+//            
+//        } else {
+//            guard let authentication = user.authentication else { return }
+//            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+//            self.firebaseLogin(credential)
+//        }
+//    }
+//    
+//    func firebaseLogin(_ credential: AuthCredential) {
+//        self.view.showLoadingIndicator()
+//        if let user = Auth.auth().currentUser {
+//            user.link(with: credential) { (authResult, error) in
+//                if error != nil {
+//                    self.view.hideLoadingIndicator()
+//                    self.showAlert(title: Constant.ValidationMessages.oopsTitle, msg: error!.localizedDescription, onDismiss: { })
+//                } else {
+//                    //self.validateUserEmailWithConcierr(Auth.auth().currentUser?.email ?? "")
+//                }
+//            }
+//        } else {
+//            Auth.auth().signIn(with: credential) { (authResult, error) in
+//                if error != nil {
+//                    self.view.hideLoadingIndicator()
+//                    self.showAlert(title: Constant.ValidationMessages.oopsTitle, msg: error!.localizedDescription, onDismiss: { })
+//                } else {
+//                   // self.validateUserEmailWithConcierr(Auth.auth().currentUser?.email ?? "")
+//                }
+//            }
+//        }
+//    }
+//}
