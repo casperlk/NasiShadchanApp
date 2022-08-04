@@ -28,7 +28,9 @@ class ShadchanGirlNote: NSObject {
     
     init(snapshot: DataSnapshot) {
     //let value = snapshot.value as! [String: AnyObject]
-    guard  let value = snapshot.value! as? [String: String] else { return }
+        
+        
+        guard  let value = snapshot.value! as? [String: String] else { return }
         
         // FB snapshot has a ref and key property
         self.ref = snapshot.ref
@@ -61,6 +63,9 @@ class ShadchanGirlNote: NSObject {
         self.notesImageURL = notesImageURL
         self.notesTextString = notesTextString
         self.timeStamp = timeStamp
+        
+        print("Test 1124")
+        print(snapshot)
     }
     
     // MARK: Initialize with Raw Data

@@ -16,19 +16,19 @@ import IQKeyboardManagerSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-   // var window: UIWindow?
+    // var window: UIWindow?
     
     var handle: AuthStateDidChangeListenerHandle?
     
     // solve dark mode by keeping it in light mode always
     var window: UIWindow? {
-      didSet {
-        window?.overrideUserInterfaceStyle = .light
-      }
+        didSet {
+            window?.overrideUserInterfaceStyle = .light
+        }
     }
-
+    
     class func instance() -> AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
-
+    
     
     override init () {
         FirebaseApp.configure()
@@ -39,77 +39,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        //self.makingRootFlow(Constant.AppRootFlow.kAuthVc)
-        //self.makingRootFlow(Constant.AppRootFlow.kEnterApp)
-        
-        application.applicationIconBadgeNumber = 5
-        //Firebase.Analytics.setAnalyticsCollectionEnabled(true)
-
-        // -- IQKeyboardManager---
         IQKeyboardManager.shared.enable = true
         
-        
         handle = Auth.auth().addStateDidChangeListener { _, user in
-          if user == nil {
-             // print("the state of user is \(user!.debugDescription)")
-              
-            self.makingRootFlow(Constant.AppRootFlow.kAuthVc)
-              
-            // self.navigationController?.popToRootViewController(animated: true)
-          } else {
-              print("the state of user is \(user!.debugDescription)")
-              
-              
-           // self.performSegue(withIdentifier: self.loginToList, sender: nil)
-            //self.enterEmail.text = nil
-            //self.enterPassword.text = nil
-              self.makingRootFlow(Constant.AppRootFlow.kEnterApp)
-          }
-            
+            if user == nil {
+                self.makingRootFlow(Constant.AppRootFlow.kAuthVc)
+            } else {
+                print("the state of user is \(user!.debugDescription)")
+                self.makingRootFlow(Constant.AppRootFlow.kEnterApp)
             }
+            
+        }
         
-    // if UserInfo.currentUserExists {
-       //      self.makingRootFlow(Constant.AppRootFlow.kEnterApp)
-       // } else {
-      //       self.makingRootFlow(Constant.AppRootFlow.kAuthVc)
-      //  }
-        //setUpNavigationAppearance()
-        // 3
-         // (window?.rootViewController as? UITabBarController)?.selectedIndex = 1
-
         return true
     }
     
-    /*
-    func createNewShadchanUserInFirebase(){
-        
-        let userID = Auth.auth().currentUser?.uid ?? ""
-        let email = Auth.auth().currentUser?.email
-        
-        let shadchanEmail = email
-        let shadchanCell = "3109235682"
-        let shadchanFirstName = "Avi"
-        let shadchanLastName = "Pogrow"
-        let shadchanUserID = userID
-        let shadchanTitle = "Rabbi"
-        let shadchanProfileImageURLString = ""
-        let yearsAsShadchan = "10"
-        let about = "Best in the world"
-        let familyTypes: [String] = ["","",""]
-        let singlesPlan: [String] = ["","",""]
-        let singlesType: [String] = ["","",""]
-        
-        let newUser = ShadchanUser(shadchanEmail: shadchanEmail!, shadchanFirstName: shadchanFirstName, shadchanLastName: shadchanLastName, shadchanUserID: shadchanUserID, shadchanCell: shadchanCell, shadchanTitle: shadchanTitle, shadchanProfileImageURLString: shadchanProfileImageURLString, yearsAsShadchan: yearsAsShadchan, about: about, familyTypes: familyTypes, singlesPlan: singlesPlan, singlesType: singlesType)
     
-        
-        let shadchanUserNodeRef = Database.database().reference(withPath: "NasiShadchanUserList")
-        
-        let shadchanChildRef = shadchanUserNodeRef.child(shadchanUserID)
-        
-        shadchanChildRef.setValue(newUser.toAnyObject())
-        
-    }
-     */
     
     func createNewDateInFirebase() {
         
@@ -132,45 +77,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let dateNodeRef = Database.database().reference().child("NasiDatesList").child(uid)
         
         let ref = dateNodeRef.childByAutoId()
-        //let groceryItemRef = self.ref.child(text.lowercased())
+        
         ref.setValue(newDate.toAnyObject())
     }
     
-    /*
-    // pass the url string
-    fileprivate func saveToDatabaseWithImageUrl(imageUrl: String) {
-        
-        // pass the image
-        guard let postImage = selectedImage else { return }
-        
-        // unwrap text from textView
-        guard let caption = textView.text else { return }
-        
-        // get uid for current user
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        // go to posts child node then to child uid
-        let userPostRef = Database.database().reference().child("posts").child(uid)
-        
-        
-        let ref = userPostRef.childByAutoId()
-        
-        let values = ["imageUrl": imageUrl, "caption": caption, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height, "creationDate": Date().timeIntervalSince1970] as [String : Any]
-        
-        ref.updateChildValues(values) { (err, ref) in
-            if let err = err {
-                self.navigationItem.rightBarButtonItem?.isEnabled = true
-                print("Failed to save post to DB", err)
-                return
-            }
-            
-            print("Successfully saved post to DB")
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-    */
-  
-   
     
     // MARK:- MEthods
     private func setUpNavigationAppearance() {
@@ -206,45 +116,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-   
-        
-}
-
-
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+}
